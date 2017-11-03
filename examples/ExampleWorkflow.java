@@ -78,15 +78,15 @@ public class ExampleWorkflow {
         String requiredCredentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
         baseObject = new JSONObject(requiredCredentials);
         array = baseObject.getJSONArray("credentials");
-        String credentials = "[";
+        JSONArray credentials = new JSONArray();
         for (int i = 0; i < array.length(); i++) {
           System.out.println("\nPlease enter in " + array.getJSONObject(i).getString("label") + ":");
           String cred = br.readLine().trim();
-          credentials += "{\"guid\":\"" + array.getJSONObject(i).getString("guid") + "\",\"value\":\"" + cred + "\"},";
+          JSONObject temp = new JSONObject();
+          temp.put("guid", array.getJSONObject(i).getString("guid"));
+          temp.put("value", cred);
+          credentials.put(temp);
         }
-        credentials = credentials.substring(0, credentials.length() - 1);
-        credentials += "]";
-
         String memberResponse = atriumClient.createMember(userGUID, credentials, institutionCode, "", "");
 
         JSONObject base = new JSONObject(memberResponse);
@@ -161,14 +161,15 @@ public class ExampleWorkflow {
           String requiredCredentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
           base = new JSONObject(requiredCredentials);
           JSONArray array = base.getJSONArray("credentials");
-          String credentials = "[";
+          JSONArray credentials = new JSONArray();
           for (int i = 0; i < array.length(); i++) {
               System.out.println("\nPlease enter in " + array.getJSONObject(i).getString("label") + ":");
               String cred = br.readLine().trim();
-              credentials += "{\"guid\":\"" + array.getJSONObject(i).getString("guid") + "\",\"value\":\"" + cred + "\"},";
+              JSONObject temp = new JSONObject();
+              temp.put("guid", array.getJSONObject(i).getString("guid"));
+              temp.put("value", cred);
+              credentials.put(temp);
           }
-          credentials = credentials.substring(0, credentials.length() - 1);
-          credentials += "]";
 
           atriumClient.updateMember(userGUID, memberGUID, credentials, "", "");
 
@@ -179,14 +180,15 @@ public class ExampleWorkflow {
           String challengeResponse = atriumClient.listMemberMFAChallenges(userGUID, memberGUID, "", "");
           base = new JSONObject(challengeResponse);
           array = base.getJSONArray("challenges");
-          String answer = "{\"member\":{\"challenges\":[";
+          JSONArray answer = new JSONArray();
           for (int i = 0; i < array.length(); i++) {
               System.out.println(array.getJSONObject(i).getString("label") + ":");
               String ans = br.readLine().trim();
-              answer += "{\"guid\":\"" + array.getJSONObject(i).getString("guid") + "\",\"value\":\"" + ans + "\"},";
+              JSONObject temp = new JSONObject();
+              temp.put("guid", array.getJSONObject(i).getString("guid"));
+              temp.put("value", ans);
+              answer.put(temp);
           }
-          answer = answer.substring(0, answer.length() - 1);
-          answer += "]}}";
 
           atriumClient.resumeMemberAggregation(userGUID, memberGUID, answer);
 

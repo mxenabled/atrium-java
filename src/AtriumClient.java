@@ -3,6 +3,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class AtriumClient {
   String environment;
@@ -24,21 +27,24 @@ public class AtriumClient {
   // Required Parameters: None
   // Optional Parameters: identifier, isDisabled, metadata
   public String createUser(String identifier, String isDisabled, String metadata) {
-    String body = "{\"user\": {";
+    JSONObject inner = new JSONObject();
     if (!identifier.equals("")) {
-      body += "\"identifier\": \"" + identifier + "\",";
+      inner.put("identifier", identifier);
     }
     isDisabled = isDisabled.toLowerCase();
     if ((isDisabled.equals("")) || (isDisabled.equals("false"))) {
-      body += "\"is_disabled\": \"false\"";
+      inner.put("is_disabled", "false");
     }
     else {
-      body += "\"is_disabled\": \"true\"";
+      inner.put("is_disabled", true);
     }
     if (!metadata.equals("")) {
-      body += ",\"metadata\": \"" + metadata + "\"";
+      inner.put("metadata", metadata);
     }
-    body += "}}";
+    JSONObject outer = new JSONObject();
+    outer.put("user", inner);
+    String body = outer.toString();
+
     return makeRequest("POST", "/users", body);
   }
 
@@ -51,23 +57,21 @@ public class AtriumClient {
   // Required Parameters: None
   // Optional Parameters: userGUID, identifier, isDisabled, metadata
   public String updateUser(String userGUID, String identifier, String isDisabled, String metadata) {
-    String body = "{\"user\": {";
+    JSONObject inner = new JSONObject();
     if (!identifier.equals("")) {
-      body += "\"identifier\": \"" + identifier + "\"";
-      if ((!isDisabled.equals("")) || (!metadata.equals(""))) {
-        body += ",";
-      }
+      inner.put("identifier", identifier);
     }
     if (!isDisabled.equals("")) {
-      body += "\"is_disabled\": \"" + isDisabled + "\"";
-      if (!metadata.equals("")) {
-        body += ",";
-      }
+      inner.put("is_disabled", isDisabled);
     }
     if (!metadata.equals("")) {
-      body += "\"metadata\": \"" + metadata + "\"";
+      inner.put("metadata", metadata);
     }
-    body += "}}";
+    JSONObject outer = new JSONObject();
+    outer.put("user", inner);
+    String body = outer.toString();
+
+
     return makeRequest("PUT", "/users/" + userGUID, body);
   }
 
@@ -118,21 +122,20 @@ public class AtriumClient {
 
   // Required Parameters: userGUID, credentials, institutionCode
   // Optional Parameters: identifier, metadata
-  public String createMember(String userGUID, String credentials, String institutionCode, String identifier, String metadata) {
-    String body = "{\"member\": {\"institution_code\": \"" + institutionCode + "\", \"credentials\": " + credentials;
-    if ((!identifier.equals("")) || (!metadata.equals(""))) {
-      body += ",";
-    }
+  public String createMember(String userGUID, JSONArray credentials, String institutionCode, String identifier, String metadata) {
+    JSONObject inner = new JSONObject();
+    inner.put("institution_code", institutionCode);
+    inner.put("credentials", credentials);
     if (!identifier.equals("")) {
-      body += "\"identifier\": \"" + identifier + "\"";
-      if (!metadata.equals("")) {
-        body += ",";
-      }
+      inner.put("identifier", identifier);
     }
     if (!metadata.equals("")) {
-      body += "\"metadata\": \"" + metadata + "\"";
+      inner.put("metadata", metadata);
     }
-    body += "}}";
+    JSONObject outer = new JSONObject();
+    outer.put("member", inner);
+    String body = outer.toString();
+
     return makeRequest("POST", "/users/" + userGUID + "/members", body);
   }
 
@@ -144,24 +147,23 @@ public class AtriumClient {
 
   // Required Parameters: userGUID, memberGUID
   // Optional Parameters: credentials, identifier, metadata
-  public String updateMember(String userGUID, String memberGUID, String credentials, String identifier, String metadata) {
-    String body = "{\"member\": {";
-    if (!credentials.equals("")) {
-      body += "\"credentials\": " + credentials;
-      if ((!identifier.equals("")) || (!metadata.equals(""))) {
-        body += ",";
-      }
+  public String updateMember(String userGUID, String memberGUID, JSONArray credentials, String identifier, String metadata) {
+    JSONObject inner = new JSONObject();
+    if (!credentials.toString().equals("[]")) {
+      inner.put("credentials", credentials);
     }
     if (!identifier.equals("")) {
-      body += "\"identifier\": \"" + identifier + "\"";
-      if (!metadata.equals("")) {
-        body += ",";
-      }
+      inner.put("identifier", identifier);
     }
     if (!metadata.equals("")) {
-      body += "\"metadata\": \"" + metadata + "\"";
+      inner.put("metadata", metadata);
     }
-    body += "}}";
+
+    JSONObject outer = new JSONObject();
+    outer.put("member", inner);
+    String body = outer.toString();
+
+
     return makeRequest("PUT", "/users/" + userGUID + "/members/" + memberGUID, body);
   }
 
@@ -201,8 +203,14 @@ public class AtriumClient {
 
   // Required Parameters: userGUID, memberGUID, answersMFA
   // Optional Parameters: None
-  public String resumeMemberAggregation(String userGUID, String memberGUID, String answersMFA) {
-    return makeRequest("PUT", "/users/" + userGUID + "/members/" + memberGUID + "/resume", answersMFA);
+  public String resumeMemberAggregation(String userGUID, String memberGUID, JSONArray answersMFA) {
+    JSONObject inner = new JSONObject();
+    inner.put("challenges", answersMFA);
+    JSONObject outer = new JSONObject();
+    outer.put("member", inner);
+    String body = outer.toString();
+
+    return makeRequest("PUT", "/users/" + userGUID + "/members/" + memberGUID + "/resume", body);
   }
 
   // Required Parameters: userGUID, memberGUID

@@ -4,21 +4,16 @@ import java.util.concurrent.TimeUnit;
 import java.time.format.DateTimeFormatter;
 import java.time.Instant;
 import java.time.ZoneOffset;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class ExampleWorkflow {
 
   static int counter = 0;
 
   public static void main(String[] args) {
-    if (args.length < 3 || args.length > 3) {
-      System.out.println("Incorrect usage. Correct usage is: java -jar Atrium-java YOUR_DESIRED_ENVIRONMENT YOUR_MX_API_KEY YOUR_MX_CLIENT_ID");
-      System.exit(0);
-    }
-
-    AtriumClient atriumClient = new AtriumClient(args[0], args[1], args[2]);
-
+    AtriumClient atriumClient = new AtriumClient("https://vestibule.mx.com", "YOUR_MX_API_KEY", "YOUR_MX_CLIENT_ID");
+    
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     String userGUID = "";
@@ -41,15 +36,15 @@ public class ExampleWorkflow {
       }
 
       if (userGUID.equals("") && endUserPresent.equals("true")) {
-        System.out.println("\n* NEW USER CREATION *");
+        System.out.println("\n* Creating user *");
 
-        System.out.print("\nPlease enter in an unique id: ");
+        System.out.print("\nPlease enter in an unique id for user: ");
         String id = br.readLine().trim();
 
-        String userResponse = atriumClient.createUser(id, "", "");
+        User user = atriumClient.createUser(id, "", "");
 
-        JSONObject base = new JSONObject(userResponse);
-        userGUID = base.getJSONObject("user").getString("guid");
+        userGUID = user.getGuid();
+        System.out.println("\nCreated user: " + userGUID);
       }
 
       if (!memberGUID.equals("") && endUserPresent.equals("true")) {
@@ -60,43 +55,42 @@ public class ExampleWorkflow {
         readAggregationData(atriumClient, userGUID, memberGUID);
       }
       else if (endUserPresent.equals("true")) {
-        System.out.println("\n* NEW MEMBER CREATION *");
+        System.out.println("\n* Creating member *");
 
-        System.out.print("Please enter in a keyword to search for an institution: ");
-        String institution = br.readLine().trim();
-        String institutions = atriumClient.listInstitutions(institution, "", "");
+        System.out.println("\n* Listing top 15 institutions *");
+        Institution[] institutions = atriumClient.listInstitutions("", "", "");
 
-        JSONObject baseObject = new JSONObject(institutions);
-        JSONArray array = baseObject.getJSONArray("institutions");
-        for (int i = 0; i < array.length(); i++) {
-          System.out.println(array.getJSONObject(i).getString("name") + " : institution code = " + array.getJSONObject(i).getString("code"));
+        for (Institution institution1 : institutions) {
+          System.out.println(institution1.getName() + " : institution code = " + institution1.getCode());
         }
 
         System.out.print("\nPlease enter in desired institution code: ");
         String institutionCode = br.readLine().trim();
 
-        String requiredCredentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
-        baseObject = new JSONObject(requiredCredentials);
-        array = baseObject.getJSONArray("credentials");
-        JSONArray credentials = new JSONArray();
-        for (int i = 0; i < array.length(); i++) {
-          System.out.println("\nPlease enter in " + array.getJSONObject(i).getString("label") + ":");
+        Credential[] credentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
+        JsonArray credentialArray = new JsonArray();
+        for (Credential credential : credentials) {
+          System.out.println("Please enter in " + credential.getLabel() + ":");
           String cred = br.readLine().trim();
-          JSONObject temp = new JSONObject();
-          temp.put("guid", array.getJSONObject(i).getString("guid"));
-          temp.put("value", cred);
-          credentials.put(temp);
+          JsonObject temp = new JsonObject();
+          temp.addProperty("guid", credential.getGuid());
+          temp.addProperty("value", cred);
+          credentialArray.add(temp);
         }
-        String memberResponse = atriumClient.createMember(userGUID, credentials, institutionCode, "", "");
 
-        JSONObject base = new JSONObject(memberResponse);
-        memberGUID = base.getJSONObject("member").getString("guid");
+        Member member = atriumClient.createMember(userGUID, credentialArray, institutionCode, "", "");
+
+        memberGUID = member.getGuid();
+        System.out.println("\nCreated member: " + memberGUID);
         checkJobStatus(atriumClient, userGUID, memberGUID);
       }
       else {
         System.out.println("\nEnd user must be present to create a new member");
         System.exit(0);
       }
+      System.out.println("\n* Deleting test user *");
+      atriumClient.deleteUser(userGUID);
+      System.out.println("Deleted user: " + userGUID);
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -110,10 +104,9 @@ public class ExampleWorkflow {
       System.out.println("\n2 second delay...");
       TimeUnit.SECONDS.sleep(2);
 
-      String aggregationResponse = atriumClient.readMemberAggregationStatus(userGUID, memberGUID);
+      Member member = atriumClient.readMemberAggregationStatus(userGUID, memberGUID);
 
-      JSONObject base = new JSONObject(aggregationResponse);
-      String code = base.getJSONObject("member").getString("status");
+      String code = member.getStatus();
 
       System.out.println("\nJOB STATUS: " + code);
 
@@ -125,9 +118,8 @@ public class ExampleWorkflow {
         case "FAILED":
           String currentTime = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss").withZone(ZoneOffset.UTC).format(Instant.now()) + "+00:00";
 
-          String statusResponse = atriumClient.readMemberAggregationStatus(userGUID, memberGUID);
-          JSONObject baseObject = new JSONObject(statusResponse);
-          String lastSuccessTime = baseObject.getJSONObject("member").getString("successfully_aggregated_at");
+          Member member1 = atriumClient.readMemberAggregationStatus(userGUID, memberGUID);
+          String lastSuccessTime = member1.getSuccessfully_Aggregated_At();
 
           // Check if last successful aggregation over 3 days ago
           if (Math.abs(Integer.parseInt(currentTime.substring(8,10)) - Integer.parseInt(lastSuccessTime.substring(8,10))) > 3 || Math.abs(Integer.parseInt(currentTime.substring(5,7)) - Integer.parseInt(lastSuccessTime.substring(5,7))) > 0 || Math.abs(Integer.parseInt(currentTime.substring(0,4)) - Integer.parseInt(lastSuccessTime.substring(0,4))) > 0) {
@@ -153,41 +145,36 @@ public class ExampleWorkflow {
         case "PREVENTED":
         case "DENIED":
         case "IMPAIRED":
-          String readMemberData = atriumClient.readMember(userGUID, memberGUID);
-          JSONObject baseObj = new JSONObject(readMemberData);
-          String institutionCode = baseObj.getJSONObject("member").getString("institution_code");
+          Member member2 = atriumClient.readMember(userGUID, memberGUID);
+          String institutionCode = member2.getInstitution_Code();
 
           System.out.println("\nPlease update credentials");
-          String requiredCredentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
-          base = new JSONObject(requiredCredentials);
-          JSONArray array = base.getJSONArray("credentials");
-          JSONArray credentials = new JSONArray();
-          for (int i = 0; i < array.length(); i++) {
-              System.out.println("\nPlease enter in " + array.getJSONObject(i).getString("label") + ":");
-              String cred = br.readLine().trim();
-              JSONObject temp = new JSONObject();
-              temp.put("guid", array.getJSONObject(i).getString("guid"));
-              temp.put("value", cred);
-              credentials.put(temp);
+          Credential[] credentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
+          JsonArray credentialArray = new JsonArray();
+          for (Credential credential : credentials) {
+            System.out.println("\nPlease enter in " + credential.getLabel() + ":");
+            String cred = br.readLine().trim();
+            JsonObject temp = new JsonObject();
+            temp.addProperty("guid", credential.getGuid());
+            temp.addProperty("value", cred);
+            credentialArray.add(temp);
           }
 
-          atriumClient.updateMember(userGUID, memberGUID, credentials, "", "");
+          atriumClient.updateMember(userGUID, memberGUID, credentialArray, "", "");
 
           checkJobStatus(atriumClient, userGUID, memberGUID);
           break;
         case "CHALLENGED":
           System.out.println("\nPlease answer the following challenges:");
-          String challengeResponse = atriumClient.listMemberMFAChallenges(userGUID, memberGUID, "", "");
-          base = new JSONObject(challengeResponse);
-          array = base.getJSONArray("challenges");
-          JSONArray answer = new JSONArray();
-          for (int i = 0; i < array.length(); i++) {
-              System.out.println(array.getJSONObject(i).getString("label") + ":");
-              String ans = br.readLine().trim();
-              JSONObject temp = new JSONObject();
-              temp.put("guid", array.getJSONObject(i).getString("guid"));
-              temp.put("value", ans);
-              answer.put(temp);
+          Challenge[] challenges = atriumClient.listMemberMFAChallenges(userGUID, memberGUID, "", "");
+          JsonArray answer = new JsonArray();
+          for (Challenge challenge : challenges) {
+            System.out.println(challenge.getLabel() + ":");
+            String ans = br.readLine().trim();
+            JsonObject temp = new JsonObject();
+            temp.addProperty("guid", challenge.getGuid());
+            temp.addProperty("value", ans);
+            answer.add(temp);
           }
 
           atriumClient.resumeMemberAggregation(userGUID, memberGUID, answer);
@@ -242,22 +229,15 @@ public class ExampleWorkflow {
 
   public static void readAggregationData(AtriumClient atriumClient, String userGUID, String memberGUID) {
     try {
-      atriumClient.readMember(userGUID, memberGUID);
-
-      System.out.println("\n* Listing all Member Accounts *");
-      String accountsResponse = atriumClient.listMemberAccounts(userGUID, memberGUID, "", "");
-      JSONObject base = new JSONObject(accountsResponse);
-      JSONArray array = base.getJSONArray("accounts");
-      for (int i = 0; i < array.length(); i++) {
-          System.out.println("Type: " + array.getJSONObject(i).getString("type") + "\tName: " + array.getJSONObject(i).getString("name") + "\tAvailable Balance: " + array.getJSONObject(i).get("available_balance") + "\tAvailable Credit: " + array.getJSONObject(i).get("available_credit"));
-      }
-
-      System.out.println("\n* Listing all Member Transactions *");
-      String transactionsResponse = atriumClient.listMemberTransactions(userGUID, memberGUID, "", "", "", "");
-      JSONObject baseObj = new JSONObject(transactionsResponse);
-      JSONArray arrayObj = baseObj.getJSONArray("transactions");
-      for (int i = 0; i < arrayObj.length(); i++) {
-          System.out.println("Date: " + arrayObj.getJSONObject(i).getString("date") + "\tDescription: " + arrayObj.getJSONObject(i).getString("description") + "\tAmount: " + arrayObj.getJSONObject(i).get("amount"));
+      System.out.println("\n* Listing all member accounts and transactions *");
+      Account[] accounts = atriumClient.listMemberAccounts(userGUID, memberGUID, "", "");
+      for (Account account : accounts) {
+        System.out.println("\nType: " + account.getType() + "\tName: " + account.getName() + "\tAvailable Balance: " + account.getAvailable_Balance() + "\tAvailable Credit: " + account.getAvailable_Credit());
+        System.out.println("Transactions");
+        Transaction[] transactions = atriumClient.listAccountTransactions(userGUID, account.getGuid(), "", "", "", "");
+        for (Transaction transaction : transactions) {
+          System.out.println("\tDate: " + transaction.getDate() + "\tDescription: " + transaction.getDescription() + "\tAmount: " + transaction.getAmount());
+        }
       }
     }
     catch (Exception e) {

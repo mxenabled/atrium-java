@@ -17,8 +17,12 @@ public class AtriumClient {
   private String mxAPIKEY;
   private String mxCLIENTID;
 
-  // Required Parameters: environment, mxAPIKEY, mxCLIENTID
-  // Optional Parameters: None
+  /**
+   * Constructor method to set up client.
+   * @param environment Required. Sets the environment for the user
+   * @param mxAPIKEY Required. API Key used to access Atrium API.
+   * @param mxCLIENTID Required. API Client ID used to access Atrium API.
+   */
   public AtriumClient(String environment, String mxAPIKEY, String mxCLIENTID) {
     this.environment = environment;
     this.mxAPIKEY = mxAPIKEY;
@@ -29,8 +33,13 @@ public class AtriumClient {
   // USER
 
 
-  // Required Parameters: None
-  // Optional Parameters: identifier, isDisabled, metadata
+  /**
+   * Method used to create a new User.
+   * @param identifier Optional. A unique, enforced identifiier for the user, defined by you.
+   * @param isDisabled Optional. True if you want the user disabled, false otherwise.
+   * @param metadata Optional. Additional information you can store about this user. MX recommends using JSON-structured data.
+   * @return User. This returns the newly created User object.
+   */
   public User createUser(String identifier, String isDisabled, String metadata) {
     JsonObject inner = new JsonObject();
     if (!identifier.equals("")) {
@@ -54,15 +63,24 @@ public class AtriumClient {
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("user").toString(), User.class);
   }
 
-  // Required Parameters: userGUID
-  // Optional Parameters: None
+  /**
+   * Method used to read a User.
+   * @param userGUID Required. The guid of the User to read.
+   * @return User. This returns the User object specified by the User guid param.
+   */
   public User readUser(String userGUID) {
     String response =  makeRequest("GET", "/users/" + userGUID, "");
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("user").toString(), User.class);
   }
 
-  // Required Parameters: None
-  // Optional Parameters: userGUID, identifier, isDisabled, metadata
+  /**
+   * Method used to update a User.
+   * @param userGUID Required. The guid of the User to update.
+   * @param identifier Optional. Use to update the User's identifier.
+   * @param isDisabled Optional. Use to updatd the User's is_disabled status.
+   * @param metadata Optional.  Use to update the User's metadata.
+   * @return User. This returns the updated User object.
+   */
   public User updateUser(String userGUID, String identifier, String isDisabled, String metadata) {
     JsonObject inner = new JsonObject();
     if (!identifier.equals("")) {
@@ -82,8 +100,12 @@ public class AtriumClient {
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("user").toString(), User.class);
   }
 
-  // Required Parameters: None
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list all Users.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return User array. This returns an array of all User objects.
+   */
   public User[] listUsers(String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
     String response = makeRequest("GET", "/users" + params, "");
@@ -97,8 +119,11 @@ public class AtriumClient {
     return userArray;
   }
 
-  // Required Parameters: userGUID
-  // Optional Parameters: None
+  /**
+   * Method used to delete a User.
+   * @param userGUID Required. The guid of the User to delete.
+   * @return String. Empty string on success, error message otherwise.
+   */
   public String deleteUser(String userGUID) {
     return makeRequest("DELETE", "/users/" + userGUID, "");
   }
@@ -107,8 +132,13 @@ public class AtriumClient {
   // INSTITUTION
 
 
-  // Required Parameters: None
-  // Optional Parameters: name, pageNumber, recordsPerPage
+  /**
+   * Method used to list all Institutions.
+   * @param name Optional. Query string to list only institutions in which the string appears.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Institution array. This returns an array of Institution objects.
+   */
   public Institution[] listInstitutions(String name, String pageNumber, String recordsPerPage) {
     String params = optionalParameters(name, "", "", pageNumber, recordsPerPage);
 
@@ -123,16 +153,24 @@ public class AtriumClient {
     return institutionArray;
   }
 
-  // Required Parameters: institutionCode
-  // Optional Parameters: None
+  /**
+   * Method used to read an Institution.
+   * @param institutionCode Required. The code of the Institution to read.
+   * @return Institution. This returns the Institution specified by the institutionCode param.
+   */
   public Institution readInstitution(String institutionCode)
   {
     String response =  makeRequest("GET", "/institutions/" + institutionCode, "");
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("institution").toString(), Institution.class);
   }
 
-  // Required Parameters: institutionCode
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to read an Institution's credentials.
+   * @param institutionCode Required. The code of the Institution to read credentials.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Credential array. This returns an array of the Institution's specific credentials.
+   */
   public Credential[] readInstitutionCredentials(String institutionCode, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
 
@@ -151,8 +189,15 @@ public class AtriumClient {
   // MEMBER
 
 
-  // Required Parameters: userGUID, credentials, institutionCode
-  // Optional Parameters: identifier, metadata
+  /**
+   * Method used to create a Member.
+   * @param userGUID Required. The guid of the associated User.
+   * @param credentials Required. An array of required credentials from the readInstitutionCredentials endpoint.
+   * @param institutionCode Required. Unique code for the institution to which the member will connect.
+   * @param identifier Optional. A unique enforced identifier for the member, enforced by you.
+   * @param metadata Optional. Additional information you can store on this member.
+   * @return Member. This returns the newly created Member object.
+   */
   public Member createMember(String userGUID, JsonArray credentials, String institutionCode, String identifier, String metadata) {
     JsonObject inner = new JsonObject();
     inner.addProperty("institution_code", institutionCode);
@@ -171,16 +216,27 @@ public class AtriumClient {
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: None
+  /**
+   * Method used to read a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return Member. This returns the Member object specified by the User guid and Member guid params.
+   */
   public Member readMember(String userGUID, String memberGUID) {
     String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID, "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: credentials, identifier, metadata
+  /**
+   * Method used to update a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param credentials Optional. The credentials that you wish to update for this  member.
+   * @param identifier Optional. A unique, enforced identifier for the member. Defined by you.
+   * @param metadata Optional. Additional information you can store on this member. Defined by you.
+   * @return Member. This returns the update Member object.
+   */
   public Member updateMember(String userGUID, String memberGUID, JsonArray credentials, String identifier, String metadata) {
     JsonObject inner = new JsonObject();
     if (!credentials.toString().equals("[]")) {
@@ -202,14 +258,23 @@ public class AtriumClient {
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: None
+  /**
+   * Method used to delete a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return String. Empty string on success, error message otherwise.
+   */
   public String deleteMember(String userGUID, String memberGUID) {
     return makeRequest("DELETE", "/users/" + userGUID + "/members/" + memberGUID, "");
   }
 
-  // Required Parameters: userGUID
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list all members associated with a User.
+   * @param userGUID The User guid who's members you would like to display
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Member array. This returns an array of Members associated with specified User guid param.
+   */
   public Member[] listMembers(String userGUID, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
 
@@ -225,24 +290,38 @@ public class AtriumClient {
     return memberArray;
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: None
+  /**
+   * Method used to aggregate a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return Member. This returns the Member object specified by the User guid and Member guid params.
+   */
   public Member aggregateMember(String userGUID, String memberGUID) {
     String response = makeRequest("POST", "/users/" + userGUID + "/members/" + memberGUID + "/aggregate", "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters:  userGUID, memberGUID
-  // Optional Parameters: None
+  /**
+   * Method used to read Member aggregation status.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return Member. This returns the Member object specified by the User guid and Member guid params.
+   */
   public Member readMemberAggregationStatus(String userGUID, String memberGUID) {
     String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/status", "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list Member MFA challenges.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Challenge array. This returns an array of Challenge objects.
+   */
   public Challenge[] listMemberMFAChallenges(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
 
@@ -257,8 +336,13 @@ public class AtriumClient {
     return challengeArray;
   }
 
-  // Required Parameters: userGUID, memberGUID, answersMFA
-  // Optional Parameters: None
+  /**
+   * Method used to resume Member aggregation.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param answersMFA Required. The array of answered challenges.
+   * @return This returns the Member object specified by the User guid and Member guid params.
+   */
   public Member resumeMemberAggregation(String userGUID, String memberGUID, JsonArray answersMFA) {
     JsonObject inner = new JsonObject();
     inner.add("challenges", answersMFA);
@@ -271,8 +355,14 @@ public class AtriumClient {
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list Member credentials.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Credential array. This returns an array of Credential objects for the specified Member.
+   */
   public Credential[] listMemberCredentials(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
 
@@ -287,8 +377,14 @@ public class AtriumClient {
     return credentialArray;
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list member Accounts.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Account array. This returns an array of Account objects for the specified Member.
+   */
   public Account[] listMemberAccounts(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
 
@@ -303,8 +399,16 @@ public class AtriumClient {
     return accountArray;
   }
 
-  // Required Parameters: userGUID, memberGUID
-  // Optional Parameters: fromDate, toDate, pageNumber, recordsPerPage
+  /**
+   * Method used to list member Transactions.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @param fromDate Optional. The date from which to filter transactions from.
+   * @param toDate Optional. The date to which to filter transactions from.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Transaction array. This returns an array of Transaction objects for the specified Member.
+   */
   public Transaction[] listMemberTransactions(String userGUID, String memberGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
 
@@ -323,16 +427,25 @@ public class AtriumClient {
   // ACCOUNT
 
 
-  // Required Parameters: userGUID, accountGUID
-  // Optional Parameters: None
+  /**
+   * Method used to read an Account.
+   * @param userGUID Required. The guid of the User associated with the Account.
+   * @param accountGUID Required. The guid of the Account.
+   * @return Account. This returns an Account object.
+   */
   public Account readAccount(String userGUID, String accountGUID) {
     String response = makeRequest("GET", "/users/" + userGUID + "/accounts/" + accountGUID, "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("account").toString(), Account.class);
   }
 
-  // Required Parameters: userGUID
-  // Optional Parameters: pageNumber, recordsPerPage
+  /**
+   * Method used to list Accounts for a User.
+   * @param userGUID Required. The User guid of the Account to list.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Account array. This returns an array of Account objects for the specified User.
+   */
   public Account[] listAccounts(String userGUID, String pageNumber, String recordsPerPage)
   {
     String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
@@ -348,8 +461,16 @@ public class AtriumClient {
     return accountArray;
   }
 
-  // Required Parameters: userGUID, accountGUID
-  // Optional Parameters: fromDate, toDate, pageNumber, recordsPerPage
+  /**
+   * Method used to list Account Transactions
+   * @param userGUID Required. The guid of the User associated with the Transactions.
+   * @param accountGUID Required. The guid of the Account associated with the Account.
+   * @param fromDate Optional. The date from which to filter transactions from.
+   * @param toDate Optional. The date to which to filter transactions from.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Transaction array. This returns an array of Transaction objects for the specified Account.
+   */
   public Transaction[] listAccountTransactions(String userGUID, String accountGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
     String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
 
@@ -364,18 +485,30 @@ public class AtriumClient {
     return transactionArray;
   }
 
+
   // TRANSACTION
 
-  // Required Parameters: userGUID, transactionGUID
-  // Optional Parameters: None
+  /**
+   * Method used to read a Transaction.
+   * @param userGUID Required. The User guid associated with the Transaction.
+   * @param transactionGUID Required. The guid of the Transaction.
+   * @return Transaction. This returns a Transaction object specified by the User guid and Transaction guid.
+   */
   public Transaction readTransaction(String userGUID, String transactionGUID) {
     String response = makeRequest("GET", "/users/" + userGUID + "/transactions/" + transactionGUID, "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("transaction").toString(), Transaction.class);
   }
 
-  // Required Parameters: userGUID
-  // Optional Parameters: fromDate, toDate, pageNumber, recordsPerPage
+  /**
+   * Method used to list a User's Transactions
+   * @param userGUID Required. The guid of the User.
+   * @param fromDate Optional. The date from which to filter transactions from.
+   * @param toDate Optional. The date to which to filter transactions from.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return Transaction array. This returns an array of Transaction objects for the specified User.
+   */
   public Transaction[] listTransactions(String userGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage)
   {
     String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
@@ -395,8 +528,11 @@ public class AtriumClient {
   // CONNECT WIDGET
 
 
-  // Required Parameters: userGUID
-  // Optional Parameters: None
+  /**
+   * Method used to create MX Connect Widget.
+   * @param userGUID Required. The guid of the User.
+   * @return Connect. This returns a Connect object for the specified User.
+   */
   public Connect createWidget(String userGUID) {
     String response = makeRequest("POST", "/users/" + userGUID + "/connect_widget_url", "");
 
@@ -407,8 +543,13 @@ public class AtriumClient {
   // CLIENT
 
 
-  // Required Parameters: mode, endpoint, body
-  // Optional Parameters: None
+  /**
+   * Private utility method to make Atrium API calls.
+   * @param mode Required. The HTTP method of the call.
+   * @param endpoint Required. The endpoint of the call.
+   * @param body Optional. The body of the call.
+   * @return String. This returns the String response of the call.
+   */
   public String makeRequest(String mode, String endpoint, String body) {
     if (environment.equals("")) {
       System.out.println("Client not yet configured. Please configure with Client.configure(\"YOUR_ENVIRONMENT_URL\",\"YOUR_MX_API_KEY\",\"YOUR_MX_CLIENT_ID\")");
@@ -455,7 +596,10 @@ public class AtriumClient {
     return Integer.toString(i);
   }
 
-  // Print and exit on http error
+  /**
+   * Private utility method used to return information about Atrium errors.
+   * @param code Required. An HTTP status code.
+   */
   private void httpError(int code)
   {
     try
@@ -502,25 +646,34 @@ public class AtriumClient {
     }
   }
 
+  /**
+   * Private utility method to build optional URL params.
+   * @param name Optional. Specifies a name to append.
+   * @param fromDate Optional. Specifies a from date filter.
+   * @param toDate Optional. Specifies a to date filter.
+   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
+   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
+   * @return String. This returns a URL string with specified params.
+   */
   private String optionalParameters(String name, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
-    String params = "?";
-    if (!name.equals("")) {
-      params += "name=" + name + "&";
+    StringBuilder params = new StringBuilder("?");
+    if (name != null && !name.equals("")) {
+      params.append("name=").append(name).append("&");
     }
-    if (!fromDate.equals("")) {
-      params += "from_date=" + fromDate + "&";
+    if (fromDate != null && !fromDate.equals("")) {
+      params.append("from_date=").append(fromDate).append("&");
     }
-    if (!toDate.equals("")) {
-      params += "to_date=" + toDate + "&";
+    if (toDate != null && !toDate.equals("")) {
+      params.append("to_date=").append(toDate).append("&");
     }
-    if (!pageNumber.equals("")) {
-      params += "page=" + pageNumber + "&";
+    if (pageNumber != null && !pageNumber.equals("")) {
+      params.append("page=").append(pageNumber).append("&");
     }
-    if (!recordsPerPage.equals("")) {
-      params += "records_per_page=" + recordsPerPage + "&";
+    if (recordsPerPage != null && !recordsPerPage.equals("")) {
+      params.append("records_per_page=").append(recordsPerPage).append("&");
     }
-    params = params.substring(0, params.length() - 1);
+    params.setLength(params.length() - 1);
 
-    return params;
+    return params.toString();
   }
 }

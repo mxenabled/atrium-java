@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
 import com.google.gson.Gson;
-
 import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
 
@@ -107,8 +106,14 @@ public class AtriumClient {
    * @return User array. This returns an array of all User objects.
    */
   public User[] listUsers(String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-    String response = makeRequest("GET", "/users" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement userList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("users").toString());
     JsonArray jsonArray = userList.getAsJsonArray();
@@ -140,9 +145,17 @@ public class AtriumClient {
    * @return Institution array. This returns an array of Institution objects.
    */
   public Institution[] listInstitutions(String name, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters(name, "", "", pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/institutions" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (name != null && !name.isEmpty()) {
+      params.put("name", name);
+    }
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/institutions" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement institutionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("institutions").toString());
     JsonArray jsonArray = institutionList.getAsJsonArray();
@@ -172,9 +185,14 @@ public class AtriumClient {
    * @return Credential array. This returns an array of the Institution's specific credentials.
    */
   public Credential[] readInstitutionCredentials(String institutionCode, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-
-    String response =  makeRequest("GET", "/institutions/" + institutionCode + "/credentials" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response =  makeRequest("GET", "/institutions/" + institutionCode + "/credentials" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement credentialList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("credentials").toString());
     JsonArray jsonArray = credentialList.getAsJsonArray();
@@ -276,9 +294,15 @@ public class AtriumClient {
    * @return Member array. This returns an array of Members associated with specified User guid param.
    */
   public Member[] listMembers(String userGUID, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
 
-    String response = makeRequest("GET", "/users/" + userGUID + "/members" + params, "");
+    String response = makeRequest("GET", "/users/" + userGUID + "/members" + optionalParameters(params), "");
 
     JsonParser parser = new JsonParser();
     JsonElement credentialList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("members").toString());
@@ -323,9 +347,14 @@ public class AtriumClient {
    * @return Challenge array. This returns an array of Challenge objects.
    */
   public Challenge[] listMemberMFAChallenges(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/challenges" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/challenges" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement challengeList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("challenges").toString());
     JsonArray jsonArray = challengeList.getAsJsonArray();
@@ -364,9 +393,14 @@ public class AtriumClient {
    * @return Credential array. This returns an array of Credential objects for the specified Member.
    */
   public Credential[] listMemberCredentials(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/credentials" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/credentials" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement credentialList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("credentials").toString());
     JsonArray jsonArray = credentialList.getAsJsonArray();
@@ -386,9 +420,14 @@ public class AtriumClient {
    * @return Account array. This returns an array of Account objects for the specified Member.
    */
   public Account[] listMemberAccounts(String userGUID, String memberGUID, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/accounts" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/accounts" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement accountList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("accounts").toString());
     JsonArray jsonArray = accountList.getAsJsonArray();
@@ -410,9 +449,20 @@ public class AtriumClient {
    * @return Transaction array. This returns an array of Transaction objects for the specified Member.
    */
   public Transaction[] listMemberTransactions(String userGUID, String memberGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/transactions" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (fromDate != null && !fromDate.isEmpty()) {
+      params.put("from_date", fromDate);
+    }
+    if (toDate != null && !toDate.isEmpty()) {
+      params.put("to_date", toDate);
+    }
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/transactions" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement transactionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("transactions").toString());
     JsonArray jsonArray = transactionList.getAsJsonArray();
@@ -446,11 +496,15 @@ public class AtriumClient {
    * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
    * @return Account array. This returns an array of Account objects for the specified User.
    */
-  public Account[] listAccounts(String userGUID, String pageNumber, String recordsPerPage)
-  {
-    String params = optionalParameters("", "", "", pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/accounts" + params, "");
+  public Account[] listAccounts(String userGUID, String pageNumber, String recordsPerPage)  {
+    Map<String, String> params = new HashMap<String, String>();
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/accounts" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement accountList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("accounts").toString());
     JsonArray jsonArray = accountList.getAsJsonArray();
@@ -472,9 +526,20 @@ public class AtriumClient {
    * @return Transaction array. This returns an array of Transaction objects for the specified Account.
    */
   public Transaction[] listAccountTransactions(String userGUID, String accountGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
-    String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/accounts/" + accountGUID + "/transactions" + params, "");
+    Map<String, String> params = new HashMap<String, String>();
+    if (fromDate != null && !fromDate.isEmpty()) {
+      params.put("from_date", fromDate);
+    }
+    if (toDate != null && !toDate.isEmpty()) {
+      params.put("to_date", toDate);
+    }
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/accounts/" + accountGUID + "/transactions" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement transactionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("transactions").toString());
     JsonArray jsonArray = transactionList.getAsJsonArray();
@@ -509,11 +574,21 @@ public class AtriumClient {
    * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
    * @return Transaction array. This returns an array of Transaction objects for the specified User.
    */
-  public Transaction[] listTransactions(String userGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage)
-  {
-    String params = optionalParameters("", fromDate, toDate, pageNumber, recordsPerPage);
-
-    String response = makeRequest("GET", "/users/" + userGUID + "/transactions" + params, "");
+  public Transaction[] listTransactions(String userGUID, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
+    Map<String, String> params = new HashMap<String, String>();
+    if (fromDate != null && !fromDate.isEmpty()) {
+      params.put("from_date", fromDate);
+    }
+    if (toDate != null && !toDate.isEmpty()) {
+      params.put("to_date", toDate);
+    }
+    if (pageNumber != null && !pageNumber.isEmpty()) {
+      params.put("page", pageNumber);
+    }
+    if (recordsPerPage != null && !recordsPerPage.isEmpty()) {
+      params.put("records_per_page", recordsPerPage);
+    }
+    String response = makeRequest("GET", "/users/" + userGUID + "/transactions" + optionalParameters(params), "");
     JsonParser parser = new JsonParser();
     JsonElement transactionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("transactions").toString());
     JsonArray jsonArray = transactionList.getAsJsonArray();
@@ -646,34 +721,26 @@ public class AtriumClient {
     }
   }
 
-  /**
-   * Private utility method to build optional URL params.
-   * @param name Optional. Specifies a name to append.
-   * @param fromDate Optional. Specifies a from date filter.
-   * @param toDate Optional. Specifies a to date filter.
-   * @param pageNumber Optional. Specifies the page to display. Defaults to 1.
-   * @param recordsPerPage Optional. Specifies the records displayed per page. Supports any integer within the range 10-1000. Defaults to 25.
-   * @return String. This returns a URL string with specified params.
-   */
-  private String optionalParameters(String name, String fromDate, String toDate, String pageNumber, String recordsPerPage) {
-    StringBuilder params = new StringBuilder("?");
-    if (name != null && !name.equals("")) {
-      params.append("name=").append(name).append("&");
-    }
-    if (fromDate != null && !fromDate.equals("")) {
-      params.append("from_date=").append(fromDate).append("&");
-    }
-    if (toDate != null && !toDate.equals("")) {
-      params.append("to_date=").append(toDate).append("&");
-    }
-    if (pageNumber != null && !pageNumber.equals("")) {
-      params.append("page=").append(pageNumber).append("&");
-    }
-    if (recordsPerPage != null && !recordsPerPage.equals("")) {
-      params.append("records_per_page=").append(recordsPerPage).append("&");
-    }
-    params.setLength(params.length() - 1);
 
-    return params.toString();
+  /**
+   * Private utility method to build optional URL params string.
+   * @param paramsMap Required. HashMap containg any parameters to be built.
+   * @return String. This returns a string with specified params.
+   */
+  private String optionalParameters(Map<String, String> paramsMap) {
+    if (!paramsMap.isEmpty()) {
+      StringBuilder params = new StringBuilder("?");
+      for (Map.Entry<String, String> param : paramsMap.entrySet()) {
+        params.append(param.getKey());
+        params.append("=");
+        params.append(param.getValue());
+        params.append("&");
+      }
+      params.setLength(params.length() - 1);
+      return params.toString();
+    }
+    else {
+      return "";
+    }
   }
 }

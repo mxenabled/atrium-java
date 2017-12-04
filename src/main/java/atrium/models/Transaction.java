@@ -3,6 +3,7 @@ public class Transaction {
     private String amount;
     private String category;
     private String check_number;
+    private String check_number_string;
     private String created_at;
     private String date;
     private String description;

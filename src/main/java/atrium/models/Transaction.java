@@ -45,6 +45,10 @@ public class Transaction {
         return check_number;
     }
 
+    public String getCheck_Number_String() {
+        return check_number_string;
+    }
+
     public String getCreated_At() {
         return created_at;
     }

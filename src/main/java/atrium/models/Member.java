@@ -26,6 +26,14 @@ public class Member {
         return guid;
     }
 
+    public String getHas_Processed_Accounts() {
+        return has_processed_accounts;
+    }
+
+    public String getHas_Processed_Transactions() {
+        return has_processed_transactions;
+    }
+
     public String getIdentifier() {
         return identifier;
     }

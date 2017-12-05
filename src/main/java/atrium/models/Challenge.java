@@ -56,7 +56,6 @@ public class Challenge {
         if (guid != null ? !guid.equals(challenge.guid) : challenge.guid != null) return false;
         if (image_data != null ? !image_data.equals(challenge.image_data) : challenge.image_data != null) return false;
         if (label != null ? !label.equals(challenge.label) : challenge.label != null) return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
         if (!Arrays.equals(options, challenge.options)) return false;
         return type != null ? type.equals(challenge.type) : challenge.type == null;
     }

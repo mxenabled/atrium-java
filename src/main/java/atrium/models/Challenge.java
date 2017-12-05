@@ -39,7 +39,7 @@ public class Challenge {
         sb.append(", guid='").append(guid).append('\'');
         sb.append(", image_data='").append(image_data).append('\'');
         sb.append(", label='").append(label).append('\'');
-        sb.append(", options=").append(Arrays.toString(options));
+        sb.append(", options='").append(Arrays.toString(options)).append('\'');
         sb.append(", type='").append(type).append('\'');
         sb.append('}');
         return sb.toString();

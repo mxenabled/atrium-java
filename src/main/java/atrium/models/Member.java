@@ -66,7 +66,7 @@ public class Member {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Member{");
         sb.append("aggregated_at='").append(aggregated_at).append('\'');
-        sb.append(", challenges=").append(Arrays.toString(challenges));
+        sb.append(", challenges='").append(Arrays.toString(challenges).append('\''));
         sb.append(", guid='").append(guid).append('\'');
         sb.append(", has_processed_accounts='").append(has_processed_accounts).append('\'');
         sb.append(", has_processed_transactions='").append(has_processed_transactions).append('\'');
@@ -90,7 +90,6 @@ public class Member {
 
         if (aggregated_at != null ? !aggregated_at.equals(member.aggregated_at) : member.aggregated_at != null)
             return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
         if (!Arrays.equals(challenges, member.challenges)) return false;
         if (guid != null ? !guid.equals(member.guid) : member.guid != null) return false;
         if (has_processed_accounts != null ? !has_processed_accounts.equals(member.has_processed_accounts) : member.has_processed_accounts != null)

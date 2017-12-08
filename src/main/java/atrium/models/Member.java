@@ -71,7 +71,7 @@ public class Member {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Member{");
         sb.append("aggregated_at='").append(aggregated_at).append('\'');
-        sb.append(", challenges='").append(Arrays.toString(challenges).append('\''));
+        sb.append(", challenges='").append(Arrays.toString(challenges)).append('\'');
         sb.append(", guid='").append(guid).append('\'');
         sb.append(", has_processed_accounts='").append(has_processed_accounts).append('\'');
         sb.append(", has_processed_transactions='").append(has_processed_transactions).append('\'');

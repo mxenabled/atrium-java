@@ -10,7 +10,7 @@ public class AllEndpoints {
             AtriumClient atriumClient = new AtriumClient("https://vestibule.mx.com", "YOUR_MX_API_KEY", "YOUR_MX_CLIENT_ID");
 
             System.out.println("\n************************** Create User **************************");
-            User user = atriumClient.createUser("unique_id", "", "{\"first_name\": \"Steven\"}");
+            User user = atriumClient.createUser("", "", "{\"first_name\": \"Steven\"}");
             System.out.println(user.toString());
             String userGUID = user.getGuid();
 

@@ -13,7 +13,7 @@ public class ExampleWorkflow {
 
   public static void main(String[] args) {
     AtriumClient atriumClient = new AtriumClient("https://vestibule.mx.com", "YOUR_MX_API_KEY", "YOUR_MX_CLIENT_ID");
-    
+
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     String userGUID = "";
@@ -88,9 +88,6 @@ public class ExampleWorkflow {
         System.out.println("\nEnd user must be present to create a new member");
         System.exit(0);
       }
-      System.out.println("\n* Deleting test user *");
-      atriumClient.deleteUser(userGUID);
-      System.out.println("Deleted user: " + userGUID);
     }
     catch (Exception e) {
       e.printStackTrace();

@@ -644,11 +644,18 @@ public class AtriumClient {
   /**
    * Method used to list Account Numbers.
    * @param userGUID Required. The guid of the User.
-   * @param userGUID Required. The guid of the Member.
+   * @param userGUID Required. The guid of the Account or Member.
    * @return AccountNumber array. This returns an array of Account Numbers associated with specified Member guid param and User guid param.
    */
-  public AccountNumber[] listAccountNumbers(String userGUID, String memberGUID) {
-    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/account_numbers", "");
+  public AccountNumber[] listAccountNumbers(String userGUID, String accountOrMemberGUID) {
+    if (accountOrMemberGUID.substring(0, 3).equals == "ACT" ) {
+      String endpoint = "/users/" + userGUID + "/accounts/" + accountOrMemberGUID + "/account_numbers"
+    }
+    else {
+      String endpoint = "/users/" + userGUID + "/members/" + accountOrMemberGUID + "/account_numbers"
+    }
+
+    String response = makeRequest("GET", endpoint, "");
 
     JsonParser parser = new JsonParser();
     JsonElement account_Number_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_numbers").toString());
@@ -659,7 +666,6 @@ public class AtriumClient {
     }
     return accountNumberArray;
   }
-
 
 
   // ACCOUNT OWNER

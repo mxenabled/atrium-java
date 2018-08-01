@@ -642,20 +642,32 @@ public class AtriumClient {
   // ACCOUNT NUMBER
 
   /**
-   * Method used to list Account Numbers.
+   * Method used to list Account Account Numbers.
    * @param userGUID Required. The guid of the User.
    * @param userGUID Required. The guid of the Account or Member.
    * @return AccountNumber array. This returns an array of Account Numbers associated with specified Member guid param and User guid param.
    */
-  public AccountNumber[] listAccountNumbers(String userGUID, String accountOrMemberGUID) {
-    if (accountOrMemberGUID.substring(0, 3).equals == "ACT" ) {
-      String endpoint = "/users/" + userGUID + "/accounts/" + accountOrMemberGUID + "/account_numbers"
-    }
-    else {
-      String endpoint = "/users/" + userGUID + "/members/" + accountOrMemberGUID + "/account_numbers"
-    }
+  public AccountNumber[] listAccountAccountNumbers(String userGUID, String accountGUID) {
+    String response = makeRequest("GET", "/users/" + userGUID + "/accounts/" + accountGUID + "/account_numbers", "");
 
-    String response = makeRequest("GET", endpoint, "");
+    JsonParser parser = new JsonParser();
+    JsonElement account_Number_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_numbers").toString());
+    JsonArray jsonArray = account_Number_List.getAsJsonArray();
+    AccountNumber[] accountNumberArray = new AccountNumber[jsonArray.size()];
+    for (int i = 0; i < jsonArray.size(); i++) {
+      accountNumberArray[i] = new Gson().fromJson(jsonArray.get(i), AccountNumber.class);
+    }
+    return accountNumberArray;
+  }
+
+  /**
+   * Method used to list Member Account Numbers.
+   * @param userGUID Required. The guid of the User.
+   * @param userGUID Required. The guid of the Account or Member.
+   * @return AccountNumber array. This returns an array of Account Numbers associated with specified Member guid param and User guid param.
+   */
+  public AccountNumber[] listMemberAccountNumbers(String userGUID, String memberGUID) {
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/account_numbers", "");
 
     JsonParser parser = new JsonParser();
     JsonElement account_Number_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_numbers").toString());
@@ -676,7 +688,7 @@ public class AtriumClient {
    * @param userGUID Required. The guid of the Member.
    * @return AccountNumber array. This returns an array of Account Owners associated with specified Member guid param and User guid param.
    */
-  public AccountOwner[] listAccountOwners(String userGUID, String memberGUID) {
+  public AccountOwner[] listMemberAccountOwners(String userGUID, String memberGUID) {
     String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/account_owners", "");
 
     JsonParser parser = new JsonParser();

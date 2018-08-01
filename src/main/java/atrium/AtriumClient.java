@@ -473,6 +473,30 @@ public class AtriumClient {
     return transactionArray;
   }
 
+  /**
+   * Method used to verify a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return Member. This returns the Member object specified by the User guid and Member guid params.
+   */
+  public Member verifyMember(String userGUID, String memberGUID) {
+    String response = makeRequest("POST", "/users/" + userGUID + "/members/" + memberGUID + "/verify", "");
+
+    return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
+  }
+
+  /**
+   * Method used to identify a Member.
+   * @param userGUID Required. The guid of the User associated with the Member.
+   * @param memberGUID Required. The guid of the Member.
+   * @return Member. This returns the Member object specified by the User guid and Member guid params.
+   */
+  public Member identifyMember(String userGUID, String memberGUID) {
+    String response = makeRequest("POST", "/users/" + userGUID + "/members/" + memberGUID + "/identify", "");
+
+    return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("member").toString(), Member.class);
+  }
+
 
   // ACCOUNT
 
@@ -612,6 +636,69 @@ public class AtriumClient {
     String response = makeRequest("POST", "/users/" + userGUID + "/connect_widget_url", "");
 
     return new Gson().fromJson(new Gson().fromJson(response, JsonObject.class).get("user").toString(), Connect.class);
+  }
+
+
+  // ACCOUNT NUMBER
+
+  /**
+   * Method used to list Account Account Numbers.
+   * @param userGUID Required. The guid of the User.
+   * @param userGUID Required. The guid of the Account or Member.
+   * @return AccountNumber array. This returns an array of Account Numbers associated with specified Member guid param and User guid param.
+   */
+  public AccountNumber[] listAccountAccountNumbers(String userGUID, String accountGUID) {
+    String response = makeRequest("GET", "/users/" + userGUID + "/accounts/" + accountGUID + "/account_numbers", "");
+
+    JsonParser parser = new JsonParser();
+    JsonElement account_Number_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_numbers").toString());
+    JsonArray jsonArray = account_Number_List.getAsJsonArray();
+    AccountNumber[] accountNumberArray = new AccountNumber[jsonArray.size()];
+    for (int i = 0; i < jsonArray.size(); i++) {
+      accountNumberArray[i] = new Gson().fromJson(jsonArray.get(i), AccountNumber.class);
+    }
+    return accountNumberArray;
+  }
+
+  /**
+   * Method used to list Member Account Numbers.
+   * @param userGUID Required. The guid of the User.
+   * @param userGUID Required. The guid of the Account or Member.
+   * @return AccountNumber array. This returns an array of Account Numbers associated with specified Member guid param and User guid param.
+   */
+  public AccountNumber[] listMemberAccountNumbers(String userGUID, String memberGUID) {
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/account_numbers", "");
+
+    JsonParser parser = new JsonParser();
+    JsonElement account_Number_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_numbers").toString());
+    JsonArray jsonArray = account_Number_List.getAsJsonArray();
+    AccountNumber[] accountNumberArray = new AccountNumber[jsonArray.size()];
+    for (int i = 0; i < jsonArray.size(); i++) {
+      accountNumberArray[i] = new Gson().fromJson(jsonArray.get(i), AccountNumber.class);
+    }
+    return accountNumberArray;
+  }
+
+
+  // ACCOUNT OWNER
+
+  /**
+   * Method used to list Account Owners.
+   * @param userGUID Required. The guid of the User.
+   * @param userGUID Required. The guid of the Member.
+   * @return AccountNumber array. This returns an array of Account Owners associated with specified Member guid param and User guid param.
+   */
+  public AccountOwner[] listMemberAccountOwners(String userGUID, String memberGUID) {
+    String response = makeRequest("GET", "/users/" + userGUID + "/members/" + memberGUID + "/account_owners", "");
+
+    JsonParser parser = new JsonParser();
+    JsonElement account_Owner_List = parser.parse(new Gson().fromJson(response, JsonObject.class).get("account_owners").toString());
+    JsonArray jsonArray = account_Owner_List.getAsJsonArray();
+    AccountOwner[] accountOwnerArray = new AccountOwner[jsonArray.size()];
+    for (int i = 0; i < jsonArray.size(); i++) {
+      accountOwnerArray[i] = new Gson().fromJson(jsonArray.get(i), AccountOwner.class);
+    }
+    return accountOwnerArray;
   }
 
 

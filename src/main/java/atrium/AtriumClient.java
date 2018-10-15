@@ -578,6 +578,28 @@ public class AtriumClient {
   // TRANSACTION
 
   /**
+   * Method used to categorize and describe a Transaction.
+   * @param transactions Required. An array of RawTransaction objects.
+   * @return CategorizedTransaction[]. This returns an array of CategorizedTransaction objects.
+   */
+  public CategorizedTransaction[] categorizeAndDescribeTransactions(JsonArray transactions) {
+    JsonObject transaction_array = new JsonObject();
+    transaction_array.add("transactions", transactions);
+    String body = transaction_array.toString();
+
+    String response = makeRequest("POST", "/categorize_and_describe", body);
+
+    JsonParser parser = new JsonParser();
+    JsonElement transactionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("transactions").toString());
+    JsonArray jsonArray = transactionList.getAsJsonArray();
+    CategorizedTransaction[] transactionArray = new CategorizedTransaction[jsonArray.size()];
+    for (int i = 0; i < jsonArray.size(); i++) {
+      transactionArray[i] = new Gson().fromJson(jsonArray.get(i), CategorizedTransaction.class);
+    }
+    return transactionArray;
+  }
+
+  /**
    * Method used to read a Transaction.
    * @param userGUID Required. The User guid associated with the Transaction.
    * @param transactionGUID Required. The guid of the Transaction.

@@ -3,6 +3,12 @@ public class Credential {
     private String guid;
     private String label;
     private String type;
+    private String value;
+
+    Credential(String guid, String value) {
+      this.guid = guid;
+      this.value = value;
+    }
 
     public String getField_Name() {
         return field_name;
@@ -20,6 +26,10 @@ public class Credential {
         return type;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Credential{");
@@ -27,6 +37,7 @@ public class Credential {
         sb.append(", guid='").append(guid).append('\'');
         sb.append(", label='").append(label).append('\'');
         sb.append(", type='").append(type).append('\'');
+        sb.append(", value='").append(value).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -41,7 +52,8 @@ public class Credential {
         if (field_name != null ? !field_name.equals(that.field_name) : that.field_name != null) return false;
         if (guid != null ? !guid.equals(that.guid) : that.guid != null) return false;
         if (label != null ? !label.equals(that.label) : that.label != null) return false;
-        return type != null ? type.equals(that.type) : that.type == null;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        return value != null ? value.equals(that.value) : that.value == null;
     }
 
     @Override
@@ -50,6 +62,7 @@ public class Credential {
         result = 31 * result + (guid != null ? guid.hashCode() : 0);
         result = 31 * result + (label != null ? label.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
     }
 }

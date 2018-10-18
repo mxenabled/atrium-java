@@ -1,5 +1,7 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MultiFactorAuthentication {
@@ -12,19 +14,11 @@ public class MultiFactorAuthentication {
             String userGUID = user.getGuid();
             System.out.println("Created user: " + userGUID);
 
-            JsonObject credentialOne = new JsonObject();
-            credentialOne.addProperty("guid", "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1");
-            credentialOne.addProperty("value", "test_atrium");
+            List<Credential> memberCredentials = new ArrayList<>();
+            memberCredentials.add(new Credential("CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1", "test_atrium"));
+            memberCredentials.add(new Credential("CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d", "challenge"));
 
-            JsonObject credentialTwo = new JsonObject();
-            credentialTwo.addProperty("guid", "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d");
-            credentialTwo.addProperty("value", "challenge");
-
-            JsonArray credentialArray = new JsonArray();
-            credentialArray.add(credentialOne);
-            credentialArray.add(credentialTwo);
-
-            Member member = atriumClient.createMember(userGUID, credentialArray, "mxbank", "", "");
+            Member member = atriumClient.createMember(userGUID, memberCredentials, "mxbank", "", "");
             String memberGUID = member.getGuid();
             System.out.println("Created member: " + memberGUID);
 
@@ -42,17 +36,11 @@ public class MultiFactorAuthentication {
                 System.out.println(challenge.getLabel());
             }
 
-            // Create a credential JSON object
-            JsonObject credOne = new JsonObject();
-            credOne.addProperty("guid", challenges[0].getGuid());
-            credOne.addProperty("value", "correct");
-
-            // Create credential array from credential JSON Objects
-            JsonArray credArray = new JsonArray();
-            credArray.add(credOne);
+            List<Challenge> memberChallenges = new ArrayList<>();
+            memberChallenges.add(new Challenge(challenges[0].getGuid(), "correct"));
 
             System.out.println("\n* MFA answered correctly, resuming aggregation *");
-            atriumClient.resumeMemberAggregation(userGUID, memberGUID, credArray);
+            atriumClient.resumeMemberAggregation(userGUID, memberGUID, memberChallenges);
 
 
             TimeUnit.SECONDS.sleep(2);

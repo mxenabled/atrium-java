@@ -7,6 +7,12 @@ public class Challenge {
     private String label;
     private Option[] options;
     private String type;
+    private String value;
+
+    Challenge(String guid, String value) {
+      this.guid = guid;
+      this.value = value;
+    }
 
     public String getField_Name() {
         return field_name;
@@ -32,6 +38,10 @@ public class Challenge {
         return type;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Challenge{");
@@ -41,6 +51,7 @@ public class Challenge {
         sb.append(", label='").append(label).append('\'');
         sb.append(", options='").append(Arrays.toString(options)).append('\'');
         sb.append(", type='").append(type).append('\'');
+        sb.append(", value='").append(value).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -57,7 +68,8 @@ public class Challenge {
         if (image_data != null ? !image_data.equals(challenge.image_data) : challenge.image_data != null) return false;
         if (label != null ? !label.equals(challenge.label) : challenge.label != null) return false;
         if (!Arrays.equals(options, challenge.options)) return false;
-        return type != null ? type.equals(challenge.type) : challenge.type == null;
+        if (type != null ? !type.equals(challenge.type) : challenge.type != null) return false;
+        return value != null ? value.equals(challenge.value) : challenge.value == null;
     }
 
     @Override
@@ -68,6 +80,7 @@ public class Challenge {
         result = 31 * result + (label != null ? label.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(options);
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
     }
 }

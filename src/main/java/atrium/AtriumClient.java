@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -216,10 +217,11 @@ public class AtriumClient {
    * @param metadata Optional. Additional information you can store on this member.
    * @return Member. This returns the newly created Member object.
    */
-  public Member createMember(String userGUID, JsonArray credentials, String institutionCode, String identifier, String metadata) {
+  public Member createMember(String userGUID, List<Credential> credentials, String institutionCode, String identifier, String metadata) {
+    Gson gson = new Gson();
     JsonObject inner = new JsonObject();
     inner.addProperty("institution_code", institutionCode);
-    inner.add("credentials", credentials);
+    inner.add("credentials", gson.toJsonTree(credentials).getAsJsonArray());
     if (!identifier.equals("")) {
       inner.addProperty("identifier", identifier);
     }
@@ -255,10 +257,12 @@ public class AtriumClient {
    * @param metadata Optional. Additional information you can store on this member. Defined by you.
    * @return Member. This returns the update Member object.
    */
-  public Member updateMember(String userGUID, String memberGUID, JsonArray credentials, String identifier, String metadata) {
+
+  public Member updateMember(String userGUID, String memberGUID, List<Credential> credentials, String identifier, String metadata) {
+    Gson gson = new Gson();
     JsonObject inner = new JsonObject();
     if (!credentials.toString().equals("[]")) {
-      inner.add("credentials", credentials);
+      inner.add("credentials", gson.toJsonTree(credentials).getAsJsonArray());
     }
     if (!identifier.equals("")) {
       inner.addProperty("identifier", identifier);
@@ -372,9 +376,11 @@ public class AtriumClient {
    * @param answersMFA Required. The array of answered challenges.
    * @return This returns the Member object specified by the User guid and Member guid params.
    */
-  public Member resumeMemberAggregation(String userGUID, String memberGUID, JsonArray answersMFA) {
+
+  public Member resumeMemberAggregation(String userGUID, String memberGUID, List<Challenge> answersMFA) {
+    Gson gson = new Gson();
     JsonObject inner = new JsonObject();
-    inner.add("challenges", answersMFA);
+    inner.add("challenges", gson.toJsonTree(answersMFA).getAsJsonArray());
     JsonObject outer = new JsonObject();
     outer.add("member", inner);
     String body = outer.toString();

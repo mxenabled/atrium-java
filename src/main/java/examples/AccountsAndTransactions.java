@@ -1,6 +1,8 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountsAndTransactions {
     public static void main(String[] args) {
@@ -12,19 +14,11 @@ public class AccountsAndTransactions {
             String userGUID = user.getGuid();
             System.out.println("Created user: " + userGUID);
 
-            JsonObject credentialOne = new JsonObject();
-            credentialOne.addProperty("guid", "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1");
-            credentialOne.addProperty("value", "test_atrium");
+            List<Credential> credentials = new ArrayList<>();
+            credentials.add(new Credential("CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1", "test_atrium"));
+            credentials.add(new Credential("CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d", "password"));
 
-            JsonObject credentialTwo = new JsonObject();
-            credentialTwo.addProperty("guid", "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d");
-            credentialTwo.addProperty("value", "password");
-
-            JsonArray credentialArray = new JsonArray();
-            credentialArray.add(credentialOne);
-            credentialArray.add(credentialTwo);
-
-            Member member = atriumClient.createMember(userGUID, credentialArray, "mxbank", "", "");
+            Member member = atriumClient.createMember(userGUID, credentials, "mxbank", "", "");
             String memberGUID = member.getGuid();
             System.out.println("Created member: " + memberGUID);
 

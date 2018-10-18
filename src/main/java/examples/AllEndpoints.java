@@ -1,5 +1,7 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -46,23 +48,11 @@ public class AllEndpoints {
 
             System.out.println("\n************************** Create Member **************************");
 
-            // Create a credential JSON object
-            JsonObject credentialOne = new JsonObject();
-            credentialOne.addProperty("guid", "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1");
-            credentialOne.addProperty("value", "test_atrium1");
+            List<Credential> memberCredentials = new ArrayList<>();
+            memberCredentials.add(new Credential("CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1", "test_atrium"));
+            memberCredentials.add(new Credential("CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d", "challenge"));
 
-
-            // Create another credential JSON object
-            JsonObject credentialTwo = new JsonObject();
-            credentialTwo.addProperty("guid", "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d");
-            credentialTwo.addProperty("value", "challenge1");
-
-            // Create credential array from credential JSON Objects
-            JsonArray credentialArray = new JsonArray();
-            credentialArray.add(credentialOne);
-            credentialArray.add(credentialTwo);
-
-            Member member = atriumClient.createMember(userGUID, credentialArray, "mxbank", "", "");
+            Member member = atriumClient.createMember(userGUID, memberCredentials, "mxbank", "", "");
             System.out.println(member.toString());
             String memberGUID = member.getGuid();
 
@@ -71,22 +61,11 @@ public class AllEndpoints {
             System.out.println(member.toString());
 
             System.out.println("\n************************** Update Member **************************");
-            // Create a credential JSON object
-            JsonObject updatedCredentialOne = new JsonObject();
-            updatedCredentialOne.addProperty("guid", "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1");
-            updatedCredentialOne.addProperty("value", "test_atrium");
+            List<Credential> updatedCredentials = new ArrayList<>();
+            updatedCredentials.add(new Credential("CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1", "test_atrium"));
+            updatedCredentials.add(new Credential("CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d", "options"));
 
-            // Create another credential JSON object
-            JsonObject updatedCredentialTwo = new JsonObject();
-            updatedCredentialTwo.addProperty("guid", "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d");
-            updatedCredentialTwo.addProperty("value", "options");
-
-            // Create credential array from credential JSON Objects
-            JsonArray updatedCredentialArray = new JsonArray();
-            updatedCredentialArray.add(updatedCredentialOne);
-            updatedCredentialArray.add(updatedCredentialTwo);
-
-            member = atriumClient.updateMember(userGUID, memberGUID, updatedCredentialArray, "", "{\"credentials_last_refreshed_at\": \"2015-10-16\"}");
+            member = atriumClient.updateMember(userGUID, memberGUID, updatedCredentials, "", "{\"credentials_last_refreshed_at\": \"2015-10-16\"}");
             System.out.println(member.toString());
 
             System.out.println("\n************************** List Members **************************");
@@ -113,16 +92,10 @@ public class AllEndpoints {
             }
 
             System.out.println("\n************************** Resume Aggregation **************************");
-            // Create a credential JSON object
-            credentialOne = new JsonObject();
-            credentialOne.addProperty("guid", challengeGUID);
-            credentialOne.addProperty("value", "correct");
+            List<Challenge> memberChallenges = new ArrayList<>();
+            memberChallenges.add(new Challenge(challengeGUID, "correct"));
 
-            // Create credential array from credential JSON Objects
-            updatedCredentialArray = new JsonArray();
-            updatedCredentialArray.add(credentialOne);
-
-            member = atriumClient.resumeMemberAggregation(userGUID, memberGUID, updatedCredentialArray);
+            member = atriumClient.resumeMemberAggregation(userGUID, memberGUID, memberChallenges);
             System.out.println(member.toString());
 
             System.out.println("\n************************** List Member Credentials **************************");

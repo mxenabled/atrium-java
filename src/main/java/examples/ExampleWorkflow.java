@@ -1,5 +1,7 @@
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.time.format.DateTimeFormatter;
 import java.time.Instant;
@@ -68,17 +70,14 @@ public class ExampleWorkflow {
         String institutionCode = br.readLine().trim();
 
         Credential[] credentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
-        JsonArray credentialArray = new JsonArray();
+        List<Credential> memberCredentials = new ArrayList<>();
         for (Credential credential : credentials) {
           System.out.println("Please enter in " + credential.getLabel() + ":");
           String cred = br.readLine().trim();
-          JsonObject temp = new JsonObject();
-          temp.addProperty("guid", credential.getGuid());
-          temp.addProperty("value", cred);
-          credentialArray.add(temp);
+          memberCredentials.add(new Credential(credential.getGuid(), cred));
         }
 
-        Member member = atriumClient.createMember(userGUID, credentialArray, institutionCode, "", "");
+        Member member = atriumClient.createMember(userGUID, memberCredentials, institutionCode, "", "");
 
         memberGUID = member.getGuid();
         System.out.println("\nCreated member: " + memberGUID);
@@ -147,34 +146,28 @@ public class ExampleWorkflow {
 
           System.out.println("\nPlease update credentials");
           Credential[] credentials = atriumClient.readInstitutionCredentials(institutionCode, "", "");
-          JsonArray credentialArray = new JsonArray();
+          List<Credential> updatedCredentials = new ArrayList<>();
           for (Credential credential : credentials) {
             System.out.println("\nPlease enter in " + credential.getLabel() + ":");
             String cred = br.readLine().trim();
-            JsonObject temp = new JsonObject();
-            temp.addProperty("guid", credential.getGuid());
-            temp.addProperty("value", cred);
-            credentialArray.add(temp);
+            updatedCredentials.add(new Credential(credential.getGuid(), cred));
           }
 
-          atriumClient.updateMember(userGUID, memberGUID, credentialArray, "", "");
+          atriumClient.updateMember(userGUID, memberGUID, updatedCredentials, "", "");
 
           checkJobStatus(atriumClient, userGUID, memberGUID);
           break;
         case "CHALLENGED":
           System.out.println("\nPlease answer the following challenges:");
           Challenge[] challenges = atriumClient.listMemberMFAChallenges(userGUID, memberGUID, "", "");
-          JsonArray answer = new JsonArray();
+          List<Challenge> memberChallenges = new ArrayList<>();
           for (Challenge challenge : challenges) {
             System.out.println(challenge.getLabel() + ":");
             String ans = br.readLine().trim();
-            JsonObject temp = new JsonObject();
-            temp.addProperty("guid", challenge.getGuid());
-            temp.addProperty("value", ans);
-            answer.add(temp);
+            memberChallenges.add(new Challenge(challenge.getGuid(), ans));
           }
 
-          atriumClient.resumeMemberAggregation(userGUID, memberGUID, answer);
+          atriumClient.resumeMemberAggregation(userGUID, memberGUID, memberChallenges);
 
           checkJobStatus(atriumClient, userGUID, memberGUID);
           break;

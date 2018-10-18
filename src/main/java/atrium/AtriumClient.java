@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -580,11 +581,12 @@ public class AtriumClient {
   /**
    * Method used to categorize and describe a Transaction.
    * @param transactions Required. An array of RawTransaction objects.
-   * @return CategorizedTransaction[]. This returns an array of CategorizedTransaction objects.
+   * @return Transaction[]. This returns an array of Transaction objects.
    */
-  public CategorizedTransaction[] categorizeAndDescribeTransactions(JsonArray transactions) {
+  public Transaction[] categorizeAndDescribeTransactions(List<Transaction> transactions) {
+    Gson gson = new Gson();
     JsonObject transaction_array = new JsonObject();
-    transaction_array.add("transactions", transactions);
+    transaction_array.add("transactions", gson.toJsonTree(transactions).getAsJsonArray());
     String body = transaction_array.toString();
 
     String response = makeRequest("POST", "/categorize_and_describe", body);
@@ -592,9 +594,9 @@ public class AtriumClient {
     JsonParser parser = new JsonParser();
     JsonElement transactionList = parser.parse(new Gson().fromJson(response, JsonObject.class).get("transactions").toString());
     JsonArray jsonArray = transactionList.getAsJsonArray();
-    CategorizedTransaction[] transactionArray = new CategorizedTransaction[jsonArray.size()];
+    Transaction[] transactionArray = new Transaction[jsonArray.size()];
     for (int i = 0; i < jsonArray.size(); i++) {
-      transactionArray[i] = new Gson().fromJson(jsonArray.get(i), CategorizedTransaction.class);
+      transactionArray[i] = new Gson().fromJson(jsonArray.get(i), Transaction.class);
     }
     return transactionArray;
   }

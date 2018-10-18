@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class User {
     private String guid;
     private String identifier;

@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Credential {
     private String field_name;
     private String guid;

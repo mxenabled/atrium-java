@@ -1,3 +1,10 @@
+package examples;
+
+import com.mx.atrium.AtriumClient;
+import com.mx.atrium.models.Account;
+import com.mx.atrium.models.Member;
+import com.mx.atrium.models.Transaction;
+import com.mx.atrium.models.User;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.concurrent.TimeUnit;

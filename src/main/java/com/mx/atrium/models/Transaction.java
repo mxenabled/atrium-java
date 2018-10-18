@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Transaction {
     private String account_guid;
     private String amount;

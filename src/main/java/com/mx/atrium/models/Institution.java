@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Institution {
     private String code;
     private String name;

@@ -1,6 +1,12 @@
+package examples;
+
 import java.util.concurrent.TimeUnit;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mx.atrium.AtriumClient;
+import com.mx.atrium.models.Credential;
+import com.mx.atrium.models.Member;
+import com.mx.atrium.models.User;
 
 public class UpdateCredentials {
     public static void main(String[] args) {

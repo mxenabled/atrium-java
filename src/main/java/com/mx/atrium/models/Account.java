@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Account {
     private String apr;
     private String apy;

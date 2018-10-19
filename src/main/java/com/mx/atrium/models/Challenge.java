@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 import java.util.Arrays;
 
 public class Challenge {

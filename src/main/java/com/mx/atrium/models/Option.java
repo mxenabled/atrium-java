@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Option {
     private String image_data;
     private String label;

@@ -1,5 +1,12 @@
+package examples;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mx.atrium.AtriumClient;
+import com.mx.atrium.models.Challenge;
+import com.mx.atrium.models.Member;
+import com.mx.atrium.models.User;
+
 import java.util.concurrent.TimeUnit;
 
 public class MultiFactorAuthentication {

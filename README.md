@@ -4,7 +4,7 @@ A Java wrapper for the [MX Atrium API](https://atrium.mx.com). In order to make 
 
 ### Usage
 
-Add the `/atrium` directory to your source code's directory. Then configure your instance with the following. (The `ENVIRONMENT` will be either `https://vestibule.mx.com` for the development environment or `https://atrium.mx.com` for the production environment.)
+Add the `/com.mx.atrium` directory to your source code's directory. Then configure your instance with the following. (The `ENVIRONMENT` will be either `https://vestibule.mx.com` for the development environment or `https://atrium.mx.com` for the production environment.)
 ```java
 AtriumClient atriumClient = new AtriumClient("ENVIRONMENT", "YOUR_MX_API_KEY", "YOUR_MX_CLIENT_ID");
 ```

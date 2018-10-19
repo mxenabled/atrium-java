@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class Connect {
     private String connect_widget_url;
     private String guid;

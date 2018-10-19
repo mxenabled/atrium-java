@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class AccountNumber {
     private String account_guid;
     private String account_number;

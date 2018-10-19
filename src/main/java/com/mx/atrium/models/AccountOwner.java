@@ -1,3 +1,5 @@
+package com.mx.atrium.models;
+
 public class AccountOwner {
     private String address;
     private String account_guid;

@@ -24,7 +24,7 @@ import java.io.IOException;
 /**
  * ConnectWidget
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T16:35:42.819-07:00")
 
 public class ConnectWidget {
   @SerializedName("user")

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactions** | **List&lt;Object&gt;** |  |  [optional]
-**pagination** | **Object** |  |  [optional]
+**transactions** | [**List&lt;TransactionAttributes&gt;**](TransactionAttributes.md) |  |  [optional]
+**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 
 

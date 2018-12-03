@@ -16,6 +16,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.Pagination;
+import com.mx.model.TransactionAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,23 +27,23 @@ import java.util.List;
 /**
  * Transactions
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Transactions {
   @SerializedName("transactions")
-  private List<Object> transactions = null;
+  private List<TransactionAttributes> transactions = null;
 
   @SerializedName("pagination")
-  private Object pagination = null;
+  private Pagination pagination = null;
 
-  public Transactions transactions(List<Object> transactions) {
+  public Transactions transactions(List<TransactionAttributes> transactions) {
     this.transactions = transactions;
     return this;
   }
 
-  public Transactions addTransactionsItem(Object transactionsItem) {
+  public Transactions addTransactionsItem(TransactionAttributes transactionsItem) {
     if (this.transactions == null) {
-      this.transactions = new ArrayList<Object>();
+      this.transactions = new ArrayList<TransactionAttributes>();
     }
     this.transactions.add(transactionsItem);
     return this;
@@ -52,15 +54,15 @@ public class Transactions {
    * @return transactions
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getTransactions() {
+  public List<TransactionAttributes> getTransactions() {
     return transactions;
   }
 
-  public void setTransactions(List<Object> transactions) {
+  public void setTransactions(List<TransactionAttributes> transactions) {
     this.transactions = transactions;
   }
 
-  public Transactions pagination(Object pagination) {
+  public Transactions pagination(Pagination pagination) {
     this.pagination = pagination;
     return this;
   }
@@ -70,11 +72,11 @@ public class Transactions {
    * @return pagination
   **/
   @ApiModelProperty(value = "")
-  public Object getPagination() {
+  public Pagination getPagination() {
     return pagination;
   }
 
-  public void setPagination(Object pagination) {
+  public void setPagination(Pagination pagination) {
     this.pagination = pagination;
   }
 

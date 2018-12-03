@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.AccountAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -23,13 +24,13 @@ import java.io.IOException;
 /**
  * Account
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Account {
   @SerializedName("account")
-  private Object account = null;
+  private AccountAttributes account = null;
 
-  public Account account(Object account) {
+  public Account account(AccountAttributes account) {
     this.account = account;
     return this;
   }
@@ -39,11 +40,11 @@ public class Account {
    * @return account
   **/
   @ApiModelProperty(value = "")
-  public Object getAccount() {
+  public AccountAttributes getAccount() {
     return account;
   }
 
-  public void setAccount(Object account) {
+  public void setAccount(AccountAttributes account) {
     this.account = account;
   }
 

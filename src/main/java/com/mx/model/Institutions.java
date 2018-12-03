@@ -16,6 +16,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.InstitutionAttributes;
+import com.mx.model.Pagination;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,23 +27,23 @@ import java.util.List;
 /**
  * Institutions
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Institutions {
   @SerializedName("institutions")
-  private List<Object> institutions = null;
+  private List<InstitutionAttributes> institutions = null;
 
   @SerializedName("pagination")
-  private Object pagination = null;
+  private Pagination pagination = null;
 
-  public Institutions institutions(List<Object> institutions) {
+  public Institutions institutions(List<InstitutionAttributes> institutions) {
     this.institutions = institutions;
     return this;
   }
 
-  public Institutions addInstitutionsItem(Object institutionsItem) {
+  public Institutions addInstitutionsItem(InstitutionAttributes institutionsItem) {
     if (this.institutions == null) {
-      this.institutions = new ArrayList<Object>();
+      this.institutions = new ArrayList<InstitutionAttributes>();
     }
     this.institutions.add(institutionsItem);
     return this;
@@ -52,15 +54,15 @@ public class Institutions {
    * @return institutions
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getInstitutions() {
+  public List<InstitutionAttributes> getInstitutions() {
     return institutions;
   }
 
-  public void setInstitutions(List<Object> institutions) {
+  public void setInstitutions(List<InstitutionAttributes> institutions) {
     this.institutions = institutions;
   }
 
-  public Institutions pagination(Object pagination) {
+  public Institutions pagination(Pagination pagination) {
     this.pagination = pagination;
     return this;
   }
@@ -70,11 +72,11 @@ public class Institutions {
    * @return pagination
   **/
   @ApiModelProperty(value = "")
-  public Object getPagination() {
+  public Pagination getPagination() {
     return pagination;
   }
 
-  public void setPagination(Object pagination) {
+  public void setPagination(Pagination pagination) {
     this.pagination = pagination;
   }
 

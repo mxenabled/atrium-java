@@ -21,11 +21,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ChallengeAttributesOptions
+ * ChallengeOptionAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
-public class ChallengeAttributesOptions {
+public class ChallengeOptionAttributes {
   @SerializedName("image_data")
   private String imageData = null;
 
@@ -71,10 +71,10 @@ public class ChallengeAttributesOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChallengeAttributesOptions challengeAttributesOptions = (ChallengeAttributesOptions) o;
-    return Objects.equals(this.imageData, challengeAttributesOptions.imageData) &&
-        Objects.equals(this.label, challengeAttributesOptions.label) &&
-        Objects.equals(this.value, challengeAttributesOptions.value);
+    ChallengeOptionAttributes challengeOptionAttributes = (ChallengeOptionAttributes) o;
+    return Objects.equals(this.imageData, challengeOptionAttributes.imageData) &&
+        Objects.equals(this.label, challengeOptionAttributes.label) &&
+        Objects.equals(this.value, challengeOptionAttributes.value);
   }
 
   @Override
@@ -86,7 +86,7 @@ public class ChallengeAttributesOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChallengeAttributesOptions {\n");
+    sb.append("class ChallengeOptionAttributes {\n");
     
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");

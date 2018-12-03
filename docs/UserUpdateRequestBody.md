@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **Object** |  |  [optional]
+**user** | [**UserAttributes**](UserAttributes.md) |  |  [optional]
 
 
 

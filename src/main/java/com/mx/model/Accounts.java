@@ -16,6 +16,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.AccountAttributes;
+import com.mx.model.Pagination;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,23 +27,23 @@ import java.util.List;
 /**
  * Accounts
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Accounts {
   @SerializedName("accounts")
-  private List<Object> accounts = null;
+  private List<AccountAttributes> accounts = null;
 
   @SerializedName("pagination")
-  private Object pagination = null;
+  private Pagination pagination = null;
 
-  public Accounts accounts(List<Object> accounts) {
+  public Accounts accounts(List<AccountAttributes> accounts) {
     this.accounts = accounts;
     return this;
   }
 
-  public Accounts addAccountsItem(Object accountsItem) {
+  public Accounts addAccountsItem(AccountAttributes accountsItem) {
     if (this.accounts == null) {
-      this.accounts = new ArrayList<Object>();
+      this.accounts = new ArrayList<AccountAttributes>();
     }
     this.accounts.add(accountsItem);
     return this;
@@ -52,15 +54,15 @@ public class Accounts {
    * @return accounts
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getAccounts() {
+  public List<AccountAttributes> getAccounts() {
     return accounts;
   }
 
-  public void setAccounts(List<Object> accounts) {
+  public void setAccounts(List<AccountAttributes> accounts) {
     this.accounts = accounts;
   }
 
-  public Accounts pagination(Object pagination) {
+  public Accounts pagination(Pagination pagination) {
     this.pagination = pagination;
     return this;
   }
@@ -70,11 +72,11 @@ public class Accounts {
    * @return pagination
   **/
   @ApiModelProperty(value = "")
-  public Object getPagination() {
+  public Pagination getPagination() {
     return pagination;
   }
 
-  public void setPagination(Object pagination) {
+  public void setPagination(Pagination pagination) {
     this.pagination = pagination;
   }
 

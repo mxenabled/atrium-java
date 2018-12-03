@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accounts** | **List&lt;Object&gt;** |  |  [optional]
-**pagination** | **Object** |  |  [optional]
+**accounts** | [**List&lt;AccountAttributes&gt;**](AccountAttributes.md) |  |  [optional]
+**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 
 

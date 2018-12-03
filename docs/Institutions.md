@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**institutions** | **List&lt;Object&gt;** |  |  [optional]
-**pagination** | **Object** |  |  [optional]
+**institutions** | [**List&lt;InstitutionAttributes&gt;**](InstitutionAttributes.md) |  |  [optional]
+**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 
 

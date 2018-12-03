@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**credentials** | **List&lt;Object&gt;** |  | 
+**credentials** | [**List&lt;CredentialResponseAttributes&gt;**](CredentialResponseAttributes.md) |  | 
 **identifier** | **String** |  |  [optional]
 **institutionCode** | **String** |  | 
 **metadata** | **String** |  |  [optional]

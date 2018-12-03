@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **guid** | **String** |  |  [optional]
 **imageData** | **String** |  |  [optional]
 **label** | **String** |  |  [optional]
-**options** | [**List&lt;ChallengeAttributesOptions&gt;**](ChallengeAttributesOptions.md) |  |  [optional]
+**options** | [**List&lt;ChallengeOptionAttributes&gt;**](ChallengeOptionAttributes.md) |  |  [optional]
 
 
 

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | **List&lt;Object&gt;** |  |  [optional]
-**pagination** | **Object** |  |  [optional]
+**users** | [**List&lt;UserAttributes&gt;**](UserAttributes.md) |  |  [optional]
+**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 
 

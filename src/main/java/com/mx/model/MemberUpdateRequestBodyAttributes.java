@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.CredentialResponseAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,11 +26,11 @@ import java.util.List;
 /**
  * MemberUpdateRequestBodyAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class MemberUpdateRequestBodyAttributes {
   @SerializedName("credentials")
-  private List<Object> credentials = null;
+  private List<CredentialResponseAttributes> credentials = null;
 
   @SerializedName("identifier")
   private String identifier = null;
@@ -37,14 +38,14 @@ public class MemberUpdateRequestBodyAttributes {
   @SerializedName("metadata")
   private String metadata = null;
 
-  public MemberUpdateRequestBodyAttributes credentials(List<Object> credentials) {
+  public MemberUpdateRequestBodyAttributes credentials(List<CredentialResponseAttributes> credentials) {
     this.credentials = credentials;
     return this;
   }
 
-  public MemberUpdateRequestBodyAttributes addCredentialsItem(Object credentialsItem) {
+  public MemberUpdateRequestBodyAttributes addCredentialsItem(CredentialResponseAttributes credentialsItem) {
     if (this.credentials == null) {
-      this.credentials = new ArrayList<Object>();
+      this.credentials = new ArrayList<CredentialResponseAttributes>();
     }
     this.credentials.add(credentialsItem);
     return this;
@@ -55,11 +56,11 @@ public class MemberUpdateRequestBodyAttributes {
    * @return credentials
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getCredentials() {
+  public List<CredentialResponseAttributes> getCredentials() {
     return credentials;
   }
 
-  public void setCredentials(List<Object> credentials) {
+  public void setCredentials(List<CredentialResponseAttributes> credentials) {
     this.credentials = credentials;
   }
 

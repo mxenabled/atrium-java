@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.AccountOwnerAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,20 +26,20 @@ import java.util.List;
 /**
  * AccountOwners
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class AccountOwners {
   @SerializedName("account_owners")
-  private List<Object> accountOwners = null;
+  private List<AccountOwnerAttributes> accountOwners = null;
 
-  public AccountOwners accountOwners(List<Object> accountOwners) {
+  public AccountOwners accountOwners(List<AccountOwnerAttributes> accountOwners) {
     this.accountOwners = accountOwners;
     return this;
   }
 
-  public AccountOwners addAccountOwnersItem(Object accountOwnersItem) {
+  public AccountOwners addAccountOwnersItem(AccountOwnerAttributes accountOwnersItem) {
     if (this.accountOwners == null) {
-      this.accountOwners = new ArrayList<Object>();
+      this.accountOwners = new ArrayList<AccountOwnerAttributes>();
     }
     this.accountOwners.add(accountOwnersItem);
     return this;
@@ -49,11 +50,11 @@ public class AccountOwners {
    * @return accountOwners
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getAccountOwners() {
+  public List<AccountOwnerAttributes> getAccountOwners() {
     return accountOwners;
   }
 
-  public void setAccountOwners(List<Object> accountOwners) {
+  public void setAccountOwners(List<AccountOwnerAttributes> accountOwners) {
     this.accountOwners = accountOwners;
   }
 

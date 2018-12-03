@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.TransactionAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -23,13 +24,13 @@ import java.io.IOException;
 /**
  * Transaction
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Transaction {
   @SerializedName("transaction")
-  private Object transaction = null;
+  private TransactionAttributes transaction = null;
 
-  public Transaction transaction(Object transaction) {
+  public Transaction transaction(TransactionAttributes transaction) {
     this.transaction = transaction;
     return this;
   }
@@ -39,11 +40,11 @@ public class Transaction {
    * @return transaction
   **/
   @ApiModelProperty(value = "")
-  public Object getTransaction() {
+  public TransactionAttributes getTransaction() {
     return transaction;
   }
 
-  public void setTransaction(Object transaction) {
+  public void setTransaction(TransactionAttributes transaction) {
     this.transaction = transaction;
   }
 

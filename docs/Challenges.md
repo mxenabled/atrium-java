@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**challenges** | **List&lt;Object&gt;** |  |  [optional]
+**challenges** | [**List&lt;ChallengeAttributes&gt;**](ChallengeAttributes.md) |  |  [optional]
 
 
 

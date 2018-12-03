@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aggregatedAt** | **String** |  |  [optional]
-**challenges** | **List&lt;Object&gt;** |  |  [optional]
+**challenges** | [**List&lt;ChallengeAttributes&gt;**](ChallengeAttributes.md) |  |  [optional]
 **connectionStatus** | **String** |  |  [optional]
 **guid** | **Boolean** |  |  [optional]
 **hasProcessedAccounts** | **Boolean** |  |  [optional]

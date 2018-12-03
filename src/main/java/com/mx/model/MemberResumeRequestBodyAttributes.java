@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.CredentialResponseAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,20 +26,20 @@ import java.util.List;
 /**
  * MemberResumeRequestBodyAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class MemberResumeRequestBodyAttributes {
   @SerializedName("challenges")
-  private List<Object> challenges = null;
+  private List<CredentialResponseAttributes> challenges = null;
 
-  public MemberResumeRequestBodyAttributes challenges(List<Object> challenges) {
+  public MemberResumeRequestBodyAttributes challenges(List<CredentialResponseAttributes> challenges) {
     this.challenges = challenges;
     return this;
   }
 
-  public MemberResumeRequestBodyAttributes addChallengesItem(Object challengesItem) {
+  public MemberResumeRequestBodyAttributes addChallengesItem(CredentialResponseAttributes challengesItem) {
     if (this.challenges == null) {
-      this.challenges = new ArrayList<Object>();
+      this.challenges = new ArrayList<CredentialResponseAttributes>();
     }
     this.challenges.add(challengesItem);
     return this;
@@ -49,11 +50,11 @@ public class MemberResumeRequestBodyAttributes {
    * @return challenges
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getChallenges() {
+  public List<CredentialResponseAttributes> getChallenges() {
     return challenges;
   }
 
-  public void setChallenges(List<Object> challenges) {
+  public void setChallenges(List<CredentialResponseAttributes> challenges) {
     this.challenges = challenges;
   }
 

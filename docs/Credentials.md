@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**credentials** | **List&lt;Object&gt;** |  |  [optional]
+**credentials** | [**List&lt;CredentialAttributes&gt;**](CredentialAttributes.md) |  |  [optional]
 
 
 

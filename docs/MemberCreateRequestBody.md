@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member** | **Object** |  |  [optional]
+**member** | [**MemberCreateRequestBodyAttributes**](MemberCreateRequestBodyAttributes.md) |  |  [optional]
 
 
 

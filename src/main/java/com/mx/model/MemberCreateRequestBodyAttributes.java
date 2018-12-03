@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.CredentialResponseAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,11 +26,11 @@ import java.util.List;
 /**
  * MemberCreateRequestBodyAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class MemberCreateRequestBodyAttributes {
   @SerializedName("credentials")
-  private List<Object> credentials = new ArrayList<Object>();
+  private List<CredentialResponseAttributes> credentials = new ArrayList<CredentialResponseAttributes>();
 
   @SerializedName("identifier")
   private String identifier = null;
@@ -40,12 +41,12 @@ public class MemberCreateRequestBodyAttributes {
   @SerializedName("metadata")
   private String metadata = null;
 
-  public MemberCreateRequestBodyAttributes credentials(List<Object> credentials) {
+  public MemberCreateRequestBodyAttributes credentials(List<CredentialResponseAttributes> credentials) {
     this.credentials = credentials;
     return this;
   }
 
-  public MemberCreateRequestBodyAttributes addCredentialsItem(Object credentialsItem) {
+  public MemberCreateRequestBodyAttributes addCredentialsItem(CredentialResponseAttributes credentialsItem) {
     this.credentials.add(credentialsItem);
     return this;
   }
@@ -55,11 +56,11 @@ public class MemberCreateRequestBodyAttributes {
    * @return credentials
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<Object> getCredentials() {
+  public List<CredentialResponseAttributes> getCredentials() {
     return credentials;
   }
 
-  public void setCredentials(List<Object> credentials) {
+  public void setCredentials(List<CredentialResponseAttributes> credentials) {
     this.credentials = credentials;
   }
 

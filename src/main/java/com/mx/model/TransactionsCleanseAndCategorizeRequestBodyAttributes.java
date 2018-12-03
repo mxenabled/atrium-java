@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 /**
  * TransactionsCleanseAndCategorizeRequestBodyAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class TransactionsCleanseAndCategorizeRequestBodyAttributes {
   @SerializedName("amount")

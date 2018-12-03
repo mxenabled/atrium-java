@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.TransactionsCleanseAndCategorizeRequestBodyAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,20 +26,20 @@ import java.util.List;
 /**
  * TransactionsCleanseAndCategorizeRequestBody
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class TransactionsCleanseAndCategorizeRequestBody {
   @SerializedName("transactions")
-  private List<Object> transactions = null;
+  private List<TransactionsCleanseAndCategorizeRequestBodyAttributes> transactions = null;
 
-  public TransactionsCleanseAndCategorizeRequestBody transactions(List<Object> transactions) {
+  public TransactionsCleanseAndCategorizeRequestBody transactions(List<TransactionsCleanseAndCategorizeRequestBodyAttributes> transactions) {
     this.transactions = transactions;
     return this;
   }
 
-  public TransactionsCleanseAndCategorizeRequestBody addTransactionsItem(Object transactionsItem) {
+  public TransactionsCleanseAndCategorizeRequestBody addTransactionsItem(TransactionsCleanseAndCategorizeRequestBodyAttributes transactionsItem) {
     if (this.transactions == null) {
-      this.transactions = new ArrayList<Object>();
+      this.transactions = new ArrayList<TransactionsCleanseAndCategorizeRequestBodyAttributes>();
     }
     this.transactions.add(transactionsItem);
     return this;
@@ -49,11 +50,11 @@ public class TransactionsCleanseAndCategorizeRequestBody {
    * @return transactions
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getTransactions() {
+  public List<TransactionsCleanseAndCategorizeRequestBodyAttributes> getTransactions() {
     return transactions;
   }
 
-  public void setTransactions(List<Object> transactions) {
+  public void setTransactions(List<TransactionsCleanseAndCategorizeRequestBodyAttributes> transactions) {
     this.transactions = transactions;
   }
 

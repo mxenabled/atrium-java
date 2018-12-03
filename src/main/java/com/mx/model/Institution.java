@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.InstitutionAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -23,13 +24,13 @@ import java.io.IOException;
 /**
  * Institution
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-11-29T15:45:20.941-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T12:53:24.168-07:00")
 
 public class Institution {
   @SerializedName("institution")
-  private Object institution = null;
+  private InstitutionAttributes institution = null;
 
-  public Institution institution(Object institution) {
+  public Institution institution(InstitutionAttributes institution) {
     this.institution = institution;
     return this;
   }
@@ -39,11 +40,11 @@ public class Institution {
    * @return institution
   **/
   @ApiModelProperty(value = "")
-  public Object getInstitution() {
+  public InstitutionAttributes getInstitution() {
     return institution;
   }
 
-  public void setInstitution(Object institution) {
+  public void setInstitution(InstitutionAttributes institution) {
     this.institution = institution;
   }
 

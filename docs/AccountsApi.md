@@ -26,17 +26,13 @@ import com.mx.atrium.AccountsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 AccountsApi apiInstance = new AccountsApi();
 String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
@@ -87,17 +83,13 @@ import com.mx.atrium.AccountsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 AccountsApi apiInstance = new AccountsApi();
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
@@ -142,17 +134,13 @@ import com.mx.atrium.AccountsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 AccountsApi apiInstance = new AccountsApi();
 String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
@@ -195,17 +183,13 @@ import com.mx.atrium.AccountsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 AccountsApi apiInstance = new AccountsApi();
 String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.

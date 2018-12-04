@@ -25,17 +25,13 @@ import com.mx.atrium.InstitutionsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
 String name = "name_example"; // String | This will list only institutions in which the appended string appears.
@@ -80,17 +76,13 @@ import com.mx.atrium.InstitutionsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
 String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.
@@ -131,17 +123,13 @@ import com.mx.atrium.InstitutionsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: apiKey
+// Configure API Key authorization
 ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//apiKey.setApiKeyPrefix("Token");
+apiKey.setApiKey("YOUR_API_KEY");
 
-// Configure API key authorization: clientID
+// Configure Client ID authorization
 ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//clientID.setApiKeyPrefix("Token");
+clientID.setApiKey("YOUR_CLIENT_ID");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
 String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.

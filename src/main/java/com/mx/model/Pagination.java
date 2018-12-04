@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * Pagination
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-03T16:35:42.819-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
 
 public class Pagination {
   @SerializedName("current_page")

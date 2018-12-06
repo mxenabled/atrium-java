@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * ChallengeAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
 
 public class ChallengeAttributes {
   @SerializedName("field_name")
@@ -44,11 +44,14 @@ public class ChallengeAttributes {
   @SerializedName("options")
   private List<ChallengeOptionAttributes> options = null;
 
+  @SerializedName("type")
+  private String type = null;
+
    /**
    * Get fieldName
    * @return fieldName
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Who is this guy?", value = "")
   public String getFieldName() {
     return fieldName;
   }
@@ -57,7 +60,7 @@ public class ChallengeAttributes {
    * Get guid
    * @return guid
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5", value = "")
   public String getGuid() {
     return guid;
   }
@@ -66,7 +69,7 @@ public class ChallengeAttributes {
    * Get imageData
    * @return imageData
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Who is this guy?", value = "")
   public String getImageData() {
     return imageData;
   }
@@ -75,7 +78,7 @@ public class ChallengeAttributes {
    * Get label
    * @return label
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "Who is this guy?", value = "")
   public String getLabel() {
     return label;
   }
@@ -106,6 +109,15 @@ public class ChallengeAttributes {
     this.options = options;
   }
 
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(example = "IMAGE_DATA", value = "")
+  public String getType() {
+    return type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,12 +132,13 @@ public class ChallengeAttributes {
         Objects.equals(this.guid, challengeAttributes.guid) &&
         Objects.equals(this.imageData, challengeAttributes.imageData) &&
         Objects.equals(this.label, challengeAttributes.label) &&
-        Objects.equals(this.options, challengeAttributes.options);
+        Objects.equals(this.options, challengeAttributes.options) &&
+        Objects.equals(this.type, challengeAttributes.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fieldName, guid, imageData, label, options);
+    return Objects.hash(fieldName, guid, imageData, label, options, type);
   }
 
 
@@ -139,6 +152,7 @@ public class ChallengeAttributes {
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

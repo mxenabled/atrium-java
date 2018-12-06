@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * ConnectWidgetRequestBody
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
 
 public class ConnectWidgetRequestBody {
   @SerializedName("is_mobile_webview")
@@ -47,7 +47,7 @@ public class ConnectWidgetRequestBody {
    * Get isMobileWebview
    * @return isMobileWebview
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "true", value = "")
   public Boolean isIsMobileWebview() {
     return isMobileWebview;
   }
@@ -65,7 +65,7 @@ public class ConnectWidgetRequestBody {
    * Get currentInstitutionCode
    * @return currentInstitutionCode
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "chase", value = "")
   public String getCurrentInstitutionCode() {
     return currentInstitutionCode;
   }
@@ -83,7 +83,7 @@ public class ConnectWidgetRequestBody {
    * Get currentMemberGuid
    * @return currentMemberGuid
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b", value = "")
   public String getCurrentMemberGuid() {
     return currentMemberGuid;
   }
@@ -101,7 +101,7 @@ public class ConnectWidgetRequestBody {
    * Get updateCredentials
    * @return updateCredentials
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "false", value = "")
   public Boolean isUpdateCredentials() {
     return updateCredentials;
   }

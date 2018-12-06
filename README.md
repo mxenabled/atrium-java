@@ -7,48 +7,15 @@ The MX Atrium API supports over 48,000 data connections to thousands of financia
 
 ## Requirements
 
-Building the API client library requires:
-1. Java 1.7+
-2. Maven/Gradle
+Building the API client library requires: Java 1.7+
 
-## Installation
+## Releases
 
-To install the API client library to your local Maven repository, simply execute:
+[Download](https://github.com/mxenabled/atrium-java/releases) the latest release .jar files and add them to your project
 
-```shell
-mvn clean install
-```
+### Build your own .jar files
 
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn clean deploy
-```
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-<dependency>
-  <groupId>com.mx.atrium</groupId>
-  <artifactId>atrium-java</artifactId>
-  <version>2.0</version>
-  <scope>compile</scope>
-</dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "com.mx.atrium:atrium-java:2.0"
-```
-
-### Others
-
-First generate the JAR by executing:
+First generate the .jars by executing:
 
 ```shell
 mvn clean package

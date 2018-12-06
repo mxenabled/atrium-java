@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * CredentialOptionAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
 
 public class CredentialOptionAttributes {
   @SerializedName("label")
@@ -41,7 +41,7 @@ public class CredentialOptionAttributes {
    * Get label
    * @return label
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "option_label", value = "")
   public String getLabel() {
     return label;
   }
@@ -59,7 +59,7 @@ public class CredentialOptionAttributes {
    * Get value
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "option_value", value = "")
   public String getValue() {
     return value;
   }

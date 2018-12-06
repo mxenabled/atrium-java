@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * ChallengeOptionAttributes
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
 
 public class ChallengeOptionAttributes {
   @SerializedName("image_data")
@@ -39,7 +39,7 @@ public class ChallengeOptionAttributes {
    * Get imageData
    * @return imageData
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...", value = "")
   public String getImageData() {
     return imageData;
   }
@@ -48,7 +48,7 @@ public class ChallengeOptionAttributes {
    * Get label
    * @return label
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "IMAGE_1", value = "")
   public String getLabel() {
     return label;
   }
@@ -57,7 +57,7 @@ public class ChallengeOptionAttributes {
    * Get value
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "image_data", value = "")
   public String getValue() {
     return value;
   }

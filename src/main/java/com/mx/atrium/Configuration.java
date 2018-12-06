@@ -9,7 +9,7 @@
 
 package com.mx.atrium;
 
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-04T10:29:21.360-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
 
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();

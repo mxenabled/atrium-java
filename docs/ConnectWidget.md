@@ -4,7 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**ConnectWidgetAttributes**](ConnectWidgetAttributes.md) |  |  [optional]
+**connectWidgetUrl** | **String** |  |  [optional]
+**guid** | **String** |  |  [optional]
 
 
 

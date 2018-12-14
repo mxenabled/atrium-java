@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="cleanseAndCategorizeTransactions"></a>
 # **cleanseAndCategorizeTransactions**
-> TransactionsCleanseAndCategorize cleanseAndCategorizeTransactions(body)
+> TransactionsCleanseAndCategorizeResponseBody cleanseAndCategorizeTransactions(body)
 
 Categorize transactions
 
@@ -36,7 +36,7 @@ clientID.setApiKey("YOUR_CLIENT_ID");
 TransactionsApi apiInstance = new TransactionsApi();
 TransactionsCleanseAndCategorizeRequestBody body = new TransactionsCleanseAndCategorizeRequestBody(); // TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
 try {
-    TransactionsCleanseAndCategorize result = apiInstance.cleanseAndCategorizeTransactions(body);
+    TransactionsCleanseAndCategorizeResponseBody result = apiInstance.cleanseAndCategorizeTransactions(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#cleanseAndCategorizeTransactions");
@@ -52,11 +52,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionsCleanseAndCategorize**](TransactionsCleanseAndCategorize.md)
+[**TransactionsCleanseAndCategorizeResponseBody**](TransactionsCleanseAndCategorizeResponseBody.md)
 
 <a name="listUserTransactions"></a>
 # **listUserTransactions**
-> Transactions listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate)
+> TransactionsResponseBody listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate)
 
 List transactions for a user
 
@@ -87,7 +87,7 @@ String fromDate = "fromDate_example"; // String | Filter transactions from this 
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 String toDate = "toDate_example"; // String | Filter transactions to this date.
 try {
-    Transactions result = apiInstance.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
+    TransactionsResponseBody result = apiInstance.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#listUserTransactions");
@@ -107,11 +107,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 <a name="readTransaction"></a>
 # **readTransaction**
-> Transaction readTransaction(transactionGuid, userGuid)
+> TransactionResponseBody readTransaction(transactionGuid, userGuid)
 
 Read a transaction
 
@@ -139,7 +139,7 @@ TransactionsApi apiInstance = new TransactionsApi();
 String transactionGuid = "transactionGuid_example"; // String | The unique identifier for a `transaction`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Transaction result = apiInstance.readTransaction(transactionGuid, userGuid);
+    TransactionResponseBody result = apiInstance.readTransaction(transactionGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#readTransaction");
@@ -156,5 +156,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transaction**](Transaction.md)
+[**TransactionResponseBody**](TransactionResponseBody.md)
 

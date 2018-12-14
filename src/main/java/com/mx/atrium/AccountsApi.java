@@ -23,9 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.Account;
-import com.mx.model.Accounts;
-import com.mx.model.Transactions;
+import com.mx.model.AccountResponseBody;
+import com.mx.model.AccountsResponseBody;
+import com.mx.model.TransactionsResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -144,11 +144,11 @@ public class AccountsApi {
      * @param toDate Filter transactions to this date. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Transactions
+     * @return TransactionsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Transactions listAccountTransactions(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Transactions> resp = listAccountTransactionsWithHttpInfo(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+    public TransactionsResponseBody listAccountTransactions(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<TransactionsResponseBody> resp = listAccountTransactionsWithHttpInfo(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -161,12 +161,12 @@ public class AccountsApi {
      * @param toDate Filter transactions to this date. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Transactions&gt;
+     * @return ApiResponse&lt;TransactionsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Transactions> listAccountTransactionsWithHttpInfo(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<TransactionsResponseBody> listAccountTransactionsWithHttpInfo(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listAccountTransactionsValidateBeforeCall(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -183,7 +183,7 @@ public class AccountsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountTransactionsAsync(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage, final ApiCallback<Transactions> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountTransactionsAsync(String accountGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage, final ApiCallback<TransactionsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -205,7 +205,7 @@ public class AccountsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountTransactionsValidateBeforeCall(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -285,11 +285,11 @@ public class AccountsApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Accounts
+     * @return AccountsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Accounts listUserAccounts(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Accounts> resp = listUserAccountsWithHttpInfo(userGuid, page, recordsPerPage);
+    public AccountsResponseBody listUserAccounts(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<AccountsResponseBody> resp = listUserAccountsWithHttpInfo(userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -299,12 +299,12 @@ public class AccountsApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Accounts&gt;
+     * @return ApiResponse&lt;AccountsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Accounts> listUserAccountsWithHttpInfo(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<AccountsResponseBody> listUserAccountsWithHttpInfo(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listUserAccountsValidateBeforeCall(userGuid, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -318,7 +318,7 @@ public class AccountsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listUserAccountsAsync(String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<Accounts> callback) throws ApiException {
+    public com.squareup.okhttp.Call listUserAccountsAsync(String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<AccountsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -340,7 +340,7 @@ public class AccountsApi {
         }
 
         com.squareup.okhttp.Call call = listUserAccountsValidateBeforeCall(userGuid, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -420,11 +420,11 @@ public class AccountsApi {
      * Reading an account allows you to get information about a specific account that belongs to a user. That includes the account type — e.g., CHECKING, MONEY_MARKET, or PROPERTY — the balance, the date the account was started, and much more.&lt;br&gt; There are two endpoints for reading an account. Both will return the same information.&lt;br&gt; It&#39;s important to remember that balance and available_balance will normally be positive numbers — for all account types. But this should be interpreted differently for debt accounts and asset accounts.&lt;br&gt; An asset account, e.g., CHECKING, SAVINGS, or INVESTMENT, will have a positive balance unless it is in an overdraft condition, in which case the balance will be negative.&lt;br&gt; On the other hand, a debt account, e.g., CREDIT CARD, LOAN, MORTGAGE, would have a positivebalance when the user owes money on the account. It would have a negative balance if the account has been overpaid. 
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Account
+     * @return AccountResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Account readAccount(String accountGuid, String userGuid) throws ApiException {
-        ApiResponse<Account> resp = readAccountWithHttpInfo(accountGuid, userGuid);
+    public AccountResponseBody readAccount(String accountGuid, String userGuid) throws ApiException {
+        ApiResponse<AccountResponseBody> resp = readAccountWithHttpInfo(accountGuid, userGuid);
         return resp.getData();
     }
 
@@ -433,12 +433,12 @@ public class AccountsApi {
      * Reading an account allows you to get information about a specific account that belongs to a user. That includes the account type — e.g., CHECKING, MONEY_MARKET, or PROPERTY — the balance, the date the account was started, and much more.&lt;br&gt; There are two endpoints for reading an account. Both will return the same information.&lt;br&gt; It&#39;s important to remember that balance and available_balance will normally be positive numbers — for all account types. But this should be interpreted differently for debt accounts and asset accounts.&lt;br&gt; An asset account, e.g., CHECKING, SAVINGS, or INVESTMENT, will have a positive balance unless it is in an overdraft condition, in which case the balance will be negative.&lt;br&gt; On the other hand, a debt account, e.g., CREDIT CARD, LOAN, MORTGAGE, would have a positivebalance when the user owes money on the account. It would have a negative balance if the account has been overpaid. 
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Account&gt;
+     * @return ApiResponse&lt;AccountResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Account> readAccountWithHttpInfo(String accountGuid, String userGuid) throws ApiException {
+    public ApiResponse<AccountResponseBody> readAccountWithHttpInfo(String accountGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readAccountValidateBeforeCall(accountGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -451,7 +451,7 @@ public class AccountsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readAccountAsync(String accountGuid, String userGuid, final ApiCallback<Account> callback) throws ApiException {
+    public com.squareup.okhttp.Call readAccountAsync(String accountGuid, String userGuid, final ApiCallback<AccountResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -473,7 +473,7 @@ public class AccountsApi {
         }
 
         com.squareup.okhttp.Call call = readAccountValidateBeforeCall(accountGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -561,11 +561,11 @@ public class AccountsApi {
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Account
+     * @return AccountResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Account readAccountByMemberGUID(String accountGuid, String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Account> resp = readAccountByMemberGUIDWithHttpInfo(accountGuid, memberGuid, userGuid);
+    public AccountResponseBody readAccountByMemberGUID(String accountGuid, String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<AccountResponseBody> resp = readAccountByMemberGUIDWithHttpInfo(accountGuid, memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -575,12 +575,12 @@ public class AccountsApi {
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Account&gt;
+     * @return ApiResponse&lt;AccountResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Account> readAccountByMemberGUIDWithHttpInfo(String accountGuid, String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<AccountResponseBody> readAccountByMemberGUIDWithHttpInfo(String accountGuid, String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readAccountByMemberGUIDValidateBeforeCall(accountGuid, memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -594,7 +594,7 @@ public class AccountsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readAccountByMemberGUIDAsync(String accountGuid, String memberGuid, String userGuid, final ApiCallback<Account> callback) throws ApiException {
+    public com.squareup.okhttp.Call readAccountByMemberGUIDAsync(String accountGuid, String memberGuid, String userGuid, final ApiCallback<AccountResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -616,7 +616,7 @@ public class AccountsApi {
         }
 
         com.squareup.okhttp.Call call = readAccountByMemberGUIDValidateBeforeCall(accountGuid, memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

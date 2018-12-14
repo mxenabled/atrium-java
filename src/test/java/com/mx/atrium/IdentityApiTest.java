@@ -10,8 +10,8 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.AccountOwners;
-import com.mx.model.Member;
+import com.mx.model.AccountOwnersResponseBody;
+import com.mx.model.MemberResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,7 +41,7 @@ public class IdentityApiTest {
     public void identifyMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Member response = api.identifyMember(memberGuid, userGuid);
+        MemberResponseBody response = api.identifyMember(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -58,7 +58,7 @@ public class IdentityApiTest {
     public void listAccountOwnersTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        AccountOwners response = api.listAccountOwners(memberGuid, userGuid);
+        AccountOwnersResponseBody response = api.listAccountOwners(memberGuid, userGuid);
 
         // TODO: test validations
     }

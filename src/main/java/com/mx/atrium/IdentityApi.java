@@ -23,8 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.AccountOwners;
-import com.mx.model.Member;
+import com.mx.model.AccountOwnersResponseBody;
+import com.mx.model.MemberResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -127,11 +127,11 @@ public class IdentityApi {
      * The identify endpoint begins an identification process for an already-existing member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member identifyMember(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Member> resp = identifyMemberWithHttpInfo(memberGuid, userGuid);
+    public MemberResponseBody identifyMember(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = identifyMemberWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -140,12 +140,12 @@ public class IdentityApi {
      * The identify endpoint begins an identification process for an already-existing member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> identifyMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<MemberResponseBody> identifyMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = identifyMemberValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -158,7 +158,7 @@ public class IdentityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call identifyMemberAsync(String memberGuid, String userGuid, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call identifyMemberAsync(String memberGuid, String userGuid, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -180,7 +180,7 @@ public class IdentityApi {
         }
 
         com.squareup.okhttp.Call call = identifyMemberValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -260,11 +260,11 @@ public class IdentityApi {
      * This endpoint returns an array with information about every account associated with a particular member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return AccountOwners
+     * @return AccountOwnersResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AccountOwners listAccountOwners(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<AccountOwners> resp = listAccountOwnersWithHttpInfo(memberGuid, userGuid);
+    public AccountOwnersResponseBody listAccountOwners(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<AccountOwnersResponseBody> resp = listAccountOwnersWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -273,12 +273,12 @@ public class IdentityApi {
      * This endpoint returns an array with information about every account associated with a particular member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;AccountOwners&gt;
+     * @return ApiResponse&lt;AccountOwnersResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AccountOwners> listAccountOwnersWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<AccountOwnersResponseBody> listAccountOwnersWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = listAccountOwnersValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<AccountOwners>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountOwnersResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -291,7 +291,7 @@ public class IdentityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountOwnersAsync(String memberGuid, String userGuid, final ApiCallback<AccountOwners> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountOwnersAsync(String memberGuid, String userGuid, final ApiCallback<AccountOwnersResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -313,7 +313,7 @@ public class IdentityApi {
         }
 
         com.squareup.okhttp.Call call = listAccountOwnersValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AccountOwners>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountOwnersResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

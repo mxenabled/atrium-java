@@ -23,9 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.Credentials;
-import com.mx.model.Institution;
-import com.mx.model.Institutions;
+import com.mx.model.CredentialsResponseBody;
+import com.mx.model.InstitutionResponseBody;
+import com.mx.model.InstitutionsResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -124,11 +124,11 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Institutions
+     * @return InstitutionsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Institutions listInstitutions(String name, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Institutions> resp = listInstitutionsWithHttpInfo(name, page, recordsPerPage);
+    public InstitutionsResponseBody listInstitutions(String name, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<InstitutionsResponseBody> resp = listInstitutionsWithHttpInfo(name, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -138,12 +138,12 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Institutions&gt;
+     * @return ApiResponse&lt;InstitutionsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Institutions> listInstitutionsWithHttpInfo(String name, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<InstitutionsResponseBody> listInstitutionsWithHttpInfo(String name, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Institutions>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstitutionsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -157,7 +157,7 @@ public class InstitutionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listInstitutionsAsync(String name, Integer page, Integer recordsPerPage, final ApiCallback<Institutions> callback) throws ApiException {
+    public com.squareup.okhttp.Call listInstitutionsAsync(String name, Integer page, Integer recordsPerPage, final ApiCallback<InstitutionsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -179,7 +179,7 @@ public class InstitutionsApi {
         }
 
         com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Institutions>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstitutionsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -251,11 +251,11 @@ public class InstitutionsApi {
      * Read institution
      * This endpoint allows you to see information for a specific institution.
      * @param institutionCode The institution_code of the institution. (required)
-     * @return Institution
+     * @return InstitutionResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Institution readInstitution(String institutionCode) throws ApiException {
-        ApiResponse<Institution> resp = readInstitutionWithHttpInfo(institutionCode);
+    public InstitutionResponseBody readInstitution(String institutionCode) throws ApiException {
+        ApiResponse<InstitutionResponseBody> resp = readInstitutionWithHttpInfo(institutionCode);
         return resp.getData();
     }
 
@@ -263,12 +263,12 @@ public class InstitutionsApi {
      * Read institution
      * This endpoint allows you to see information for a specific institution.
      * @param institutionCode The institution_code of the institution. (required)
-     * @return ApiResponse&lt;Institution&gt;
+     * @return ApiResponse&lt;InstitutionResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Institution> readInstitutionWithHttpInfo(String institutionCode) throws ApiException {
+    public ApiResponse<InstitutionResponseBody> readInstitutionWithHttpInfo(String institutionCode) throws ApiException {
         com.squareup.okhttp.Call call = readInstitutionValidateBeforeCall(institutionCode, null, null);
-        Type localVarReturnType = new TypeToken<Institution>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstitutionResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -280,7 +280,7 @@ public class InstitutionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readInstitutionAsync(String institutionCode, final ApiCallback<Institution> callback) throws ApiException {
+    public com.squareup.okhttp.Call readInstitutionAsync(String institutionCode, final ApiCallback<InstitutionResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -302,7 +302,7 @@ public class InstitutionsApi {
         }
 
         com.squareup.okhttp.Call call = readInstitutionValidateBeforeCall(institutionCode, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Institution>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstitutionResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -374,11 +374,11 @@ public class InstitutionsApi {
      * Read institution credentials
      * Use this endpoint to see which credentials will be needed to create a member for a specific institution.
      * @param institutionCode The institution_code of the institution. (required)
-     * @return Credentials
+     * @return CredentialsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Credentials readInstitutionCredentials(String institutionCode) throws ApiException {
-        ApiResponse<Credentials> resp = readInstitutionCredentialsWithHttpInfo(institutionCode);
+    public CredentialsResponseBody readInstitutionCredentials(String institutionCode) throws ApiException {
+        ApiResponse<CredentialsResponseBody> resp = readInstitutionCredentialsWithHttpInfo(institutionCode);
         return resp.getData();
     }
 
@@ -386,12 +386,12 @@ public class InstitutionsApi {
      * Read institution credentials
      * Use this endpoint to see which credentials will be needed to create a member for a specific institution.
      * @param institutionCode The institution_code of the institution. (required)
-     * @return ApiResponse&lt;Credentials&gt;
+     * @return ApiResponse&lt;CredentialsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Credentials> readInstitutionCredentialsWithHttpInfo(String institutionCode) throws ApiException {
+    public ApiResponse<CredentialsResponseBody> readInstitutionCredentialsWithHttpInfo(String institutionCode) throws ApiException {
         com.squareup.okhttp.Call call = readInstitutionCredentialsValidateBeforeCall(institutionCode, null, null);
-        Type localVarReturnType = new TypeToken<Credentials>(){}.getType();
+        Type localVarReturnType = new TypeToken<CredentialsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -403,7 +403,7 @@ public class InstitutionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readInstitutionCredentialsAsync(String institutionCode, final ApiCallback<Credentials> callback) throws ApiException {
+    public com.squareup.okhttp.Call readInstitutionCredentialsAsync(String institutionCode, final ApiCallback<CredentialsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -425,7 +425,7 @@ public class InstitutionsApi {
         }
 
         com.squareup.okhttp.Call call = readInstitutionCredentialsValidateBeforeCall(institutionCode, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Credentials>(){}.getType();
+        Type localVarReturnType = new TypeToken<CredentialsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

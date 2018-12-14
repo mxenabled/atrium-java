@@ -16,7 +16,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.InstitutionAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -24,28 +23,91 @@ import java.io.IOException;
 /**
  * Institution
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-14T09:45:03.754-07:00")
 
 public class Institution {
-  @SerializedName("institution")
-  private InstitutionAttributes institution = null;
+  @SerializedName("code")
+  private String code = null;
 
-  public Institution institution(InstitutionAttributes institution) {
-    this.institution = institution;
-    return this;
+  @SerializedName("medium_logo_url")
+  private String mediumLogoUrl = null;
+
+  @SerializedName("name")
+  private String name = null;
+
+  @SerializedName("small_logo_url")
+  private String smallLogoUrl = null;
+
+  @SerializedName("supports_account_identification")
+  private Boolean supportsAccountIdentification = null;
+
+  @SerializedName("supports_account_verification")
+  private Boolean supportsAccountVerification = null;
+
+  @SerializedName("url")
+  private String url = null;
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @ApiModelProperty(example = "chase", value = "")
+  public String getCode() {
+    return code;
   }
 
    /**
-   * Get institution
-   * @return institution
+   * Get mediumLogoUrl
+   * @return mediumLogoUrl
   **/
-  @ApiModelProperty(value = "")
-  public InstitutionAttributes getInstitution() {
-    return institution;
+  @ApiModelProperty(example = "https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png", value = "")
+  public String getMediumLogoUrl() {
+    return mediumLogoUrl;
   }
 
-  public void setInstitution(InstitutionAttributes institution) {
-    this.institution = institution;
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(example = "Chase Bank", value = "")
+  public String getName() {
+    return name;
+  }
+
+   /**
+   * Get smallLogoUrl
+   * @return smallLogoUrl
+  **/
+  @ApiModelProperty(example = "https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png", value = "")
+  public String getSmallLogoUrl() {
+    return smallLogoUrl;
+  }
+
+   /**
+   * Get supportsAccountIdentification
+   * @return supportsAccountIdentification
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isSupportsAccountIdentification() {
+    return supportsAccountIdentification;
+  }
+
+   /**
+   * Get supportsAccountVerification
+   * @return supportsAccountVerification
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isSupportsAccountVerification() {
+    return supportsAccountVerification;
+  }
+
+   /**
+   * Get url
+   * @return url
+  **/
+  @ApiModelProperty(example = "https://www.chase.com", value = "")
+  public String getUrl() {
+    return url;
   }
 
 
@@ -58,12 +120,18 @@ public class Institution {
       return false;
     }
     Institution institution = (Institution) o;
-    return Objects.equals(this.institution, institution.institution);
+    return Objects.equals(this.code, institution.code) &&
+        Objects.equals(this.mediumLogoUrl, institution.mediumLogoUrl) &&
+        Objects.equals(this.name, institution.name) &&
+        Objects.equals(this.smallLogoUrl, institution.smallLogoUrl) &&
+        Objects.equals(this.supportsAccountIdentification, institution.supportsAccountIdentification) &&
+        Objects.equals(this.supportsAccountVerification, institution.supportsAccountVerification) &&
+        Objects.equals(this.url, institution.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(institution);
+    return Objects.hash(code, mediumLogoUrl, name, smallLogoUrl, supportsAccountIdentification, supportsAccountVerification, url);
   }
 
 
@@ -72,7 +140,13 @@ public class Institution {
     StringBuilder sb = new StringBuilder();
     sb.append("class Institution {\n");
     
-    sb.append("    institution: ").append(toIndentedString(institution)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    mediumLogoUrl: ").append(toIndentedString(mediumLogoUrl)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    smallLogoUrl: ").append(toIndentedString(smallLogoUrl)).append("\n");
+    sb.append("    supportsAccountIdentification: ").append(toIndentedString(supportsAccountIdentification)).append("\n");
+    sb.append("    supportsAccountVerification: ").append(toIndentedString(supportsAccountVerification)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

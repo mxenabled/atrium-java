@@ -10,8 +10,8 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.ConnectWidget;
 import com.mx.model.ConnectWidgetRequestBody;
+import com.mx.model.ConnectWidgetResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,7 +41,7 @@ public class ConnectWidgetApiTest {
     public void getConnectWidgetTest() throws ApiException {
         String userGuid = null;
         ConnectWidgetRequestBody body = null;
-        ConnectWidget response = api.getConnectWidget(userGuid, body);
+        ConnectWidgetResponseBody response = api.getConnectWidget(userGuid, body);
 
         // TODO: test validations
     }

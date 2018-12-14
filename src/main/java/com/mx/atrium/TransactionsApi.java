@@ -23,10 +23,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.Transaction;
-import com.mx.model.Transactions;
-import com.mx.model.TransactionsCleanseAndCategorize;
+import com.mx.model.TransactionResponseBody;
 import com.mx.model.TransactionsCleanseAndCategorizeRequestBody;
+import com.mx.model.TransactionsCleanseAndCategorizeResponseBody;
+import com.mx.model.TransactionsResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -120,11 +120,11 @@ public class TransactionsApi {
      * Categorize transactions
      * Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
      * @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier) (required)
-     * @return TransactionsCleanseAndCategorize
+     * @return TransactionsCleanseAndCategorizeResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TransactionsCleanseAndCategorize cleanseAndCategorizeTransactions(TransactionsCleanseAndCategorizeRequestBody body) throws ApiException {
-        ApiResponse<TransactionsCleanseAndCategorize> resp = cleanseAndCategorizeTransactionsWithHttpInfo(body);
+    public TransactionsCleanseAndCategorizeResponseBody cleanseAndCategorizeTransactions(TransactionsCleanseAndCategorizeRequestBody body) throws ApiException {
+        ApiResponse<TransactionsCleanseAndCategorizeResponseBody> resp = cleanseAndCategorizeTransactionsWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -132,12 +132,12 @@ public class TransactionsApi {
      * Categorize transactions
      * Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
      * @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier) (required)
-     * @return ApiResponse&lt;TransactionsCleanseAndCategorize&gt;
+     * @return ApiResponse&lt;TransactionsCleanseAndCategorizeResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TransactionsCleanseAndCategorize> cleanseAndCategorizeTransactionsWithHttpInfo(TransactionsCleanseAndCategorizeRequestBody body) throws ApiException {
+    public ApiResponse<TransactionsCleanseAndCategorizeResponseBody> cleanseAndCategorizeTransactionsWithHttpInfo(TransactionsCleanseAndCategorizeRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = cleanseAndCategorizeTransactionsValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<TransactionsCleanseAndCategorize>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsCleanseAndCategorizeResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -149,7 +149,7 @@ public class TransactionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call cleanseAndCategorizeTransactionsAsync(TransactionsCleanseAndCategorizeRequestBody body, final ApiCallback<TransactionsCleanseAndCategorize> callback) throws ApiException {
+    public com.squareup.okhttp.Call cleanseAndCategorizeTransactionsAsync(TransactionsCleanseAndCategorizeRequestBody body, final ApiCallback<TransactionsCleanseAndCategorizeResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,7 +171,7 @@ public class TransactionsApi {
         }
 
         com.squareup.okhttp.Call call = cleanseAndCategorizeTransactionsValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TransactionsCleanseAndCategorize>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsCleanseAndCategorizeResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -259,11 +259,11 @@ public class TransactionsApi {
      * @param fromDate Filter transactions from this date. (optional)
      * @param recordsPerPage Specify records per page. (optional)
      * @param toDate Filter transactions to this date. (optional)
-     * @return Transactions
+     * @return TransactionsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Transactions listUserTransactions(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate) throws ApiException {
-        ApiResponse<Transactions> resp = listUserTransactionsWithHttpInfo(userGuid, page, fromDate, recordsPerPage, toDate);
+    public TransactionsResponseBody listUserTransactions(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate) throws ApiException {
+        ApiResponse<TransactionsResponseBody> resp = listUserTransactionsWithHttpInfo(userGuid, page, fromDate, recordsPerPage, toDate);
         return resp.getData();
     }
 
@@ -275,12 +275,12 @@ public class TransactionsApi {
      * @param fromDate Filter transactions from this date. (optional)
      * @param recordsPerPage Specify records per page. (optional)
      * @param toDate Filter transactions to this date. (optional)
-     * @return ApiResponse&lt;Transactions&gt;
+     * @return ApiResponse&lt;TransactionsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Transactions> listUserTransactionsWithHttpInfo(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate) throws ApiException {
+    public ApiResponse<TransactionsResponseBody> listUserTransactionsWithHttpInfo(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate) throws ApiException {
         com.squareup.okhttp.Call call = listUserTransactionsValidateBeforeCall(userGuid, page, fromDate, recordsPerPage, toDate, null, null);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -296,7 +296,7 @@ public class TransactionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listUserTransactionsAsync(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate, final ApiCallback<Transactions> callback) throws ApiException {
+    public com.squareup.okhttp.Call listUserTransactionsAsync(String userGuid, Integer page, String fromDate, Integer recordsPerPage, String toDate, final ApiCallback<TransactionsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -318,7 +318,7 @@ public class TransactionsApi {
         }
 
         com.squareup.okhttp.Call call = listUserTransactionsValidateBeforeCall(userGuid, page, fromDate, recordsPerPage, toDate, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -398,11 +398,11 @@ public class TransactionsApi {
      * This endpoint allows you to view information about a specific transaction that belongs to a user.&lt;br&gt;
      * @param transactionGuid The unique identifier for a &#x60;transaction&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Transaction
+     * @return TransactionResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Transaction readTransaction(String transactionGuid, String userGuid) throws ApiException {
-        ApiResponse<Transaction> resp = readTransactionWithHttpInfo(transactionGuid, userGuid);
+    public TransactionResponseBody readTransaction(String transactionGuid, String userGuid) throws ApiException {
+        ApiResponse<TransactionResponseBody> resp = readTransactionWithHttpInfo(transactionGuid, userGuid);
         return resp.getData();
     }
 
@@ -411,12 +411,12 @@ public class TransactionsApi {
      * This endpoint allows you to view information about a specific transaction that belongs to a user.&lt;br&gt;
      * @param transactionGuid The unique identifier for a &#x60;transaction&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Transaction&gt;
+     * @return ApiResponse&lt;TransactionResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Transaction> readTransactionWithHttpInfo(String transactionGuid, String userGuid) throws ApiException {
+    public ApiResponse<TransactionResponseBody> readTransactionWithHttpInfo(String transactionGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readTransactionValidateBeforeCall(transactionGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -429,7 +429,7 @@ public class TransactionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readTransactionAsync(String transactionGuid, String userGuid, final ApiCallback<Transaction> callback) throws ApiException {
+    public com.squareup.okhttp.Call readTransactionAsync(String transactionGuid, String userGuid, final ApiCallback<TransactionResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -451,7 +451,7 @@ public class TransactionsApi {
         }
 
         com.squareup.okhttp.Call call = readTransactionValidateBeforeCall(transactionGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

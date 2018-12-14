@@ -23,8 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.AccountNumbers;
-import com.mx.model.Member;
+import com.mx.model.AccountNumbersResponseBody;
+import com.mx.model.MemberResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -127,11 +127,11 @@ public class VerificationApi {
      * Use this endpoint to check whether account and routing numbers are available for accounts associated with a particular member. It returns the account_numbers object, which contains account and routing number data for each account associated with the member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return AccountNumbers
+     * @return AccountNumbersResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AccountNumbers listAccountNumbers(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<AccountNumbers> resp = listAccountNumbersWithHttpInfo(memberGuid, userGuid);
+    public AccountNumbersResponseBody listAccountNumbers(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<AccountNumbersResponseBody> resp = listAccountNumbersWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -140,12 +140,12 @@ public class VerificationApi {
      * Use this endpoint to check whether account and routing numbers are available for accounts associated with a particular member. It returns the account_numbers object, which contains account and routing number data for each account associated with the member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;AccountNumbers&gt;
+     * @return ApiResponse&lt;AccountNumbersResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AccountNumbers> listAccountNumbersWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<AccountNumbersResponseBody> listAccountNumbersWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = listAccountNumbersValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<AccountNumbers>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountNumbersResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -158,7 +158,7 @@ public class VerificationApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountNumbersAsync(String memberGuid, String userGuid, final ApiCallback<AccountNumbers> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountNumbersAsync(String memberGuid, String userGuid, final ApiCallback<AccountNumbersResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -180,7 +180,7 @@ public class VerificationApi {
         }
 
         com.squareup.okhttp.Call call = listAccountNumbersValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AccountNumbers>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountNumbersResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -260,11 +260,11 @@ public class VerificationApi {
      * Use this endpoint to check whether account and routing numbers are available for a specific account. It returns the account_numbers object, which contains account and routing number data.
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return AccountNumbers
+     * @return AccountNumbersResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AccountNumbers listAccountNumbersByAccount(String accountGuid, String userGuid) throws ApiException {
-        ApiResponse<AccountNumbers> resp = listAccountNumbersByAccountWithHttpInfo(accountGuid, userGuid);
+    public AccountNumbersResponseBody listAccountNumbersByAccount(String accountGuid, String userGuid) throws ApiException {
+        ApiResponse<AccountNumbersResponseBody> resp = listAccountNumbersByAccountWithHttpInfo(accountGuid, userGuid);
         return resp.getData();
     }
 
@@ -273,12 +273,12 @@ public class VerificationApi {
      * Use this endpoint to check whether account and routing numbers are available for a specific account. It returns the account_numbers object, which contains account and routing number data.
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;AccountNumbers&gt;
+     * @return ApiResponse&lt;AccountNumbersResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AccountNumbers> listAccountNumbersByAccountWithHttpInfo(String accountGuid, String userGuid) throws ApiException {
+    public ApiResponse<AccountNumbersResponseBody> listAccountNumbersByAccountWithHttpInfo(String accountGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = listAccountNumbersByAccountValidateBeforeCall(accountGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<AccountNumbers>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountNumbersResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -291,7 +291,7 @@ public class VerificationApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountNumbersByAccountAsync(String accountGuid, String userGuid, final ApiCallback<AccountNumbers> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountNumbersByAccountAsync(String accountGuid, String userGuid, final ApiCallback<AccountNumbersResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -313,7 +313,7 @@ public class VerificationApi {
         }
 
         com.squareup.okhttp.Call call = listAccountNumbersByAccountValidateBeforeCall(accountGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AccountNumbers>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountNumbersResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -393,11 +393,11 @@ public class VerificationApi {
      * The verify endpoint begins a verification process for a member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member verifyMember(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Member> resp = verifyMemberWithHttpInfo(memberGuid, userGuid);
+    public MemberResponseBody verifyMember(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = verifyMemberWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -406,12 +406,12 @@ public class VerificationApi {
      * The verify endpoint begins a verification process for a member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> verifyMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<MemberResponseBody> verifyMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = verifyMemberValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -424,7 +424,7 @@ public class VerificationApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call verifyMemberAsync(String memberGuid, String userGuid, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call verifyMemberAsync(String memberGuid, String userGuid, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -446,7 +446,7 @@ public class VerificationApi {
         }
 
         com.squareup.okhttp.Call call = verifyMemberValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

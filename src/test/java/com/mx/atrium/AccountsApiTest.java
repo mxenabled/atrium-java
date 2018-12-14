@@ -10,9 +10,9 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.Account;
-import com.mx.model.Accounts;
-import com.mx.model.Transactions;
+import com.mx.model.AccountResponseBody;
+import com.mx.model.AccountsResponseBody;
+import com.mx.model.TransactionsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -46,7 +46,7 @@ public class AccountsApiTest {
         String toDate = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Transactions response = api.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+        TransactionsResponseBody response = api.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -64,7 +64,7 @@ public class AccountsApiTest {
         String userGuid = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Accounts response = api.listUserAccounts(userGuid, page, recordsPerPage);
+        AccountsResponseBody response = api.listUserAccounts(userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -81,7 +81,7 @@ public class AccountsApiTest {
     public void readAccountTest() throws ApiException {
         String accountGuid = null;
         String userGuid = null;
-        Account response = api.readAccount(accountGuid, userGuid);
+        AccountResponseBody response = api.readAccount(accountGuid, userGuid);
 
         // TODO: test validations
     }
@@ -99,7 +99,7 @@ public class AccountsApiTest {
         String accountGuid = null;
         String memberGuid = null;
         String userGuid = null;
-        Account response = api.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
+        AccountResponseBody response = api.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
 
         // TODO: test validations
     }

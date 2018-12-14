@@ -23,10 +23,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.User;
 import com.mx.model.UserCreateRequestBody;
+import com.mx.model.UserResponseBody;
 import com.mx.model.UserUpdateRequestBody;
-import com.mx.model.Users;
+import com.mx.model.UsersResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -120,11 +120,11 @@ public class UsersApi {
      * Create user
      * Call this endpoint to create a new user. Atrium will respond with the newly-created user object if successful. This endpoint accepts several parameters: identifier, metadata, and is_disabled.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill. 
      * @param body User object to be created with optional parameters (identifier, is_disabled, metadata) (required)
-     * @return User
+     * @return UserResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public User createUser(UserCreateRequestBody body) throws ApiException {
-        ApiResponse<User> resp = createUserWithHttpInfo(body);
+    public UserResponseBody createUser(UserCreateRequestBody body) throws ApiException {
+        ApiResponse<UserResponseBody> resp = createUserWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -132,12 +132,12 @@ public class UsersApi {
      * Create user
      * Call this endpoint to create a new user. Atrium will respond with the newly-created user object if successful. This endpoint accepts several parameters: identifier, metadata, and is_disabled.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill. 
      * @param body User object to be created with optional parameters (identifier, is_disabled, metadata) (required)
-     * @return ApiResponse&lt;User&gt;
+     * @return ApiResponse&lt;UserResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<User> createUserWithHttpInfo(UserCreateRequestBody body) throws ApiException {
+    public ApiResponse<UserResponseBody> createUserWithHttpInfo(UserCreateRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = createUserValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -149,7 +149,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createUserAsync(UserCreateRequestBody body, final ApiCallback<User> callback) throws ApiException {
+    public com.squareup.okhttp.Call createUserAsync(UserCreateRequestBody body, final ApiCallback<UserResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,7 +171,7 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = createUserValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -362,11 +362,11 @@ public class UsersApi {
      * Use this endpoint to list every user you&#39;ve created in Atrium.
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Users
+     * @return UsersResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Users listUsers(Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Users> resp = listUsersWithHttpInfo(page, recordsPerPage);
+    public UsersResponseBody listUsers(Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<UsersResponseBody> resp = listUsersWithHttpInfo(page, recordsPerPage);
         return resp.getData();
     }
 
@@ -375,12 +375,12 @@ public class UsersApi {
      * Use this endpoint to list every user you&#39;ve created in Atrium.
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Users&gt;
+     * @return ApiResponse&lt;UsersResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Users> listUsersWithHttpInfo(Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<UsersResponseBody> listUsersWithHttpInfo(Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listUsersValidateBeforeCall(page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Users>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsersResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -393,7 +393,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listUsersAsync(Integer page, Integer recordsPerPage, final ApiCallback<Users> callback) throws ApiException {
+    public com.squareup.okhttp.Call listUsersAsync(Integer page, Integer recordsPerPage, final ApiCallback<UsersResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -415,7 +415,7 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = listUsersValidateBeforeCall(page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Users>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsersResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -487,11 +487,11 @@ public class UsersApi {
      * Read user
      * Use this endpoint to read the attributes of a specific user.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return User
+     * @return UserResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public User readUser(String userGuid) throws ApiException {
-        ApiResponse<User> resp = readUserWithHttpInfo(userGuid);
+    public UserResponseBody readUser(String userGuid) throws ApiException {
+        ApiResponse<UserResponseBody> resp = readUserWithHttpInfo(userGuid);
         return resp.getData();
     }
 
@@ -499,12 +499,12 @@ public class UsersApi {
      * Read user
      * Use this endpoint to read the attributes of a specific user.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;User&gt;
+     * @return ApiResponse&lt;UserResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<User> readUserWithHttpInfo(String userGuid) throws ApiException {
+    public ApiResponse<UserResponseBody> readUserWithHttpInfo(String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readUserValidateBeforeCall(userGuid, null, null);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -516,7 +516,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readUserAsync(String userGuid, final ApiCallback<User> callback) throws ApiException {
+    public com.squareup.okhttp.Call readUserAsync(String userGuid, final ApiCallback<UserResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -538,7 +538,7 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = readUserValidateBeforeCall(userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -612,11 +612,11 @@ public class UsersApi {
      * Use this endpoint to update the attributes of a specific user. Atrium will respond with the updated user object.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill.&lt;br&gt; To disable a user, update it and set the is_disabled parameter to true. Set it to false to re-enable the user. 
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body User object to be updated with optional parameters (identifier, is_disabled, metadata) (optional)
-     * @return User
+     * @return UserResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public User updateUser(String userGuid, UserUpdateRequestBody body) throws ApiException {
-        ApiResponse<User> resp = updateUserWithHttpInfo(userGuid, body);
+    public UserResponseBody updateUser(String userGuid, UserUpdateRequestBody body) throws ApiException {
+        ApiResponse<UserResponseBody> resp = updateUserWithHttpInfo(userGuid, body);
         return resp.getData();
     }
 
@@ -625,12 +625,12 @@ public class UsersApi {
      * Use this endpoint to update the attributes of a specific user. Atrium will respond with the updated user object.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill.&lt;br&gt; To disable a user, update it and set the is_disabled parameter to true. Set it to false to re-enable the user. 
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body User object to be updated with optional parameters (identifier, is_disabled, metadata) (optional)
-     * @return ApiResponse&lt;User&gt;
+     * @return ApiResponse&lt;UserResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<User> updateUserWithHttpInfo(String userGuid, UserUpdateRequestBody body) throws ApiException {
+    public ApiResponse<UserResponseBody> updateUserWithHttpInfo(String userGuid, UserUpdateRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = updateUserValidateBeforeCall(userGuid, body, null, null);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -643,7 +643,7 @@ public class UsersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateUserAsync(String userGuid, UserUpdateRequestBody body, final ApiCallback<User> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateUserAsync(String userGuid, UserUpdateRequestBody body, final ApiCallback<UserResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -665,7 +665,7 @@ public class UsersApi {
         }
 
         com.squareup.okhttp.Call call = updateUserValidateBeforeCall(userGuid, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

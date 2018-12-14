@@ -10,8 +10,8 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.AccountNumbers;
-import com.mx.model.Member;
+import com.mx.model.AccountNumbersResponseBody;
+import com.mx.model.MemberResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,7 +41,7 @@ public class VerificationApiTest {
     public void listAccountNumbersTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        AccountNumbers response = api.listAccountNumbers(memberGuid, userGuid);
+        AccountNumbersResponseBody response = api.listAccountNumbers(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -58,7 +58,7 @@ public class VerificationApiTest {
     public void listAccountNumbersByAccountTest() throws ApiException {
         String accountGuid = null;
         String userGuid = null;
-        AccountNumbers response = api.listAccountNumbersByAccount(accountGuid, userGuid);
+        AccountNumbersResponseBody response = api.listAccountNumbersByAccount(accountGuid, userGuid);
 
         // TODO: test validations
     }
@@ -75,7 +75,7 @@ public class VerificationApiTest {
     public void verifyMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Member response = api.verifyMember(memberGuid, userGuid);
+        MemberResponseBody response = api.verifyMember(memberGuid, userGuid);
 
         // TODO: test validations
     }

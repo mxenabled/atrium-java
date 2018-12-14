@@ -10,10 +10,10 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.User;
 import com.mx.model.UserCreateRequestBody;
+import com.mx.model.UserResponseBody;
 import com.mx.model.UserUpdateRequestBody;
-import com.mx.model.Users;
+import com.mx.model.UsersResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -42,7 +42,7 @@ public class UsersApiTest {
     @Test
     public void createUserTest() throws ApiException {
         UserCreateRequestBody body = null;
-        User response = api.createUser(body);
+        UserResponseBody response = api.createUser(body);
 
         // TODO: test validations
     }
@@ -75,7 +75,7 @@ public class UsersApiTest {
     public void listUsersTest() throws ApiException {
         Integer page = null;
         Integer recordsPerPage = null;
-        Users response = api.listUsers(page, recordsPerPage);
+        UsersResponseBody response = api.listUsers(page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -91,7 +91,7 @@ public class UsersApiTest {
     @Test
     public void readUserTest() throws ApiException {
         String userGuid = null;
-        User response = api.readUser(userGuid);
+        UserResponseBody response = api.readUser(userGuid);
 
         // TODO: test validations
     }
@@ -108,7 +108,7 @@ public class UsersApiTest {
     public void updateUserTest() throws ApiException {
         String userGuid = null;
         UserUpdateRequestBody body = null;
-        User response = api.updateUser(userGuid, body);
+        UserResponseBody response = api.updateUser(userGuid, body);
 
         // TODO: test validations
     }

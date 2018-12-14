@@ -10,9 +10,9 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.Credentials;
-import com.mx.model.Institution;
-import com.mx.model.Institutions;
+import com.mx.model.CredentialsResponseBody;
+import com.mx.model.InstitutionResponseBody;
+import com.mx.model.InstitutionsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -43,7 +43,7 @@ public class InstitutionsApiTest {
         String name = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Institutions response = api.listInstitutions(name, page, recordsPerPage);
+        InstitutionsResponseBody response = api.listInstitutions(name, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -59,7 +59,7 @@ public class InstitutionsApiTest {
     @Test
     public void readInstitutionTest() throws ApiException {
         String institutionCode = null;
-        Institution response = api.readInstitution(institutionCode);
+        InstitutionResponseBody response = api.readInstitution(institutionCode);
 
         // TODO: test validations
     }
@@ -75,7 +75,7 @@ public class InstitutionsApiTest {
     @Test
     public void readInstitutionCredentialsTest() throws ApiException {
         String institutionCode = null;
-        Credentials response = api.readInstitutionCredentials(institutionCode);
+        CredentialsResponseBody response = api.readInstitutionCredentials(institutionCode);
 
         // TODO: test validations
     }

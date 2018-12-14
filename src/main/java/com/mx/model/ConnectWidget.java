@@ -16,7 +16,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.ConnectWidgetAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -24,28 +23,31 @@ import java.io.IOException;
 /**
  * ConnectWidget
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-14T09:45:03.754-07:00")
 
 public class ConnectWidget {
-  @SerializedName("user")
-  private ConnectWidgetAttributes user = null;
+  @SerializedName("connect_widget_url")
+  private String connectWidgetUrl = null;
 
-  public ConnectWidget user(ConnectWidgetAttributes user) {
-    this.user = user;
-    return this;
+  @SerializedName("guid")
+  private String guid = null;
+
+   /**
+   * Get connectWidgetUrl
+   * @return connectWidgetUrl
+  **/
+  @ApiModelProperty(example = "https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8", value = "")
+  public String getConnectWidgetUrl() {
+    return connectWidgetUrl;
   }
 
    /**
-   * Get user
-   * @return user
+   * Get guid
+   * @return guid
   **/
-  @ApiModelProperty(value = "")
-  public ConnectWidgetAttributes getUser() {
-    return user;
-  }
-
-  public void setUser(ConnectWidgetAttributes user) {
-    this.user = user;
+  @ApiModelProperty(example = "USR-fa7537f3-48aa-a683-a02a-b18940482f54", value = "")
+  public String getGuid() {
+    return guid;
   }
 
 
@@ -58,12 +60,13 @@ public class ConnectWidget {
       return false;
     }
     ConnectWidget connectWidget = (ConnectWidget) o;
-    return Objects.equals(this.user, connectWidget.user);
+    return Objects.equals(this.connectWidgetUrl, connectWidget.connectWidgetUrl) &&
+        Objects.equals(this.guid, connectWidget.guid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(user);
+    return Objects.hash(connectWidgetUrl, guid);
   }
 
 
@@ -72,7 +75,8 @@ public class ConnectWidget {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConnectWidget {\n");
     
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    connectWidgetUrl: ").append(toIndentedString(connectWidgetUrl)).append("\n");
+    sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("}");
     return sb.toString();
   }

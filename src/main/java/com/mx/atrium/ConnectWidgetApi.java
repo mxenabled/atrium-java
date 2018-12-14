@@ -23,8 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.ConnectWidget;
 import com.mx.model.ConnectWidgetRequestBody;
+import com.mx.model.ConnectWidgetResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -126,11 +126,11 @@ public class ConnectWidgetApi {
      * This endpoint will return a URL for an embeddable version of MX Connect.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials) (required)
-     * @return ConnectWidget
+     * @return ConnectWidgetResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ConnectWidget getConnectWidget(String userGuid, ConnectWidgetRequestBody body) throws ApiException {
-        ApiResponse<ConnectWidget> resp = getConnectWidgetWithHttpInfo(userGuid, body);
+    public ConnectWidgetResponseBody getConnectWidget(String userGuid, ConnectWidgetRequestBody body) throws ApiException {
+        ApiResponse<ConnectWidgetResponseBody> resp = getConnectWidgetWithHttpInfo(userGuid, body);
         return resp.getData();
     }
 
@@ -139,12 +139,12 @@ public class ConnectWidgetApi {
      * This endpoint will return a URL for an embeddable version of MX Connect.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials) (required)
-     * @return ApiResponse&lt;ConnectWidget&gt;
+     * @return ApiResponse&lt;ConnectWidgetResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ConnectWidget> getConnectWidgetWithHttpInfo(String userGuid, ConnectWidgetRequestBody body) throws ApiException {
+    public ApiResponse<ConnectWidgetResponseBody> getConnectWidgetWithHttpInfo(String userGuid, ConnectWidgetRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = getConnectWidgetValidateBeforeCall(userGuid, body, null, null);
-        Type localVarReturnType = new TypeToken<ConnectWidget>(){}.getType();
+        Type localVarReturnType = new TypeToken<ConnectWidgetResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -157,7 +157,7 @@ public class ConnectWidgetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getConnectWidgetAsync(String userGuid, ConnectWidgetRequestBody body, final ApiCallback<ConnectWidget> callback) throws ApiException {
+    public com.squareup.okhttp.Call getConnectWidgetAsync(String userGuid, ConnectWidgetRequestBody body, final ApiCallback<ConnectWidgetResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -179,7 +179,7 @@ public class ConnectWidgetApi {
         }
 
         com.squareup.okhttp.Call call = getConnectWidgetValidateBeforeCall(userGuid, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ConnectWidget>(){}.getType();
+        Type localVarReturnType = new TypeToken<ConnectWidgetResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

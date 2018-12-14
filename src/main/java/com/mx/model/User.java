@@ -16,7 +16,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.UserAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -24,28 +23,82 @@ import java.io.IOException;
 /**
  * User
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-14T09:45:03.754-07:00")
 
 public class User {
-  @SerializedName("user")
-  private UserAttributes user = null;
+  @SerializedName("guid")
+  private String guid = null;
 
-  public User user(UserAttributes user) {
-    this.user = user;
+  @SerializedName("identifier")
+  private String identifier = null;
+
+  @SerializedName("is_disabled")
+  private Boolean isDisabled = null;
+
+  @SerializedName("metadata")
+  private String metadata = null;
+
+   /**
+   * Get guid
+   * @return guid
+  **/
+  @ApiModelProperty(example = "USR-d74cb14f-fd0a-449f-991b-e0362a63d9c6", value = "")
+  public String getGuid() {
+    return guid;
+  }
+
+  public User identifier(String identifier) {
+    this.identifier = identifier;
     return this;
   }
 
    /**
-   * Get user
-   * @return user
+   * Get identifier
+   * @return identifier
   **/
-  @ApiModelProperty(value = "")
-  public UserAttributes getUser() {
-    return user;
+  @ApiModelProperty(example = "My-Unique-ID", value = "")
+  public String getIdentifier() {
+    return identifier;
   }
 
-  public void setUser(UserAttributes user) {
-    this.user = user;
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
+  }
+
+  public User isDisabled(Boolean isDisabled) {
+    this.isDisabled = isDisabled;
+    return this;
+  }
+
+   /**
+   * Get isDisabled
+   * @return isDisabled
+  **/
+  @ApiModelProperty(example = "false", value = "")
+  public Boolean isIsDisabled() {
+    return isDisabled;
+  }
+
+  public void setIsDisabled(Boolean isDisabled) {
+    this.isDisabled = isDisabled;
+  }
+
+  public User metadata(String metadata) {
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @ApiModelProperty(example = "{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}", value = "")
+  public String getMetadata() {
+    return metadata;
+  }
+
+  public void setMetadata(String metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -58,12 +111,15 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.user, user.user);
+    return Objects.equals(this.guid, user.guid) &&
+        Objects.equals(this.identifier, user.identifier) &&
+        Objects.equals(this.isDisabled, user.isDisabled) &&
+        Objects.equals(this.metadata, user.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(user);
+    return Objects.hash(guid, identifier, isDisabled, metadata);
   }
 
 
@@ -72,7 +128,10 @@ public class User {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
     
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
+    sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
+    sb.append("    isDisabled: ").append(toIndentedString(isDisabled)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

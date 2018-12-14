@@ -23,16 +23,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.mx.model.Accounts;
-import com.mx.model.Challenges;
-import com.mx.model.Credentials;
-import com.mx.model.Member;
-import com.mx.model.MemberConnectionStatus;
+import com.mx.model.AccountsResponseBody;
+import com.mx.model.ChallengesResponseBody;
+import com.mx.model.CredentialsResponseBody;
+import com.mx.model.MemberConnectionStatusResponseBody;
 import com.mx.model.MemberCreateRequestBody;
+import com.mx.model.MemberResponseBody;
 import com.mx.model.MemberResumeRequestBody;
 import com.mx.model.MemberUpdateRequestBody;
-import com.mx.model.Members;
-import com.mx.model.Transactions;
+import com.mx.model.MembersResponseBody;
+import com.mx.model.TransactionsResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -135,11 +135,11 @@ public class MembersApi {
      * Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member aggregateMember(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Member> resp = aggregateMemberWithHttpInfo(memberGuid, userGuid);
+    public MemberResponseBody aggregateMember(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = aggregateMemberWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -148,12 +148,12 @@ public class MembersApi {
      * Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> aggregateMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<MemberResponseBody> aggregateMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = aggregateMemberValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -166,7 +166,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call aggregateMemberAsync(String memberGuid, String userGuid, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call aggregateMemberAsync(String memberGuid, String userGuid, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -188,7 +188,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = aggregateMemberValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -267,11 +267,11 @@ public class MembersApi {
      * This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.&lt;br&gt; When creating a member, you&#39;ll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.&lt;br&gt; If successful, Atrium will respond with the newly-created member object.&lt;br&gt; Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code) (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member createMember(String userGuid, MemberCreateRequestBody body) throws ApiException {
-        ApiResponse<Member> resp = createMemberWithHttpInfo(userGuid, body);
+    public MemberResponseBody createMember(String userGuid, MemberCreateRequestBody body) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = createMemberWithHttpInfo(userGuid, body);
         return resp.getData();
     }
 
@@ -280,12 +280,12 @@ public class MembersApi {
      * This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.&lt;br&gt; When creating a member, you&#39;ll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.&lt;br&gt; If successful, Atrium will respond with the newly-created member object.&lt;br&gt; Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code) (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> createMemberWithHttpInfo(String userGuid, MemberCreateRequestBody body) throws ApiException {
+    public ApiResponse<MemberResponseBody> createMemberWithHttpInfo(String userGuid, MemberCreateRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = createMemberValidateBeforeCall(userGuid, body, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -298,7 +298,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createMemberAsync(String userGuid, MemberCreateRequestBody body, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call createMemberAsync(String userGuid, MemberCreateRequestBody body, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -320,7 +320,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = createMemberValidateBeforeCall(userGuid, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -537,11 +537,11 @@ public class MembersApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Accounts
+     * @return AccountsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Accounts listMemberAccounts(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Accounts> resp = listMemberAccountsWithHttpInfo(memberGuid, userGuid, page, recordsPerPage);
+    public AccountsResponseBody listMemberAccounts(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<AccountsResponseBody> resp = listMemberAccountsWithHttpInfo(memberGuid, userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -552,12 +552,12 @@ public class MembersApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Accounts&gt;
+     * @return ApiResponse&lt;AccountsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Accounts> listMemberAccountsWithHttpInfo(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<AccountsResponseBody> listMemberAccountsWithHttpInfo(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listMemberAccountsValidateBeforeCall(memberGuid, userGuid, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -572,7 +572,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMemberAccountsAsync(String memberGuid, String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<Accounts> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMemberAccountsAsync(String memberGuid, String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<AccountsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -594,7 +594,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = listMemberAccountsValidateBeforeCall(memberGuid, userGuid, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -674,11 +674,11 @@ public class MembersApi {
      * This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Credentials
+     * @return CredentialsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Credentials listMemberCredentials(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Credentials> resp = listMemberCredentialsWithHttpInfo(memberGuid, userGuid);
+    public CredentialsResponseBody listMemberCredentials(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<CredentialsResponseBody> resp = listMemberCredentialsWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -687,12 +687,12 @@ public class MembersApi {
      * This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Credentials&gt;
+     * @return ApiResponse&lt;CredentialsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Credentials> listMemberCredentialsWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<CredentialsResponseBody> listMemberCredentialsWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = listMemberCredentialsValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Credentials>(){}.getType();
+        Type localVarReturnType = new TypeToken<CredentialsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -705,7 +705,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMemberCredentialsAsync(String memberGuid, String userGuid, final ApiCallback<Credentials> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMemberCredentialsAsync(String memberGuid, String userGuid, final ApiCallback<CredentialsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -727,7 +727,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = listMemberCredentialsValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Credentials>(){}.getType();
+        Type localVarReturnType = new TypeToken<CredentialsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -807,11 +807,11 @@ public class MembersApi {
      * Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.&lt;br&gt; If the aggregation is not challenged, i.e., the member does not have a connection status of CHALLENGED, then code 204 No Content will be returned.&lt;br&gt; If the aggregation has been challenged, i.e., the member does have a connection status of CHALLENGED, then code 200 OK will be returned — along with the corresponding credentials. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Challenges
+     * @return ChallengesResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Challenges listMemberMFAChallenges(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Challenges> resp = listMemberMFAChallengesWithHttpInfo(memberGuid, userGuid);
+    public ChallengesResponseBody listMemberMFAChallenges(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<ChallengesResponseBody> resp = listMemberMFAChallengesWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -820,12 +820,12 @@ public class MembersApi {
      * Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.&lt;br&gt; If the aggregation is not challenged, i.e., the member does not have a connection status of CHALLENGED, then code 204 No Content will be returned.&lt;br&gt; If the aggregation has been challenged, i.e., the member does have a connection status of CHALLENGED, then code 200 OK will be returned — along with the corresponding credentials. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Challenges&gt;
+     * @return ApiResponse&lt;ChallengesResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Challenges> listMemberMFAChallengesWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<ChallengesResponseBody> listMemberMFAChallengesWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = listMemberMFAChallengesValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Challenges>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChallengesResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -838,7 +838,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMemberMFAChallengesAsync(String memberGuid, String userGuid, final ApiCallback<Challenges> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMemberMFAChallengesAsync(String memberGuid, String userGuid, final ApiCallback<ChallengesResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -860,7 +860,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = listMemberMFAChallengesValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Challenges>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChallengesResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -956,11 +956,11 @@ public class MembersApi {
      * @param toDate Filter transactions to this date. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Transactions
+     * @return TransactionsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Transactions listMemberTransactions(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Transactions> resp = listMemberTransactionsWithHttpInfo(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+    public TransactionsResponseBody listMemberTransactions(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<TransactionsResponseBody> resp = listMemberTransactionsWithHttpInfo(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -973,12 +973,12 @@ public class MembersApi {
      * @param toDate Filter transactions to this date. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Transactions&gt;
+     * @return ApiResponse&lt;TransactionsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Transactions> listMemberTransactionsWithHttpInfo(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<TransactionsResponseBody> listMemberTransactionsWithHttpInfo(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listMemberTransactionsValidateBeforeCall(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -995,7 +995,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMemberTransactionsAsync(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage, final ApiCallback<Transactions> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMemberTransactionsAsync(String memberGuid, String userGuid, String fromDate, String toDate, Integer page, Integer recordsPerPage, final ApiCallback<TransactionsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1017,7 +1017,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = listMemberTransactionsValidateBeforeCall(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<TransactionsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1097,11 +1097,11 @@ public class MembersApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return Members
+     * @return MembersResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Members listMembers(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<Members> resp = listMembersWithHttpInfo(userGuid, page, recordsPerPage);
+    public MembersResponseBody listMembers(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<MembersResponseBody> resp = listMembersWithHttpInfo(userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -1111,12 +1111,12 @@ public class MembersApi {
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
-     * @return ApiResponse&lt;Members&gt;
+     * @return ApiResponse&lt;MembersResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Members> listMembersWithHttpInfo(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+    public ApiResponse<MembersResponseBody> listMembersWithHttpInfo(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
         com.squareup.okhttp.Call call = listMembersValidateBeforeCall(userGuid, page, recordsPerPage, null, null);
-        Type localVarReturnType = new TypeToken<Members>(){}.getType();
+        Type localVarReturnType = new TypeToken<MembersResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1130,7 +1130,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMembersAsync(String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<Members> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMembersAsync(String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<MembersResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1152,7 +1152,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = listMembersValidateBeforeCall(userGuid, page, recordsPerPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Members>(){}.getType();
+        Type localVarReturnType = new TypeToken<MembersResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1232,11 +1232,11 @@ public class MembersApi {
      * Use this endpoint to read the attributes of a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member readMember(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<Member> resp = readMemberWithHttpInfo(memberGuid, userGuid);
+    public MemberResponseBody readMember(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = readMemberWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -1245,12 +1245,12 @@ public class MembersApi {
      * Use this endpoint to read the attributes of a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> readMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<MemberResponseBody> readMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readMemberValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1263,7 +1263,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readMemberAsync(String memberGuid, String userGuid, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call readMemberAsync(String memberGuid, String userGuid, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1285,7 +1285,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = readMemberValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1365,11 +1365,11 @@ public class MembersApi {
      * This endpoint provides the status of the member&#39;s most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.&lt;br&gt; MX has introduced new, more detailed information on the current status of a member&#39;s connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return MemberConnectionStatus
+     * @return MemberConnectionStatusResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MemberConnectionStatus readMemberStatus(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<MemberConnectionStatus> resp = readMemberStatusWithHttpInfo(memberGuid, userGuid);
+    public MemberConnectionStatusResponseBody readMemberStatus(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberConnectionStatusResponseBody> resp = readMemberStatusWithHttpInfo(memberGuid, userGuid);
         return resp.getData();
     }
 
@@ -1378,12 +1378,12 @@ public class MembersApi {
      * This endpoint provides the status of the member&#39;s most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.&lt;br&gt; MX has introduced new, more detailed information on the current status of a member&#39;s connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being. 
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
-     * @return ApiResponse&lt;MemberConnectionStatus&gt;
+     * @return ApiResponse&lt;MemberConnectionStatusResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MemberConnectionStatus> readMemberStatusWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+    public ApiResponse<MemberConnectionStatusResponseBody> readMemberStatusWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
         com.squareup.okhttp.Call call = readMemberStatusValidateBeforeCall(memberGuid, userGuid, null, null);
-        Type localVarReturnType = new TypeToken<MemberConnectionStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberConnectionStatusResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1396,7 +1396,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call readMemberStatusAsync(String memberGuid, String userGuid, final ApiCallback<MemberConnectionStatus> callback) throws ApiException {
+    public com.squareup.okhttp.Call readMemberStatusAsync(String memberGuid, String userGuid, final ApiCallback<MemberConnectionStatusResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1418,7 +1418,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = readMemberStatusValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MemberConnectionStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberConnectionStatusResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1505,11 +1505,11 @@ public class MembersApi {
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object with MFA challenge answers (required)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member resumeMember(String memberGuid, String userGuid, MemberResumeRequestBody body) throws ApiException {
-        ApiResponse<Member> resp = resumeMemberWithHttpInfo(memberGuid, userGuid, body);
+    public MemberResponseBody resumeMember(String memberGuid, String userGuid, MemberResumeRequestBody body) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = resumeMemberWithHttpInfo(memberGuid, userGuid, body);
         return resp.getData();
     }
 
@@ -1519,12 +1519,12 @@ public class MembersApi {
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object with MFA challenge answers (required)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> resumeMemberWithHttpInfo(String memberGuid, String userGuid, MemberResumeRequestBody body) throws ApiException {
+    public ApiResponse<MemberResponseBody> resumeMemberWithHttpInfo(String memberGuid, String userGuid, MemberResumeRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = resumeMemberValidateBeforeCall(memberGuid, userGuid, body, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1538,7 +1538,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call resumeMemberAsync(String memberGuid, String userGuid, MemberResumeRequestBody body, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call resumeMemberAsync(String memberGuid, String userGuid, MemberResumeRequestBody body, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1560,7 +1560,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = resumeMemberValidateBeforeCall(memberGuid, userGuid, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1642,11 +1642,11 @@ public class MembersApi {
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object to be updated with optional parameters (credentials, identifier, metadata) (optional)
-     * @return Member
+     * @return MemberResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Member updateMember(String memberGuid, String userGuid, MemberUpdateRequestBody body) throws ApiException {
-        ApiResponse<Member> resp = updateMemberWithHttpInfo(memberGuid, userGuid, body);
+    public MemberResponseBody updateMember(String memberGuid, String userGuid, MemberUpdateRequestBody body) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = updateMemberWithHttpInfo(memberGuid, userGuid, body);
         return resp.getData();
     }
 
@@ -1656,12 +1656,12 @@ public class MembersApi {
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object to be updated with optional parameters (credentials, identifier, metadata) (optional)
-     * @return ApiResponse&lt;Member&gt;
+     * @return ApiResponse&lt;MemberResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Member> updateMemberWithHttpInfo(String memberGuid, String userGuid, MemberUpdateRequestBody body) throws ApiException {
+    public ApiResponse<MemberResponseBody> updateMemberWithHttpInfo(String memberGuid, String userGuid, MemberUpdateRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = updateMemberValidateBeforeCall(memberGuid, userGuid, body, null, null);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1675,7 +1675,7 @@ public class MembersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateMemberAsync(String memberGuid, String userGuid, MemberUpdateRequestBody body, final ApiCallback<Member> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateMemberAsync(String memberGuid, String userGuid, MemberUpdateRequestBody body, final ApiCallback<MemberResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1697,7 +1697,7 @@ public class MembersApi {
         }
 
         com.squareup.okhttp.Call call = updateMemberValidateBeforeCall(memberGuid, userGuid, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Member>(){}.getType();
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

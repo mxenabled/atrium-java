@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member** | [**MemberResumeRequestBodyAttributes**](MemberResumeRequestBodyAttributes.md) |  |  [optional]
+**member** | [**MemberResumeRequest**](MemberResumeRequest.md) |  |  [optional]
 
 
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listAccountNumbers"></a>
 # **listAccountNumbers**
-> AccountNumbers listAccountNumbers(memberGuid, userGuid)
+> AccountNumbersResponseBody listAccountNumbers(memberGuid, userGuid)
 
 Read account numbers
 
@@ -37,7 +37,7 @@ VerificationApi apiInstance = new VerificationApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    AccountNumbers result = apiInstance.listAccountNumbers(memberGuid, userGuid);
+    AccountNumbersResponseBody result = apiInstance.listAccountNumbers(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VerificationApi#listAccountNumbers");
@@ -54,11 +54,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountNumbers**](AccountNumbers.md)
+[**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 <a name="listAccountNumbersByAccount"></a>
 # **listAccountNumbersByAccount**
-> AccountNumbers listAccountNumbersByAccount(accountGuid, userGuid)
+> AccountNumbersResponseBody listAccountNumbersByAccount(accountGuid, userGuid)
 
 Read account numbers by account GUID
 
@@ -86,7 +86,7 @@ VerificationApi apiInstance = new VerificationApi();
 String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    AccountNumbers result = apiInstance.listAccountNumbersByAccount(accountGuid, userGuid);
+    AccountNumbersResponseBody result = apiInstance.listAccountNumbersByAccount(accountGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VerificationApi#listAccountNumbersByAccount");
@@ -103,11 +103,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountNumbers**](AccountNumbers.md)
+[**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 <a name="verifyMember"></a>
 # **verifyMember**
-> Member verifyMember(memberGuid, userGuid)
+> MemberResponseBody verifyMember(memberGuid, userGuid)
 
 Verify
 
@@ -135,7 +135,7 @@ VerificationApi apiInstance = new VerificationApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Member result = apiInstance.verifyMember(memberGuid, userGuid);
+    MemberResponseBody result = apiInstance.verifyMember(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VerificationApi#verifyMember");
@@ -152,5 +152,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createUser"></a>
 # **createUser**
-> User createUser(body)
+> UserResponseBody createUser(body)
 
 Create user
 
@@ -38,7 +38,7 @@ clientID.setApiKey("YOUR_CLIENT_ID");
 UsersApi apiInstance = new UsersApi();
 UserCreateRequestBody body = new UserCreateRequestBody(); // UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
 try {
-    User result = apiInstance.createUser(body);
+    UserResponseBody result = apiInstance.createUser(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#createUser");
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 
 <a name="deleteUser"></a>
 # **deleteUser**
@@ -104,7 +104,7 @@ null (empty response body)
 
 <a name="listUsers"></a>
 # **listUsers**
-> Users listUsers(page, recordsPerPage)
+> UsersResponseBody listUsers(page, recordsPerPage)
 
 List users
 
@@ -132,7 +132,7 @@ UsersApi apiInstance = new UsersApi();
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Users result = apiInstance.listUsers(page, recordsPerPage);
+    UsersResponseBody result = apiInstance.listUsers(page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#listUsers");
@@ -149,11 +149,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Users**](Users.md)
+[**UsersResponseBody**](UsersResponseBody.md)
 
 <a name="readUser"></a>
 # **readUser**
-> User readUser(userGuid)
+> UserResponseBody readUser(userGuid)
 
 Read user
 
@@ -180,7 +180,7 @@ clientID.setApiKey("YOUR_CLIENT_ID");
 UsersApi apiInstance = new UsersApi();
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    User result = apiInstance.readUser(userGuid);
+    UserResponseBody result = apiInstance.readUser(userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#readUser");
@@ -196,11 +196,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 
 <a name="updateUser"></a>
 # **updateUser**
-> User updateUser(userGuid, body)
+> UserResponseBody updateUser(userGuid, body)
 
 Update user
 
@@ -228,7 +228,7 @@ UsersApi apiInstance = new UsersApi();
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 UserUpdateRequestBody body = new UserUpdateRequestBody(); // UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)
 try {
-    User result = apiInstance.updateUser(userGuid, body);
+    UserResponseBody result = apiInstance.updateUser(userGuid, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#updateUser");
@@ -245,5 +245,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 

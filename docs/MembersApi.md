@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="aggregateMember"></a>
 # **aggregateMember**
-> Member aggregateMember(memberGuid, userGuid)
+> MemberResponseBody aggregateMember(memberGuid, userGuid)
 
 Aggregate member
 
@@ -46,7 +46,7 @@ MembersApi apiInstance = new MembersApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Member result = apiInstance.aggregateMember(memberGuid, userGuid);
+    MemberResponseBody result = apiInstance.aggregateMember(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#aggregateMember");
@@ -63,11 +63,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="createMember"></a>
 # **createMember**
-> Member createMember(userGuid, body)
+> MemberResponseBody createMember(userGuid, body)
 
 Create member
 
@@ -95,7 +95,7 @@ MembersApi apiInstance = new MembersApi();
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 MemberCreateRequestBody body = new MemberCreateRequestBody(); // MemberCreateRequestBody | Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
 try {
-    Member result = apiInstance.createMember(userGuid, body);
+    MemberResponseBody result = apiInstance.createMember(userGuid, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#createMember");
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="deleteMember"></a>
 # **deleteMember**
@@ -164,7 +164,7 @@ null (empty response body)
 
 <a name="listMemberAccounts"></a>
 # **listMemberAccounts**
-> Accounts listMemberAccounts(memberGuid, userGuid, page, recordsPerPage)
+> AccountsResponseBody listMemberAccounts(memberGuid, userGuid, page, recordsPerPage)
 
 List member accounts
 
@@ -194,7 +194,7 @@ String userGuid = "userGuid_example"; // String | The unique identifier for a `u
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Accounts result = apiInstance.listMemberAccounts(memberGuid, userGuid, page, recordsPerPage);
+    AccountsResponseBody result = apiInstance.listMemberAccounts(memberGuid, userGuid, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#listMemberAccounts");
@@ -213,11 +213,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accounts**](Accounts.md)
+[**AccountsResponseBody**](AccountsResponseBody.md)
 
 <a name="listMemberCredentials"></a>
 # **listMemberCredentials**
-> Credentials listMemberCredentials(memberGuid, userGuid)
+> CredentialsResponseBody listMemberCredentials(memberGuid, userGuid)
 
 List member credentials
 
@@ -245,7 +245,7 @@ MembersApi apiInstance = new MembersApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Credentials result = apiInstance.listMemberCredentials(memberGuid, userGuid);
+    CredentialsResponseBody result = apiInstance.listMemberCredentials(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#listMemberCredentials");
@@ -262,11 +262,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Credentials**](Credentials.md)
+[**CredentialsResponseBody**](CredentialsResponseBody.md)
 
 <a name="listMemberMFAChallenges"></a>
 # **listMemberMFAChallenges**
-> Challenges listMemberMFAChallenges(memberGuid, userGuid)
+> ChallengesResponseBody listMemberMFAChallenges(memberGuid, userGuid)
 
 List member MFA challenges
 
@@ -294,7 +294,7 @@ MembersApi apiInstance = new MembersApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Challenges result = apiInstance.listMemberMFAChallenges(memberGuid, userGuid);
+    ChallengesResponseBody result = apiInstance.listMemberMFAChallenges(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#listMemberMFAChallenges");
@@ -311,11 +311,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Challenges**](Challenges.md)
+[**ChallengesResponseBody**](ChallengesResponseBody.md)
 
 <a name="listMemberTransactions"></a>
 # **listMemberTransactions**
-> Transactions listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage)
+> TransactionsResponseBody listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage)
 
 List member transactions
 
@@ -347,7 +347,7 @@ String toDate = "toDate_example"; // String | Filter transactions to this date.
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Transactions result = apiInstance.listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+    TransactionsResponseBody result = apiInstance.listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#listMemberTransactions");
@@ -368,11 +368,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 <a name="listMembers"></a>
 # **listMembers**
-> Members listMembers(userGuid, page, recordsPerPage)
+> MembersResponseBody listMembers(userGuid, page, recordsPerPage)
 
 List members
 
@@ -401,7 +401,7 @@ String userGuid = "userGuid_example"; // String | The unique identifier for a `u
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Members result = apiInstance.listMembers(userGuid, page, recordsPerPage);
+    MembersResponseBody result = apiInstance.listMembers(userGuid, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#listMembers");
@@ -419,11 +419,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Members**](Members.md)
+[**MembersResponseBody**](MembersResponseBody.md)
 
 <a name="readMember"></a>
 # **readMember**
-> Member readMember(memberGuid, userGuid)
+> MemberResponseBody readMember(memberGuid, userGuid)
 
 Read member
 
@@ -451,7 +451,7 @@ MembersApi apiInstance = new MembersApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Member result = apiInstance.readMember(memberGuid, userGuid);
+    MemberResponseBody result = apiInstance.readMember(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#readMember");
@@ -468,11 +468,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="readMemberStatus"></a>
 # **readMemberStatus**
-> MemberConnectionStatus readMemberStatus(memberGuid, userGuid)
+> MemberConnectionStatusResponseBody readMemberStatus(memberGuid, userGuid)
 
 Read member connection status
 
@@ -500,7 +500,7 @@ MembersApi apiInstance = new MembersApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    MemberConnectionStatus result = apiInstance.readMemberStatus(memberGuid, userGuid);
+    MemberConnectionStatusResponseBody result = apiInstance.readMemberStatus(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#readMemberStatus");
@@ -517,11 +517,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MemberConnectionStatus**](MemberConnectionStatus.md)
+[**MemberConnectionStatusResponseBody**](MemberConnectionStatusResponseBody.md)
 
 <a name="resumeMember"></a>
 # **resumeMember**
-> Member resumeMember(memberGuid, userGuid, body)
+> MemberResponseBody resumeMember(memberGuid, userGuid, body)
 
 Resume aggregation from MFA
 
@@ -550,7 +550,7 @@ String memberGuid = "memberGuid_example"; // String | The unique identifier for 
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 MemberResumeRequestBody body = new MemberResumeRequestBody(); // MemberResumeRequestBody | Member object with MFA challenge answers
 try {
-    Member result = apiInstance.resumeMember(memberGuid, userGuid, body);
+    MemberResponseBody result = apiInstance.resumeMember(memberGuid, userGuid, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#resumeMember");
@@ -568,11 +568,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="updateMember"></a>
 # **updateMember**
-> Member updateMember(memberGuid, userGuid, body)
+> MemberResponseBody updateMember(memberGuid, userGuid, body)
 
 Update member
 
@@ -601,7 +601,7 @@ String memberGuid = "memberGuid_example"; // String | The unique identifier for 
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 MemberUpdateRequestBody body = new MemberUpdateRequestBody(); // MemberUpdateRequestBody | Member object to be updated with optional parameters (credentials, identifier, metadata)
 try {
-    Member result = apiInstance.updateMember(memberGuid, userGuid, body);
+    MemberResponseBody result = apiInstance.updateMember(memberGuid, userGuid, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MembersApi#updateMember");
@@ -619,5 +619,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 

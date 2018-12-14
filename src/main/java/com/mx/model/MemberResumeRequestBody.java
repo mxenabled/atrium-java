@@ -16,7 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.MemberResumeRequestBodyAttributes;
+import com.mx.model.MemberResumeRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -24,13 +24,13 @@ import java.io.IOException;
 /**
  * MemberResumeRequestBody
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-06T14:59:06.449-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-14T09:45:03.754-07:00")
 
 public class MemberResumeRequestBody {
   @SerializedName("member")
-  private MemberResumeRequestBodyAttributes member = null;
+  private MemberResumeRequest member = null;
 
-  public MemberResumeRequestBody member(MemberResumeRequestBodyAttributes member) {
+  public MemberResumeRequestBody member(MemberResumeRequest member) {
     this.member = member;
     return this;
   }
@@ -40,11 +40,11 @@ public class MemberResumeRequestBody {
    * @return member
   **/
   @ApiModelProperty(value = "")
-  public MemberResumeRequestBodyAttributes getMember() {
+  public MemberResumeRequest getMember() {
     return member;
   }
 
-  public void setMember(MemberResumeRequestBodyAttributes member) {
+  public void setMember(MemberResumeRequest member) {
     this.member = member;
   }
 

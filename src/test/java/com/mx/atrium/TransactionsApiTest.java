@@ -10,10 +10,10 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.Transaction;
-import com.mx.model.Transactions;
-import com.mx.model.TransactionsCleanseAndCategorize;
+import com.mx.model.TransactionResponseBody;
 import com.mx.model.TransactionsCleanseAndCategorizeRequestBody;
+import com.mx.model.TransactionsCleanseAndCategorizeResponseBody;
+import com.mx.model.TransactionsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -42,7 +42,7 @@ public class TransactionsApiTest {
     @Test
     public void cleanseAndCategorizeTransactionsTest() throws ApiException {
         TransactionsCleanseAndCategorizeRequestBody body = null;
-        TransactionsCleanseAndCategorize response = api.cleanseAndCategorizeTransactions(body);
+        TransactionsCleanseAndCategorizeResponseBody response = api.cleanseAndCategorizeTransactions(body);
 
         // TODO: test validations
     }
@@ -62,7 +62,7 @@ public class TransactionsApiTest {
         String fromDate = null;
         Integer recordsPerPage = null;
         String toDate = null;
-        Transactions response = api.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
+        TransactionsResponseBody response = api.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
 
         // TODO: test validations
     }
@@ -79,7 +79,7 @@ public class TransactionsApiTest {
     public void readTransactionTest() throws ApiException {
         String transactionGuid = null;
         String userGuid = null;
-        Transaction response = api.readTransaction(transactionGuid, userGuid);
+        TransactionResponseBody response = api.readTransaction(transactionGuid, userGuid);
 
         // TODO: test validations
     }

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="identifyMember"></a>
 # **identifyMember**
-> Member identifyMember(memberGuid, userGuid)
+> MemberResponseBody identifyMember(memberGuid, userGuid)
 
 Identify
 
@@ -36,7 +36,7 @@ IdentityApi apiInstance = new IdentityApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Member result = apiInstance.identifyMember(memberGuid, userGuid);
+    MemberResponseBody result = apiInstance.identifyMember(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdentityApi#identifyMember");
@@ -53,11 +53,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="listAccountOwners"></a>
 # **listAccountOwners**
-> AccountOwners listAccountOwners(memberGuid, userGuid)
+> AccountOwnersResponseBody listAccountOwners(memberGuid, userGuid)
 
 List member account owners
 
@@ -85,7 +85,7 @@ IdentityApi apiInstance = new IdentityApi();
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    AccountOwners result = apiInstance.listAccountOwners(memberGuid, userGuid);
+    AccountOwnersResponseBody result = apiInstance.listAccountOwners(memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdentityApi#listAccountOwners");
@@ -102,5 +102,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountOwners**](AccountOwners.md)
+[**AccountOwnersResponseBody**](AccountOwnersResponseBody.md)
 

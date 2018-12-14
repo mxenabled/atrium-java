@@ -10,16 +10,16 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
-import com.mx.model.Accounts;
-import com.mx.model.Challenges;
-import com.mx.model.Credentials;
-import com.mx.model.Member;
-import com.mx.model.MemberConnectionStatus;
+import com.mx.model.AccountsResponseBody;
+import com.mx.model.ChallengesResponseBody;
+import com.mx.model.CredentialsResponseBody;
+import com.mx.model.MemberConnectionStatusResponseBody;
 import com.mx.model.MemberCreateRequestBody;
+import com.mx.model.MemberResponseBody;
 import com.mx.model.MemberResumeRequestBody;
 import com.mx.model.MemberUpdateRequestBody;
-import com.mx.model.Members;
-import com.mx.model.Transactions;
+import com.mx.model.MembersResponseBody;
+import com.mx.model.TransactionsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -49,7 +49,7 @@ public class MembersApiTest {
     public void aggregateMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Member response = api.aggregateMember(memberGuid, userGuid);
+        MemberResponseBody response = api.aggregateMember(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -66,7 +66,7 @@ public class MembersApiTest {
     public void createMemberTest() throws ApiException {
         String userGuid = null;
         MemberCreateRequestBody body = null;
-        Member response = api.createMember(userGuid, body);
+        MemberResponseBody response = api.createMember(userGuid, body);
 
         // TODO: test validations
     }
@@ -102,7 +102,7 @@ public class MembersApiTest {
         String userGuid = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Accounts response = api.listMemberAccounts(memberGuid, userGuid, page, recordsPerPage);
+        AccountsResponseBody response = api.listMemberAccounts(memberGuid, userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -119,7 +119,7 @@ public class MembersApiTest {
     public void listMemberCredentialsTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Credentials response = api.listMemberCredentials(memberGuid, userGuid);
+        CredentialsResponseBody response = api.listMemberCredentials(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -136,7 +136,7 @@ public class MembersApiTest {
     public void listMemberMFAChallengesTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Challenges response = api.listMemberMFAChallenges(memberGuid, userGuid);
+        ChallengesResponseBody response = api.listMemberMFAChallenges(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -157,7 +157,7 @@ public class MembersApiTest {
         String toDate = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Transactions response = api.listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+        TransactionsResponseBody response = api.listMemberTransactions(memberGuid, userGuid, fromDate, toDate, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -175,7 +175,7 @@ public class MembersApiTest {
         String userGuid = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        Members response = api.listMembers(userGuid, page, recordsPerPage);
+        MembersResponseBody response = api.listMembers(userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -192,7 +192,7 @@ public class MembersApiTest {
     public void readMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        Member response = api.readMember(memberGuid, userGuid);
+        MemberResponseBody response = api.readMember(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -209,7 +209,7 @@ public class MembersApiTest {
     public void readMemberStatusTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        MemberConnectionStatus response = api.readMemberStatus(memberGuid, userGuid);
+        MemberConnectionStatusResponseBody response = api.readMemberStatus(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -227,7 +227,7 @@ public class MembersApiTest {
         String memberGuid = null;
         String userGuid = null;
         MemberResumeRequestBody body = null;
-        Member response = api.resumeMember(memberGuid, userGuid, body);
+        MemberResponseBody response = api.resumeMember(memberGuid, userGuid, body);
 
         // TODO: test validations
     }
@@ -245,7 +245,7 @@ public class MembersApiTest {
         String memberGuid = null;
         String userGuid = null;
         MemberUpdateRequestBody body = null;
-        Member response = api.updateMember(memberGuid, userGuid, body);
+        MemberResponseBody response = api.updateMember(memberGuid, userGuid, body);
 
         // TODO: test validations
     }

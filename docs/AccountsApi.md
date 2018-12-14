@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="listAccountTransactions"></a>
 # **listAccountTransactions**
-> Transactions listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage)
+> TransactionsResponseBody listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage)
 
 List account transactions
 
@@ -42,7 +42,7 @@ String toDate = "toDate_example"; // String | Filter transactions to this date.
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Transactions result = apiInstance.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+    TransactionsResponseBody result = apiInstance.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#listAccountTransactions");
@@ -63,11 +63,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 <a name="listUserAccounts"></a>
 # **listUserAccounts**
-> Accounts listUserAccounts(userGuid, page, recordsPerPage)
+> AccountsResponseBody listUserAccounts(userGuid, page, recordsPerPage)
 
 List accounts for a user
 
@@ -96,7 +96,7 @@ String userGuid = "userGuid_example"; // String | The unique identifier for a `u
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Accounts result = apiInstance.listUserAccounts(userGuid, page, recordsPerPage);
+    AccountsResponseBody result = apiInstance.listUserAccounts(userGuid, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#listUserAccounts");
@@ -114,11 +114,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accounts**](Accounts.md)
+[**AccountsResponseBody**](AccountsResponseBody.md)
 
 <a name="readAccount"></a>
 # **readAccount**
-> Account readAccount(accountGuid, userGuid)
+> AccountResponseBody readAccount(accountGuid, userGuid)
 
 Read an account
 
@@ -146,7 +146,7 @@ AccountsApi apiInstance = new AccountsApi();
 String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Account result = apiInstance.readAccount(accountGuid, userGuid);
+    AccountResponseBody result = apiInstance.readAccount(accountGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#readAccount");
@@ -163,11 +163,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Account**](Account.md)
+[**AccountResponseBody**](AccountResponseBody.md)
 
 <a name="readAccountByMemberGUID"></a>
 # **readAccountByMemberGUID**
-> Account readAccountByMemberGUID(accountGuid, memberGuid, userGuid)
+> AccountResponseBody readAccountByMemberGUID(accountGuid, memberGuid, userGuid)
 
 Read an account
 
@@ -196,7 +196,7 @@ String accountGuid = "accountGuid_example"; // String | The unique identifier fo
 String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 try {
-    Account result = apiInstance.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
+    AccountResponseBody result = apiInstance.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#readAccountByMemberGUID");
@@ -214,5 +214,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Account**](Account.md)
+[**AccountResponseBody**](AccountResponseBody.md)
 

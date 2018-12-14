@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listInstitutions"></a>
 # **listInstitutions**
-> Institutions listInstitutions(name, page, recordsPerPage)
+> InstitutionsResponseBody listInstitutions(name, page, recordsPerPage)
 
 List institutions
 
@@ -38,7 +38,7 @@ String name = "name_example"; // String | This will list only institutions in wh
 Integer page = 12; // Integer | Specify current page.
 Integer recordsPerPage = 12; // Integer | Specify records per page.
 try {
-    Institutions result = apiInstance.listInstitutions(name, page, recordsPerPage);
+    InstitutionsResponseBody result = apiInstance.listInstitutions(name, page, recordsPerPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#listInstitutions");
@@ -56,11 +56,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Institutions**](Institutions.md)
+[**InstitutionsResponseBody**](InstitutionsResponseBody.md)
 
 <a name="readInstitution"></a>
 # **readInstitution**
-> Institution readInstitution(institutionCode)
+> InstitutionResponseBody readInstitution(institutionCode)
 
 Read institution
 
@@ -87,7 +87,7 @@ clientID.setApiKey("YOUR_CLIENT_ID");
 InstitutionsApi apiInstance = new InstitutionsApi();
 String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.
 try {
-    Institution result = apiInstance.readInstitution(institutionCode);
+    InstitutionResponseBody result = apiInstance.readInstitution(institutionCode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#readInstitution");
@@ -103,11 +103,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Institution**](Institution.md)
+[**InstitutionResponseBody**](InstitutionResponseBody.md)
 
 <a name="readInstitutionCredentials"></a>
 # **readInstitutionCredentials**
-> Credentials readInstitutionCredentials(institutionCode)
+> CredentialsResponseBody readInstitutionCredentials(institutionCode)
 
 Read institution credentials
 
@@ -134,7 +134,7 @@ clientID.setApiKey("YOUR_CLIENT_ID");
 InstitutionsApi apiInstance = new InstitutionsApi();
 String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.
 try {
-    Credentials result = apiInstance.readInstitutionCredentials(institutionCode);
+    CredentialsResponseBody result = apiInstance.readInstitutionCredentials(institutionCode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#readInstitutionCredentials");
@@ -150,5 +150,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Credentials**](Credentials.md)
+[**CredentialsResponseBody**](CredentialsResponseBody.md)
 

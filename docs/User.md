@@ -4,7 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**UserAttributes**](UserAttributes.md) |  |  [optional]
+**guid** | **String** |  |  [optional]
+**identifier** | **String** |  |  [optional]
+**isDisabled** | **Boolean** |  |  [optional]
+**metadata** | **String** |  |  [optional]
 
 
 

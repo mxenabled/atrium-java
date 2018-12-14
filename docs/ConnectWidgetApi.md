@@ -7,7 +7,7 @@ Method | HTTP request | Description
 
 <a name="getConnectWidget"></a>
 # **getConnectWidget**
-> ConnectWidget getConnectWidget(userGuid, body)
+> ConnectWidgetResponseBody getConnectWidget(userGuid, body)
 
 Embedding in a website
 
@@ -35,7 +35,7 @@ ConnectWidgetApi apiInstance = new ConnectWidgetApi();
 String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
 ConnectWidgetRequestBody body = new ConnectWidgetRequestBody(); // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
 try {
-    ConnectWidget result = apiInstance.getConnectWidget(userGuid, body);
+    ConnectWidgetResponseBody result = apiInstance.getConnectWidget(userGuid, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConnectWidgetApi#getConnectWidget");
@@ -52,5 +52,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConnectWidget**](ConnectWidget.md)
+[**ConnectWidgetResponseBody**](ConnectWidgetResponseBody.md)
 

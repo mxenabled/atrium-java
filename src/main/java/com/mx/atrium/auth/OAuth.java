@@ -14,7 +14,7 @@ import com.mx.atrium.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-16T18:26:56.880-07:00")
+@javax.annotation.Generated(value = "com.mx", date = "2018-12-17T15:45:23.680-07:00")
 
 public class OAuth implements Authentication {
   private String accessToken;

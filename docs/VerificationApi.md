@@ -17,31 +17,24 @@ Use this endpoint to check whether account and routing numbers are available for
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.VerificationApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class VerificationApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-VerificationApi apiInstance = new VerificationApi();
-String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    AccountNumbersResponseBody result = apiInstance.listAccountNumbers(memberGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling VerificationApi#listAccountNumbers");
-    e.printStackTrace();
+        try {
+            AccountNumbersResponseBody response = client.verification.listAccountNumbers(memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VerificationApi#listAccountNumbers");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -66,31 +59,24 @@ Use this endpoint to check whether account and routing numbers are available for
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.VerificationApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class VerificationApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-VerificationApi apiInstance = new VerificationApi();
-String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    AccountNumbersResponseBody result = apiInstance.listAccountNumbersByAccount(accountGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling VerificationApi#listAccountNumbersByAccount");
-    e.printStackTrace();
+        try {
+            AccountNumbersResponseBody response = client.verification.listAccountNumbersByAccount(accountGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VerificationApi#listAccountNumbersByAccount");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -115,31 +101,24 @@ The verify endpoint begins a verification process for a member.
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.VerificationApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class VerificationApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-VerificationApi apiInstance = new VerificationApi();
-String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    MemberResponseBody result = apiInstance.verifyMember(memberGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling VerificationApi#verifyMember");
-    e.printStackTrace();
+        try {
+            MemberResponseBody response = client.verification.verifyMember(memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VerificationApi#verifyMember");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

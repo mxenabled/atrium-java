@@ -18,35 +18,28 @@ This endpoint allows you to see every transaction that belongs to a specific acc
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.AccountsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class AccountsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        String fromDate = "2016-09-20"; // String | Filter transactions from this date.
+        String toDate = "2016-10-20"; // String | Filter transactions to this date.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-AccountsApi apiInstance = new AccountsApi();
-String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-String fromDate = "fromDate_example"; // String | Filter transactions from this date.
-String toDate = "toDate_example"; // String | Filter transactions to this date.
-Integer page = 12; // Integer | Specify current page.
-Integer recordsPerPage = 12; // Integer | Specify records per page.
-try {
-    TransactionsResponseBody result = apiInstance.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AccountsApi#listAccountTransactions");
-    e.printStackTrace();
+        try {
+            TransactionsResponseBody response = client.accounts.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#listAccountTransactions");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -75,32 +68,25 @@ Use this endpoint to view information about every account that belongs to a user
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.AccountsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class AccountsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-AccountsApi apiInstance = new AccountsApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-Integer page = 12; // Integer | Specify current page.
-Integer recordsPerPage = 12; // Integer | Specify records per page.
-try {
-    AccountsResponseBody result = apiInstance.listUserAccounts(userGuid, page, recordsPerPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AccountsApi#listUserAccounts");
-    e.printStackTrace();
+        try {
+            AccountsResponseBody response = client.accounts.listUserAccounts(userGuid, page, recordsPerPage);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#listUserAccounts");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -126,31 +112,24 @@ Reading an account allows you to get information about a specific account that b
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.AccountsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class AccountsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-AccountsApi apiInstance = new AccountsApi();
-String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    AccountResponseBody result = apiInstance.readAccount(accountGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AccountsApi#readAccount");
-    e.printStackTrace();
+        try {
+            AccountResponseBody response = client.accounts.readAccount(accountGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#readAccount");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -175,32 +154,25 @@ Reading an account allows you to get information about a specific account that b
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.AccountsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class AccountsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-AccountsApi apiInstance = new AccountsApi();
-String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
-String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    AccountResponseBody result = apiInstance.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AccountsApi#readAccountByMemberGUID");
-    e.printStackTrace();
+        try {
+            AccountResponseBody response = client.accounts.readAccountByMemberGUID(accountGuid, memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#readAccountByMemberGUID");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

@@ -33,36 +33,23 @@ Please see `docs` directory for additional endpoint examples
 ```java
 
 import com.mx.atrium.*;
-import com.mx.atrium.auth.*;
 import com.mx.model.*;
-import com.mx.atrium.AccountsApi;
-
-import java.io.File;
-import java.util.*;
 
 public class AccountsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-        // Configure API Key authorization
-        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-        apiKey.setApiKey("YOUR_API_KEY");
-
-        // Configure Client ID authorization
-        ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-        clientID.setApiKey("YOUR_CLIENT_ID");
-
-        AccountsApi apiInstance = new AccountsApi();
-        String accountGuid = "accountGuid_example"; // String | The unique identifier for an `account`.
-        String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-        String fromDate = "fromDate_example"; // String | Filter transactions from this date.
-        String toDate = "toDate_example"; // String | Filter transactions to this date.
-        Integer page = 12; // Integer | Specify current page.
+        String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        String fromDate = "2016-09-20"; // String | Filter transactions from this date.
+        String toDate = "2016-10-20"; // String | Filter transactions to this date.
+        Integer page = 1; // Integer | Specify current page.
         Integer recordsPerPage = 12; // Integer | Specify records per page.
+
         try {
-            TransactionsResponseBody result = apiInstance.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
-            System.out.println(result);
+            TransactionsResponseBody response = client.accounts.listAccountTransactions(accountGuid, userGuid, fromDate, toDate, page, recordsPerPage);
+            System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#listAccountTransactions");
             e.printStackTrace();

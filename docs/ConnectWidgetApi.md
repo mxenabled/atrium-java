@@ -15,31 +15,24 @@ This endpoint will return a URL for an embeddable version of MX Connect.
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.ConnectWidgetApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class ConnectWidgetApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        ConnectWidgetRequestBody body = new ConnectWidgetRequestBody(); // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-ConnectWidgetApi apiInstance = new ConnectWidgetApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-ConnectWidgetRequestBody body = new ConnectWidgetRequestBody(); // ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
-try {
-    ConnectWidgetResponseBody result = apiInstance.getConnectWidget(userGuid, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ConnectWidgetApi#getConnectWidget");
-    e.printStackTrace();
+        try {
+            ConnectWidgetResponseBody response = client.connectWidget.getConnectWidget(userGuid, body);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConnectWidgetApi#getConnectWidget");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

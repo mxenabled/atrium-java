@@ -17,32 +17,25 @@ This endpoint allows you to see what institutions are available for connection. 
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.InstitutionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class InstitutionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String name = name_example; // String | This will list only institutions in which the appended string appears.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-InstitutionsApi apiInstance = new InstitutionsApi();
-String name = "name_example"; // String | This will list only institutions in which the appended string appears.
-Integer page = 12; // Integer | Specify current page.
-Integer recordsPerPage = 12; // Integer | Specify records per page.
-try {
-    InstitutionsResponseBody result = apiInstance.listInstitutions(name, page, recordsPerPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstitutionsApi#listInstitutions");
-    e.printStackTrace();
+        try {
+            InstitutionsResponseBody response = client.institutions.listInstitutions(name, page, recordsPerPage);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#listInstitutions");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -68,30 +61,23 @@ This endpoint allows you to see information for a specific institution.
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.InstitutionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class InstitutionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String institutionCode = "example_institution_code"; // String | The institution_code of the institution.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-InstitutionsApi apiInstance = new InstitutionsApi();
-String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.
-try {
-    InstitutionResponseBody result = apiInstance.readInstitution(institutionCode);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstitutionsApi#readInstitution");
-    e.printStackTrace();
+        try {
+            InstitutionResponseBody response = client.institutions.readInstitution(institutionCode);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#readInstitution");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -115,30 +101,23 @@ Use this endpoint to see which credentials will be needed to create a member for
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.InstitutionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class InstitutionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String institutionCode = "example_institution_code"; // String | The institution_code of the institution.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-InstitutionsApi apiInstance = new InstitutionsApi();
-String institutionCode = "institutionCode_example"; // String | The institution_code of the institution.
-try {
-    CredentialsResponseBody result = apiInstance.readInstitutionCredentials(institutionCode);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstitutionsApi#readInstitutionCredentials");
-    e.printStackTrace();
+        try {
+            CredentialsResponseBody response = client.institutions.readInstitutionCredentials(institutionCode);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstitutionsApi#readInstitutionCredentials");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

@@ -19,30 +19,23 @@ Call this endpoint to create a new user. Atrium will respond with the newly-crea
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.UsersApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class UsersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        UserCreateRequestBody body = new UserCreateRequestBody(); // UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-UsersApi apiInstance = new UsersApi();
-UserCreateRequestBody body = new UserCreateRequestBody(); // UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
-try {
-    UserResponseBody result = apiInstance.createUser(body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UsersApi#createUser");
-    e.printStackTrace();
+        try {
+            UserResponseBody response = client.users.createUser(body);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#createUser");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -66,29 +59,22 @@ Calling this endpoint will permanently delete a user from Atrium. If successful,
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.UsersApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class UsersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-UsersApi apiInstance = new UsersApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    apiInstance.deleteUser(userGuid);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UsersApi#deleteUser");
-    e.printStackTrace();
+        try {
+            client.users.deleteUser(userGuid);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#deleteUser");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -112,31 +98,24 @@ Use this endpoint to list every user you&#39;ve created in Atrium.
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.UsersApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class UsersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-UsersApi apiInstance = new UsersApi();
-Integer page = 12; // Integer | Specify current page.
-Integer recordsPerPage = 12; // Integer | Specify records per page.
-try {
-    UsersResponseBody result = apiInstance.listUsers(page, recordsPerPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UsersApi#listUsers");
-    e.printStackTrace();
+        try {
+            UsersResponseBody response = client.users.listUsers(page, recordsPerPage);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#listUsers");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -161,30 +140,23 @@ Use this endpoint to read the attributes of a specific user.
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.UsersApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class UsersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-UsersApi apiInstance = new UsersApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    UserResponseBody result = apiInstance.readUser(userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UsersApi#readUser");
-    e.printStackTrace();
+        try {
+            UserResponseBody response = client.users.readUser(userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#readUser");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -208,31 +180,24 @@ Use this endpoint to update the attributes of a specific user. Atrium will respo
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.UsersApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class UsersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        UserUpdateRequestBody body = new UserUpdateRequestBody(); // UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-UsersApi apiInstance = new UsersApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-UserUpdateRequestBody body = new UserUpdateRequestBody(); // UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)
-try {
-    UserResponseBody result = apiInstance.updateUser(userGuid, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling UsersApi#updateUser");
-    e.printStackTrace();
+        try {
+            UserResponseBody response = client.users.updateUser(userGuid, body);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UsersApi#updateUser");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

@@ -17,30 +17,23 @@ Use this endpoint to categorize, cleanse, and classify transactions. These trans
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.TransactionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class TransactionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        TransactionsCleanseAndCategorizeRequestBody body = new TransactionsCleanseAndCategorizeRequestBody(); // TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-TransactionsApi apiInstance = new TransactionsApi();
-TransactionsCleanseAndCategorizeRequestBody body = new TransactionsCleanseAndCategorizeRequestBody(); // TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
-try {
-    TransactionsCleanseAndCategorizeResponseBody result = apiInstance.cleanseAndCategorizeTransactions(body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TransactionsApi#cleanseAndCategorizeTransactions");
-    e.printStackTrace();
+        try {
+            TransactionsCleanseAndCategorizeResponseBody response = client.transactions.cleanseAndCategorizeTransactions(body);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionsApi#cleanseAndCategorizeTransactions");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -64,34 +57,27 @@ Use this endpoint to get all transactions that belong to a specific user, across
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.TransactionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class TransactionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        String fromDate = "2016-09-20"; // String | Filter transactions from this date.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
+        String toDate = "2016-10-20"; // String | Filter transactions to this date.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-TransactionsApi apiInstance = new TransactionsApi();
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-Integer page = 12; // Integer | Specify current page.
-String fromDate = "fromDate_example"; // String | Filter transactions from this date.
-Integer recordsPerPage = 12; // Integer | Specify records per page.
-String toDate = "toDate_example"; // String | Filter transactions to this date.
-try {
-    TransactionsResponseBody result = apiInstance.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TransactionsApi#listUserTransactions");
-    e.printStackTrace();
+        try {
+            TransactionsResponseBody response = client.transactions.listUserTransactions(userGuid, page, fromDate, recordsPerPage, toDate);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionsApi#listUserTransactions");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -119,31 +105,24 @@ This endpoint allows you to view information about a specific transaction that b
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.TransactionsApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class TransactionsApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String transactionGuid = "TRN-123"; // String | The unique identifier for a `transaction`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-TransactionsApi apiInstance = new TransactionsApi();
-String transactionGuid = "transactionGuid_example"; // String | The unique identifier for a `transaction`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    TransactionResponseBody result = apiInstance.readTransaction(transactionGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling TransactionsApi#readTransaction");
-    e.printStackTrace();
+        try {
+            TransactionResponseBody response = client.transactions.readTransaction(transactionGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionsApi#readTransaction");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

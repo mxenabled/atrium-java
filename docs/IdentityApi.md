@@ -16,31 +16,24 @@ The identify endpoint begins an identification process for an already-existing m
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.IdentityApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class IdentityApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-IdentityApi apiInstance = new IdentityApi();
-String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    MemberResponseBody result = apiInstance.identifyMember(memberGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IdentityApi#identifyMember");
-    e.printStackTrace();
+        try {
+            MemberResponseBody response = client.identity.identifyMember(memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdentityApi#identifyMember");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -65,31 +58,24 @@ This endpoint returns an array with information about every account associated w
 
 ### Example
 ```java
-import com.mx.atrium.ApiClient;
-import com.mx.atrium.ApiException;
-import com.mx.atrium.Configuration;
-import com.mx.atrium.auth.*;
-import com.mx.atrium.IdentityApi;
+import com.mx.atrium.*;
+import com.mx.model.*;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class IdentityApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
 
-// Configure API Key authorization
-ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-apiKey.setApiKey("YOUR_API_KEY");
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
-// Configure Client ID authorization
-ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("clientID");
-clientID.setApiKey("YOUR_CLIENT_ID");
-
-IdentityApi apiInstance = new IdentityApi();
-String memberGuid = "memberGuid_example"; // String | The unique identifier for a `member`.
-String userGuid = "userGuid_example"; // String | The unique identifier for a `user`.
-try {
-    AccountOwnersResponseBody result = apiInstance.listAccountOwners(memberGuid, userGuid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IdentityApi#listAccountOwners");
-    e.printStackTrace();
+        try {
+            AccountOwnersResponseBody response = client.identity.listAccountOwners(memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdentityApi#listAccountOwners");
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

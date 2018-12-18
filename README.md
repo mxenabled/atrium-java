@@ -68,6 +68,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**readAccount**](docs/AccountsApi.md#readAccount) | **GET** /users/{user_guid}/accounts/{account_guid} | Read an account
 *AccountsApi* | [**readAccountByMemberGUID**](docs/AccountsApi.md#readAccountByMemberGUID) | **GET** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read an account
 *ConnectWidgetApi* | [**getConnectWidget**](docs/ConnectWidgetApi.md#getConnectWidget) | **POST** /users/{user_guid}/connect_widget_url | Embedding in a website
+*HoldingsApi* | [**listHoldings**](docs/HoldingsApi.md#listHoldings) | **GET** /users/{user_guid}/holdings | List holdings
+*HoldingsApi* | [**listHoldingsByAccount**](docs/HoldingsApi.md#listHoldingsByAccount) | **GET** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
+*HoldingsApi* | [**listHoldingsByMember**](docs/HoldingsApi.md#listHoldingsByMember) | **GET** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
+*HoldingsApi* | [**readHolding**](docs/HoldingsApi.md#readHolding) | **GET** /users/{user_guid}/holdings/{holding_guid} | Read holding
 *IdentityApi* | [**identifyMember**](docs/IdentityApi.md#identifyMember) | **POST** /users/{user_guid}/members/{member_guid}/identify | Identify
 *IdentityApi* | [**listAccountOwners**](docs/IdentityApi.md#listAccountOwners) | **GET** /users/{user_guid}/members/{member_guid}/account_owners | List member account owners
 *InstitutionsApi* | [**listInstitutions**](docs/InstitutionsApi.md#listInstitutions) | **GET** /institutions | List institutions
@@ -118,6 +122,9 @@ Class | Method | HTTP request | Description
  - [CredentialRequest](docs/CredentialRequest.md)
  - [CredentialResponse](docs/CredentialResponse.md)
  - [CredentialsResponseBody](docs/CredentialsResponseBody.md)
+ - [Holding](docs/Holding.md)
+ - [HoldingResponseBody](docs/HoldingResponseBody.md)
+ - [HoldingsResponseBody](docs/HoldingsResponseBody.md)
  - [Institution](docs/Institution.md)
  - [InstitutionResponseBody](docs/InstitutionResponseBody.md)
  - [InstitutionsResponseBody](docs/InstitutionsResponseBody.md)

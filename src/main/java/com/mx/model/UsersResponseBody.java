@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * UsersResponseBody
  */
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-17T15:45:23.680-07:00")
+
 
 public class UsersResponseBody {
   @SerializedName("users")

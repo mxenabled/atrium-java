@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**readMemberStatus**](docs/MembersApi.md#readMemberStatus) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
 *MembersApi* | [**resumeMember**](docs/MembersApi.md#resumeMember) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *MembersApi* | [**updateMember**](docs/MembersApi.md#updateMember) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*MerchantsApi* | [**readMerchant**](docs/MerchantsApi.md#readMerchant) | **GET** /merchants/{merchant_guid} | Read merchant
 *TransactionsApi* | [**cleanseAndCategorizeTransactions**](docs/TransactionsApi.md#cleanseAndCategorizeTransactions) | **POST** /cleanse_and_categorize | Categorize transactions
 *TransactionsApi* | [**listUserTransactions**](docs/TransactionsApi.md#listUserTransactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *TransactionsApi* | [**readTransaction**](docs/TransactionsApi.md#readTransaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
@@ -131,6 +132,8 @@ Class | Method | HTTP request | Description
  - [MemberUpdateRequest](docs/MemberUpdateRequest.md)
  - [MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
  - [MembersResponseBody](docs/MembersResponseBody.md)
+ - [Merchant](docs/Merchant.md)
+ - [MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Pagination](docs/Pagination.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)

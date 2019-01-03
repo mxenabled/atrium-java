@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.0.0.jar`
+* `target/atrium-java-2.1.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -68,6 +68,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**readAccount**](docs/AccountsApi.md#readAccount) | **GET** /users/{user_guid}/accounts/{account_guid} | Read an account
 *AccountsApi* | [**readAccountByMemberGUID**](docs/AccountsApi.md#readAccountByMemberGUID) | **GET** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read an account
 *ConnectWidgetApi* | [**getConnectWidget**](docs/ConnectWidgetApi.md#getConnectWidget) | **POST** /users/{user_guid}/connect_widget_url | Embedding in a website
+*HoldingsApi* | [**listHoldings**](docs/HoldingsApi.md#listHoldings) | **GET** /users/{user_guid}/holdings | List holdings
+*HoldingsApi* | [**listHoldingsByAccount**](docs/HoldingsApi.md#listHoldingsByAccount) | **GET** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
+*HoldingsApi* | [**listHoldingsByMember**](docs/HoldingsApi.md#listHoldingsByMember) | **GET** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
+*HoldingsApi* | [**readHolding**](docs/HoldingsApi.md#readHolding) | **GET** /users/{user_guid}/holdings/{holding_guid} | Read holding
 *IdentityApi* | [**identifyMember**](docs/IdentityApi.md#identifyMember) | **POST** /users/{user_guid}/members/{member_guid}/identify | Identify
 *IdentityApi* | [**listAccountOwners**](docs/IdentityApi.md#listAccountOwners) | **GET** /users/{user_guid}/members/{member_guid}/account_owners | List member account owners
 *InstitutionsApi* | [**listInstitutions**](docs/InstitutionsApi.md#listInstitutions) | **GET** /institutions | List institutions
@@ -85,6 +89,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**readMemberStatus**](docs/MembersApi.md#readMemberStatus) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
 *MembersApi* | [**resumeMember**](docs/MembersApi.md#resumeMember) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *MembersApi* | [**updateMember**](docs/MembersApi.md#updateMember) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*MerchantsApi* | [**readMerchant**](docs/MerchantsApi.md#readMerchant) | **GET** /merchants/{merchant_guid} | Read merchant
 *TransactionsApi* | [**cleanseAndCategorizeTransactions**](docs/TransactionsApi.md#cleanseAndCategorizeTransactions) | **POST** /cleanse_and_categorize | Categorize transactions
 *TransactionsApi* | [**listUserTransactions**](docs/TransactionsApi.md#listUserTransactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *TransactionsApi* | [**readTransaction**](docs/TransactionsApi.md#readTransaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
@@ -117,6 +122,9 @@ Class | Method | HTTP request | Description
  - [CredentialRequest](docs/CredentialRequest.md)
  - [CredentialResponse](docs/CredentialResponse.md)
  - [CredentialsResponseBody](docs/CredentialsResponseBody.md)
+ - [Holding](docs/Holding.md)
+ - [HoldingResponseBody](docs/HoldingResponseBody.md)
+ - [HoldingsResponseBody](docs/HoldingsResponseBody.md)
  - [Institution](docs/Institution.md)
  - [InstitutionResponseBody](docs/InstitutionResponseBody.md)
  - [InstitutionsResponseBody](docs/InstitutionsResponseBody.md)
@@ -131,6 +139,8 @@ Class | Method | HTTP request | Description
  - [MemberUpdateRequest](docs/MemberUpdateRequest.md)
  - [MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
  - [MembersResponseBody](docs/MembersResponseBody.md)
+ - [Merchant](docs/Merchant.md)
+ - [MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Pagination](docs/Pagination.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)

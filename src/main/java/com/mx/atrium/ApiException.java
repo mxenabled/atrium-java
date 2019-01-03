@@ -12,7 +12,7 @@ package com.mx.atrium;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "com.mx", date = "2018-12-17T15:45:23.680-07:00")
+
 
 public class ApiException extends Exception {
     private int code = 0;

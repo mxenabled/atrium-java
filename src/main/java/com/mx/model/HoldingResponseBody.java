@@ -16,36 +16,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.Account;
+import com.mx.model.Holding;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AccountResponseBody
+ * HoldingResponseBody
  */
 
 
-public class AccountResponseBody {
-  @SerializedName("account")
-  private Account account = null;
+public class HoldingResponseBody {
+  @SerializedName("holding")
+  private Holding holding = null;
 
-  public AccountResponseBody account(Account account) {
-    this.account = account;
+  public HoldingResponseBody holding(Holding holding) {
+    this.holding = holding;
     return this;
   }
 
    /**
-   * Get account
-   * @return account
+   * Get holding
+   * @return holding
   **/
   @ApiModelProperty(value = "")
-  public Account getAccount() {
-    return account;
+  public Holding getHolding() {
+    return holding;
   }
 
-  public void setAccount(Account account) {
-    this.account = account;
+  public void setHolding(Holding holding) {
+    this.holding = holding;
   }
 
 
@@ -57,22 +57,22 @@ public class AccountResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AccountResponseBody accountResponseBody = (AccountResponseBody) o;
-    return Objects.equals(this.account, accountResponseBody.account);
+    HoldingResponseBody holdingResponseBody = (HoldingResponseBody) o;
+    return Objects.equals(this.holding, holdingResponseBody.holding);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account);
+    return Objects.hash(holding);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AccountResponseBody {\n");
+    sb.append("class HoldingResponseBody {\n");
     
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
+    sb.append("    holding: ").append(toIndentedString(holding)).append("\n");
     sb.append("}");
     return sb.toString();
   }

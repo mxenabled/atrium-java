@@ -16,36 +16,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.Account;
+import com.mx.model.Merchant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AccountResponseBody
+ * MerchantResponseBody
  */
 
 
-public class AccountResponseBody {
-  @SerializedName("account")
-  private Account account = null;
+public class MerchantResponseBody {
+  @SerializedName("merchant")
+  private Merchant merchant = null;
 
-  public AccountResponseBody account(Account account) {
-    this.account = account;
+  public MerchantResponseBody merchant(Merchant merchant) {
+    this.merchant = merchant;
     return this;
   }
 
    /**
-   * Get account
-   * @return account
+   * Get merchant
+   * @return merchant
   **/
   @ApiModelProperty(value = "")
-  public Account getAccount() {
-    return account;
+  public Merchant getMerchant() {
+    return merchant;
   }
 
-  public void setAccount(Account account) {
-    this.account = account;
+  public void setMerchant(Merchant merchant) {
+    this.merchant = merchant;
   }
 
 
@@ -57,22 +57,22 @@ public class AccountResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AccountResponseBody accountResponseBody = (AccountResponseBody) o;
-    return Objects.equals(this.account, accountResponseBody.account);
+    MerchantResponseBody merchantResponseBody = (MerchantResponseBody) o;
+    return Objects.equals(this.merchant, merchantResponseBody.merchant);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account);
+    return Objects.hash(merchant);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AccountResponseBody {\n");
+    sb.append("class MerchantResponseBody {\n");
     
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
+    sb.append("    merchant: ").append(toIndentedString(merchant)).append("\n");
     sb.append("}");
     return sb.toString();
   }

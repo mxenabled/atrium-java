@@ -16,36 +16,68 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.mx.model.Account;
+import com.mx.model.Holding;
+import com.mx.model.Pagination;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * AccountResponseBody
+ * HoldingsResponseBody
  */
 
 
-public class AccountResponseBody {
-  @SerializedName("account")
-  private Account account = null;
+public class HoldingsResponseBody {
+  @SerializedName("holdings")
+  private List<Holding> holdings = null;
 
-  public AccountResponseBody account(Account account) {
-    this.account = account;
+  @SerializedName("pagination")
+  private Pagination pagination = null;
+
+  public HoldingsResponseBody holdings(List<Holding> holdings) {
+    this.holdings = holdings;
+    return this;
+  }
+
+  public HoldingsResponseBody addHoldingsItem(Holding holdingsItem) {
+    if (this.holdings == null) {
+      this.holdings = new ArrayList<Holding>();
+    }
+    this.holdings.add(holdingsItem);
     return this;
   }
 
    /**
-   * Get account
-   * @return account
+   * Get holdings
+   * @return holdings
   **/
   @ApiModelProperty(value = "")
-  public Account getAccount() {
-    return account;
+  public List<Holding> getHoldings() {
+    return holdings;
   }
 
-  public void setAccount(Account account) {
-    this.account = account;
+  public void setHoldings(List<Holding> holdings) {
+    this.holdings = holdings;
+  }
+
+  public HoldingsResponseBody pagination(Pagination pagination) {
+    this.pagination = pagination;
+    return this;
+  }
+
+   /**
+   * Get pagination
+   * @return pagination
+  **/
+  @ApiModelProperty(value = "")
+  public Pagination getPagination() {
+    return pagination;
+  }
+
+  public void setPagination(Pagination pagination) {
+    this.pagination = pagination;
   }
 
 
@@ -57,22 +89,24 @@ public class AccountResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AccountResponseBody accountResponseBody = (AccountResponseBody) o;
-    return Objects.equals(this.account, accountResponseBody.account);
+    HoldingsResponseBody holdingsResponseBody = (HoldingsResponseBody) o;
+    return Objects.equals(this.holdings, holdingsResponseBody.holdings) &&
+        Objects.equals(this.pagination, holdingsResponseBody.pagination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account);
+    return Objects.hash(holdings, pagination);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AccountResponseBody {\n");
+    sb.append("class HoldingsResponseBody {\n");
     
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
+    sb.append("    holdings: ").append(toIndentedString(holdings)).append("\n");
+    sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
     sb.append("}");
     return sb.toString();
   }

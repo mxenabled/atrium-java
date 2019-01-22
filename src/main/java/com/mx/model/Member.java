@@ -33,7 +33,7 @@ public class Member {
   private String connectionStatus = null;
 
   @SerializedName("guid")
-  private Boolean guid = null;
+  private String guid = null;
 
   @SerializedName("identifier")
   private String identifier = null;
@@ -81,8 +81,8 @@ public class Member {
    * Get guid
    * @return guid
   **/
-  @ApiModelProperty(example = "false", value = "")
-  public Boolean isGuid() {
+  @ApiModelProperty(example = "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b", value = "")
+  public String getGuid() {
     return guid;
   }
 

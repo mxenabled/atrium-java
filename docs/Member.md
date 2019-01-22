@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aggregatedAt** | **String** |  |  [optional]
 **connectionStatus** | **String** |  |  [optional]
-**guid** | **Boolean** |  |  [optional]
+**guid** | **String** |  |  [optional]
 **identifier** | **String** |  |  [optional]
 **institutionCode** | **String** |  |  [optional]
 **isBeingAggregated** | **Boolean** |  |  [optional]

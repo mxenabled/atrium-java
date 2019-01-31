@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **name** | **String** |  |  [optional]
 **smallLogoUrl** | **String** |  |  [optional]
 **supportsAccountIdentification** | **Boolean** |  |  [optional]
+**supportsAccountStatement** | **Boolean** |  |  [optional]
 **supportsAccountVerification** | **Boolean** |  |  [optional]
+**supportsTransactionHistory** | **Boolean** |  |  [optional]
 **url** | **String** |  |  [optional]
 
 

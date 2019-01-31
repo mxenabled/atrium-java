@@ -43,7 +43,11 @@ public class InstitutionsApiTest {
         String name = null;
         Integer page = null;
         Integer recordsPerPage = null;
-        InstitutionsResponseBody response = api.listInstitutions(name, page, recordsPerPage);
+        Boolean supportsAccountIdentification = null;
+        Boolean supportsAccountStatement = null;
+        Boolean supportsAccountVerification = null;
+        Boolean supportsTransactionHistory = null;
+        InstitutionsResponseBody response = api.listInstitutions(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory);
 
         // TODO: test validations
     }

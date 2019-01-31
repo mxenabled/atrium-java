@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**listMemberAccounts**](MembersApi.md#listMemberAccounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
 [**listMemberCredentials**](MembersApi.md#listMemberCredentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**listMemberMFAChallenges**](MembersApi.md#listMemberMFAChallenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
+[**listMemberStatements**](MembersApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 [**listMemberTransactions**](MembersApi.md#listMemberTransactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
 [**listMembers**](MembersApi.md#listMembers) | **GET** /users/{user_guid}/members | List members
 [**readMember**](MembersApi.md#readMember) | **GET** /users/{user_guid}/members/{member_guid} | Read member
@@ -18,7 +19,7 @@ Method | HTTP request | Description
 
 <a name="aggregateMember"></a>
 # **aggregateMember**
-> MemberResponseBody aggregateMember(memberGuid, userGuid)
+> MemberResponseBody aggregateMember(memberGuid, userGuid, type)
 
 Aggregate member
 
@@ -35,9 +36,10 @@ public class MembersApiExample {
 
         String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        String type = "history"; // String | An optional parameter which determines the type of aggregation to be peformed. Possible values are `statement` and `history`.
 
         try {
-            MemberResponseBody response = client.members.aggregateMember(memberGuid, userGuid);
+            MemberResponseBody response = client.members.aggregateMember(memberGuid, userGuid, type);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling MembersApi#aggregateMember");
@@ -53,6 +55,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memberGuid** | **String**| The unique identifier for a &#x60;member&#x60;. |
  **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **type** | **String**| An optional parameter which determines the type of aggregation to be peformed. Possible values are &#x60;statement&#x60; and &#x60;history&#x60;. | [optional]
 
 ### Return type
 
@@ -270,6 +273,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChallengesResponseBody**](ChallengesResponseBody.md)
+
+<a name="listMemberStatements"></a>
+# **listMemberStatements**
+> StatementsResponseBody listMemberStatements(memberGuid, userGuid, page, recordsPerPage)
+
+List member statements
+
+Certain institutions in Atrium allow developers to access account statements associated with a particular &#x60;member&#x60;. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type &#x60;statement&#x60; should be performed on the relevant &#x60;member&#x60;. 
+
+### Example
+```java
+import com.mx.atrium.*;
+import com.mx.model.*;
+
+public class MembersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
+
+        try {
+            StatementsResponseBody response = client.members.listMemberStatements(memberGuid, userGuid, page, recordsPerPage);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MembersApi#listMemberStatements");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **memberGuid** | **String**| The unique identifier for a &#x60;member&#x60;. |
+ **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
+
+### Return type
+
+[**StatementsResponseBody**](StatementsResponseBody.md)
 
 <a name="listMemberTransactions"></a>
 # **listMemberTransactions**

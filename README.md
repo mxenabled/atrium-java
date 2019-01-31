@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.1.1.jar`
+* `target/atrium-java-2.3.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**listMemberAccounts**](docs/MembersApi.md#listMemberAccounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
 *MembersApi* | [**listMemberCredentials**](docs/MembersApi.md#listMemberCredentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 *MembersApi* | [**listMemberMFAChallenges**](docs/MembersApi.md#listMemberMFAChallenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
+*MembersApi* | [**listMemberStatements**](docs/MembersApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *MembersApi* | [**listMemberTransactions**](docs/MembersApi.md#listMemberTransactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
 *MembersApi* | [**listMembers**](docs/MembersApi.md#listMembers) | **GET** /users/{user_guid}/members | List members
 *MembersApi* | [**readMember**](docs/MembersApi.md#readMember) | **GET** /users/{user_guid}/members/{member_guid} | Read member
@@ -142,6 +143,8 @@ Class | Method | HTTP request | Description
  - [Merchant](docs/Merchant.md)
  - [MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Pagination](docs/Pagination.md)
+ - [Statement](docs/Statement.md)
+ - [StatementsResponseBody](docs/StatementsResponseBody.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)
  - [TransactionCleanseAndCategorizeResponse](docs/TransactionCleanseAndCategorizeResponse.md)

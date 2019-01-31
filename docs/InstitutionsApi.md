@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="listInstitutions"></a>
 # **listInstitutions**
-> InstitutionsResponseBody listInstitutions(name, page, recordsPerPage)
+> InstitutionsResponseBody listInstitutions(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory)
 
 List institutions
 
@@ -27,9 +27,13 @@ public class InstitutionsApiExample {
         String name = name_example; // String | This will list only institutions in which the appended string appears.
         Integer page = 1; // Integer | Specify current page.
         Integer recordsPerPage = 12; // Integer | Specify records per page.
+        Boolean supportsAccountIdentification = true; // Boolean | Filter only institutions which support account identification.
+        Boolean supportsAccountStatement = true; // Boolean | Filter only institutions which support account statements.
+        Boolean supportsAccountVerification = true; // Boolean | Filter only institutions which support account verification.
+        Boolean supportsTransactionHistory = true; // Boolean | Filter only institutions which support extended transaction history.
 
         try {
-            InstitutionsResponseBody response = client.institutions.listInstitutions(name, page, recordsPerPage);
+            InstitutionsResponseBody response = client.institutions.listInstitutions(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstitutionsApi#listInstitutions");
@@ -46,6 +50,10 @@ Name | Type | Description  | Notes
  **name** | **String**| This will list only institutions in which the appended string appears. | [optional]
  **page** | **Integer**| Specify current page. | [optional]
  **recordsPerPage** | **Integer**| Specify records per page. | [optional]
+ **supportsAccountIdentification** | **Boolean**| Filter only institutions which support account identification. | [optional]
+ **supportsAccountStatement** | **Boolean**| Filter only institutions which support account statements. | [optional]
+ **supportsAccountVerification** | **Boolean**| Filter only institutions which support account verification. | [optional]
+ **supportsTransactionHistory** | **Boolean**| Filter only institutions which support extended transaction history. | [optional]
 
 ### Return type
 

@@ -57,12 +57,16 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
+     * @param supportsAccountIdentification Filter only institutions which support account identification. (optional)
+     * @param supportsAccountStatement Filter only institutions which support account statements. (optional)
+     * @param supportsAccountVerification Filter only institutions which support account verification. (optional)
+     * @param supportsTransactionHistory Filter only institutions which support extended transaction history. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listInstitutionsCall(String name, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listInstitutionsCall(String name, Integer page, Integer recordsPerPage, Boolean supportsAccountIdentification, Boolean supportsAccountStatement, Boolean supportsAccountVerification, Boolean supportsTransactionHistory, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -76,6 +80,14 @@ public class InstitutionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
         if (recordsPerPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
+        if (supportsAccountIdentification != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("supports_account_identification", supportsAccountIdentification));
+        if (supportsAccountStatement != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("supports_account_statement", supportsAccountStatement));
+        if (supportsAccountVerification != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("supports_account_verification", supportsAccountVerification));
+        if (supportsTransactionHistory != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("supports_transaction_history", supportsTransactionHistory));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -110,10 +122,10 @@ public class InstitutionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listInstitutionsValidateBeforeCall(String name, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listInstitutionsValidateBeforeCall(String name, Integer page, Integer recordsPerPage, Boolean supportsAccountIdentification, Boolean supportsAccountStatement, Boolean supportsAccountVerification, Boolean supportsTransactionHistory, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = listInstitutionsCall(name, page, recordsPerPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listInstitutionsCall(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory, progressListener, progressRequestListener);
         return call;
 
     }
@@ -124,11 +136,15 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
+     * @param supportsAccountIdentification Filter only institutions which support account identification. (optional)
+     * @param supportsAccountStatement Filter only institutions which support account statements. (optional)
+     * @param supportsAccountVerification Filter only institutions which support account verification. (optional)
+     * @param supportsTransactionHistory Filter only institutions which support extended transaction history. (optional)
      * @return InstitutionsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InstitutionsResponseBody listInstitutions(String name, Integer page, Integer recordsPerPage) throws ApiException {
-        ApiResponse<InstitutionsResponseBody> resp = listInstitutionsWithHttpInfo(name, page, recordsPerPage);
+    public InstitutionsResponseBody listInstitutions(String name, Integer page, Integer recordsPerPage, Boolean supportsAccountIdentification, Boolean supportsAccountStatement, Boolean supportsAccountVerification, Boolean supportsTransactionHistory) throws ApiException {
+        ApiResponse<InstitutionsResponseBody> resp = listInstitutionsWithHttpInfo(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory);
         return resp.getData();
     }
 
@@ -138,11 +154,15 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
+     * @param supportsAccountIdentification Filter only institutions which support account identification. (optional)
+     * @param supportsAccountStatement Filter only institutions which support account statements. (optional)
+     * @param supportsAccountVerification Filter only institutions which support account verification. (optional)
+     * @param supportsTransactionHistory Filter only institutions which support extended transaction history. (optional)
      * @return ApiResponse&lt;InstitutionsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InstitutionsResponseBody> listInstitutionsWithHttpInfo(String name, Integer page, Integer recordsPerPage) throws ApiException {
-        com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, null, null);
+    public ApiResponse<InstitutionsResponseBody> listInstitutionsWithHttpInfo(String name, Integer page, Integer recordsPerPage, Boolean supportsAccountIdentification, Boolean supportsAccountStatement, Boolean supportsAccountVerification, Boolean supportsTransactionHistory) throws ApiException {
+        com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory, null, null);
         Type localVarReturnType = new TypeToken<InstitutionsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -153,11 +173,15 @@ public class InstitutionsApi {
      * @param name This will list only institutions in which the appended string appears. (optional)
      * @param page Specify current page. (optional)
      * @param recordsPerPage Specify records per page. (optional)
+     * @param supportsAccountIdentification Filter only institutions which support account identification. (optional)
+     * @param supportsAccountStatement Filter only institutions which support account statements. (optional)
+     * @param supportsAccountVerification Filter only institutions which support account verification. (optional)
+     * @param supportsTransactionHistory Filter only institutions which support extended transaction history. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listInstitutionsAsync(String name, Integer page, Integer recordsPerPage, final ApiCallback<InstitutionsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listInstitutionsAsync(String name, Integer page, Integer recordsPerPage, Boolean supportsAccountIdentification, Boolean supportsAccountStatement, Boolean supportsAccountVerification, Boolean supportsTransactionHistory, final ApiCallback<InstitutionsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -178,7 +202,7 @@ public class InstitutionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listInstitutionsValidateBeforeCall(name, page, recordsPerPage, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InstitutionsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

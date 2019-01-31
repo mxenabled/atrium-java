@@ -41,8 +41,14 @@ public class Institution {
   @SerializedName("supports_account_identification")
   private Boolean supportsAccountIdentification = null;
 
+  @SerializedName("supports_account_statement")
+  private Boolean supportsAccountStatement = null;
+
   @SerializedName("supports_account_verification")
   private Boolean supportsAccountVerification = null;
+
+  @SerializedName("supports_transaction_history")
+  private Boolean supportsTransactionHistory = null;
 
   @SerializedName("url")
   private String url = null;
@@ -93,12 +99,30 @@ public class Institution {
   }
 
    /**
+   * Get supportsAccountStatement
+   * @return supportsAccountStatement
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isSupportsAccountStatement() {
+    return supportsAccountStatement;
+  }
+
+   /**
    * Get supportsAccountVerification
    * @return supportsAccountVerification
   **/
   @ApiModelProperty(example = "true", value = "")
   public Boolean isSupportsAccountVerification() {
     return supportsAccountVerification;
+  }
+
+   /**
+   * Get supportsTransactionHistory
+   * @return supportsTransactionHistory
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isSupportsTransactionHistory() {
+    return supportsTransactionHistory;
   }
 
    /**
@@ -125,13 +149,15 @@ public class Institution {
         Objects.equals(this.name, institution.name) &&
         Objects.equals(this.smallLogoUrl, institution.smallLogoUrl) &&
         Objects.equals(this.supportsAccountIdentification, institution.supportsAccountIdentification) &&
+        Objects.equals(this.supportsAccountStatement, institution.supportsAccountStatement) &&
         Objects.equals(this.supportsAccountVerification, institution.supportsAccountVerification) &&
+        Objects.equals(this.supportsTransactionHistory, institution.supportsTransactionHistory) &&
         Objects.equals(this.url, institution.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, mediumLogoUrl, name, smallLogoUrl, supportsAccountIdentification, supportsAccountVerification, url);
+    return Objects.hash(code, mediumLogoUrl, name, smallLogoUrl, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory, url);
   }
 
 
@@ -145,7 +171,9 @@ public class Institution {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    smallLogoUrl: ").append(toIndentedString(smallLogoUrl)).append("\n");
     sb.append("    supportsAccountIdentification: ").append(toIndentedString(supportsAccountIdentification)).append("\n");
+    sb.append("    supportsAccountStatement: ").append(toIndentedString(supportsAccountStatement)).append("\n");
     sb.append("    supportsAccountVerification: ").append(toIndentedString(supportsAccountVerification)).append("\n");
+    sb.append("    supportsTransactionHistory: ").append(toIndentedString(supportsTransactionHistory)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -32,26 +32,20 @@ public class Statement {
   @SerializedName("created_at")
   private String createdAt = null;
 
-  @SerializedName("content_hash")
-  private String contentHash = null;
-
-  @SerializedName("deleted_at")
-  private String deletedAt = null;
-
   @SerializedName("guid")
   private String guid = null;
 
-  @SerializedName("is_deleted")
-  private Boolean isDeleted = null;
-
-  @SerializedName("updated_at")
-  private String updatedAt = null;
+  @SerializedName("member_guid")
+  private String memberGuid = null;
 
   @SerializedName("uri")
   private String uri = null;
 
   @SerializedName("user_guid")
   private String userGuid = null;
+
+  @SerializedName("updated_at")
+  private String updatedAt = null;
 
    /**
    * The unique identifier for the &#x60;account&#x60; associated with the &#x60;statement&#x60;. Defined by MX.
@@ -72,24 +66,6 @@ public class Statement {
   }
 
    /**
-   * An SHA-256 hash value of the statement&#39;s byte payload, used as a unique identifier.
-   * @return contentHash
-  **/
-  @ApiModelProperty(example = "", value = "An SHA-256 hash value of the statement's byte payload, used as a unique identifier.")
-  public String getContentHash() {
-    return contentHash;
-  }
-
-   /**
-   * The date and time the &#x60;statement&#x60; was deleted. Statements are automatically deleted when an &#x60;account&#x60; is deleted.
-   * @return deletedAt
-  **/
-  @ApiModelProperty(example = "2016-10-13T18:10:00+00:00", value = "The date and time the `statement` was deleted. Statements are automatically deleted when an `account` is deleted.")
-  public String getDeletedAt() {
-    return deletedAt;
-  }
-
-   /**
    * The unique identifier for the &#x60;statement&#x60;. Defined by MX.
    * @return guid
   **/
@@ -99,28 +75,19 @@ public class Statement {
   }
 
    /**
-   * This indicates whether the &#x60;statement&#x60; has been deleted. Statements are automatically deleted when an &#x60;account&#x60; is deleted.
-   * @return isDeleted
+   * The unique identifier for the &#x60;member&#x60; associated with the &#x60;statement&#x60;.  Defined by MX.
+   * @return memberGuid
   **/
-  @ApiModelProperty(example = "false", value = "This indicates whether the `statement` has been deleted. Statements are automatically deleted when an `account` is deleted.")
-  public Boolean isIsDeleted() {
-    return isDeleted;
-  }
-
-   /**
-   * The date and time at which the &#x60;statement&#x60; was last updated.
-   * @return updatedAt
-  **/
-  @ApiModelProperty(example = "2016-10-13T18:09:00+00:00", value = "The date and time at which the `statement` was last updated.")
-  public String getUpdatedAt() {
-    return updatedAt;
+  @ApiModelProperty(example = "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b", value = "The unique identifier for the `member` associated with the `statement`.  Defined by MX.")
+  public String getMemberGuid() {
+    return memberGuid;
   }
 
    /**
    * A URI for accessing the byte payload of the &#x60;statement&#x60;.
    * @return uri
   **/
-  @ApiModelProperty(example = "", value = "A URI for accessing the byte payload of the `statement`.")
+  @ApiModelProperty(example = "uri/to/statement", value = "A URI for accessing the byte payload of the `statement`.")
   public String getUri() {
     return uri;
   }
@@ -132,6 +99,15 @@ public class Statement {
   @ApiModelProperty(example = "USR-fa7537f3-48aa-a683-a02a-b18940482f54", value = "The unique identifier for the `user` associated with the `statement`.  Defined by MX.")
   public String getUserGuid() {
     return userGuid;
+  }
+
+   /**
+   * The date and time at which the &#x60;statement&#x60; was last updated.
+   * @return updatedAt
+  **/
+  @ApiModelProperty(example = "2016-10-13T18:09:00+00:00", value = "The date and time at which the `statement` was last updated.")
+  public String getUpdatedAt() {
+    return updatedAt;
   }
 
 
@@ -146,18 +122,16 @@ public class Statement {
     Statement statement = (Statement) o;
     return Objects.equals(this.accountGuid, statement.accountGuid) &&
         Objects.equals(this.createdAt, statement.createdAt) &&
-        Objects.equals(this.contentHash, statement.contentHash) &&
-        Objects.equals(this.deletedAt, statement.deletedAt) &&
         Objects.equals(this.guid, statement.guid) &&
-        Objects.equals(this.isDeleted, statement.isDeleted) &&
-        Objects.equals(this.updatedAt, statement.updatedAt) &&
+        Objects.equals(this.memberGuid, statement.memberGuid) &&
         Objects.equals(this.uri, statement.uri) &&
-        Objects.equals(this.userGuid, statement.userGuid);
+        Objects.equals(this.userGuid, statement.userGuid) &&
+        Objects.equals(this.updatedAt, statement.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountGuid, createdAt, contentHash, deletedAt, guid, isDeleted, updatedAt, uri, userGuid);
+    return Objects.hash(accountGuid, createdAt, guid, memberGuid, uri, userGuid, updatedAt);
   }
 
 
@@ -168,13 +142,11 @@ public class Statement {
     
     sb.append("    accountGuid: ").append(toIndentedString(accountGuid)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    contentHash: ").append(toIndentedString(contentHash)).append("\n");
-    sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
-    sb.append("    isDeleted: ").append(toIndentedString(isDeleted)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    userGuid: ").append(toIndentedString(userGuid)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

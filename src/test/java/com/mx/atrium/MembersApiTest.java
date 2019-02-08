@@ -19,7 +19,6 @@ import com.mx.model.MemberResponseBody;
 import com.mx.model.MemberResumeRequestBody;
 import com.mx.model.MemberUpdateRequestBody;
 import com.mx.model.MembersResponseBody;
-import com.mx.model.StatementsResponseBody;
 import com.mx.model.TransactionsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -50,8 +49,7 @@ public class MembersApiTest {
     public void aggregateMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        String type = null;
-        MemberResponseBody response = api.aggregateMember(memberGuid, userGuid, type);
+        MemberResponseBody response = api.aggregateMember(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -86,6 +84,23 @@ public class MembersApiTest {
         String memberGuid = null;
         String userGuid = null;
         api.deleteMember(memberGuid, userGuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Extend history
+     *
+     * The extend_history endpoint begins the process of fetching up to 24 months of data associated with a particular &#x60;member&#x60;.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void extendHistoryTest() throws ApiException {
+        String memberGuid = null;
+        String userGuid = null;
+        MemberResponseBody response = api.extendHistory(memberGuid, userGuid);
 
         // TODO: test validations
     }
@@ -139,25 +154,6 @@ public class MembersApiTest {
         String memberGuid = null;
         String userGuid = null;
         ChallengesResponseBody response = api.listMemberMFAChallenges(memberGuid, userGuid);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List member statements
-     *
-     * Certain institutions in Atrium allow developers to access account statements associated with a particular &#x60;member&#x60;. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type &#x60;statement&#x60; should be performed on the relevant &#x60;member&#x60;. 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void listMemberStatementsTest() throws ApiException {
-        String memberGuid = null;
-        String userGuid = null;
-        Integer page = null;
-        Integer recordsPerPage = null;
-        StatementsResponseBody response = api.listMemberStatements(memberGuid, userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }

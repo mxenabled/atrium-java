@@ -15,6 +15,7 @@ import com.mx.atrium.IdentityApi;
 import com.mx.atrium.InstitutionsApi;
 import com.mx.atrium.MembersApi;
 import com.mx.atrium.MerchantsApi;
+import com.mx.atrium.StatementsApi;
 import com.mx.atrium.TransactionsApi;
 import com.mx.atrium.UsersApi;
 import com.mx.atrium.VerificationApi;
@@ -28,6 +29,7 @@ public class AtriumClient {
   public InstitutionsApi institutions;
   public MembersApi members;
   public MerchantsApi merchants;
+  public StatementsApi statements;
   public TransactionsApi transactions;
   public UsersApi users;
   public VerificationApi verification;
@@ -47,6 +49,7 @@ public class AtriumClient {
     this.institutions = new InstitutionsApi();
     this.members = new MembersApi();
     this.merchants = new MerchantsApi();
+    this.statements = new StatementsApi();
     this.transactions = new TransactionsApi();
     this.users = new UsersApi();
     this.verification = new VerificationApi();

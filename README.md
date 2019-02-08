@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.3.0.jar`
+* `target/atrium-java-2.4.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -80,10 +80,10 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**aggregateMember**](docs/MembersApi.md#aggregateMember) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
 *MembersApi* | [**createMember**](docs/MembersApi.md#createMember) | **POST** /users/{user_guid}/members | Create member
 *MembersApi* | [**deleteMember**](docs/MembersApi.md#deleteMember) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
+*MembersApi* | [**extendHistory**](docs/MembersApi.md#extendHistory) | **POST** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
 *MembersApi* | [**listMemberAccounts**](docs/MembersApi.md#listMemberAccounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
 *MembersApi* | [**listMemberCredentials**](docs/MembersApi.md#listMemberCredentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 *MembersApi* | [**listMemberMFAChallenges**](docs/MembersApi.md#listMemberMFAChallenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
-*MembersApi* | [**listMemberStatements**](docs/MembersApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *MembersApi* | [**listMemberTransactions**](docs/MembersApi.md#listMemberTransactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
 *MembersApi* | [**listMembers**](docs/MembersApi.md#listMembers) | **GET** /users/{user_guid}/members | List members
 *MembersApi* | [**readMember**](docs/MembersApi.md#readMember) | **GET** /users/{user_guid}/members/{member_guid} | Read member
@@ -91,6 +91,8 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**resumeMember**](docs/MembersApi.md#resumeMember) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *MembersApi* | [**updateMember**](docs/MembersApi.md#updateMember) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
 *MerchantsApi* | [**readMerchant**](docs/MerchantsApi.md#readMerchant) | **GET** /merchants/{merchant_guid} | Read merchant
+*StatementsApi* | [**fetchStatements**](docs/StatementsApi.md#fetchStatements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
+*StatementsApi* | [**listMemberStatements**](docs/StatementsApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *TransactionsApi* | [**cleanseAndCategorizeTransactions**](docs/TransactionsApi.md#cleanseAndCategorizeTransactions) | **POST** /cleanse_and_categorize | Categorize transactions
 *TransactionsApi* | [**listUserTransactions**](docs/TransactionsApi.md#listUserTransactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *TransactionsApi* | [**readTransaction**](docs/TransactionsApi.md#readTransaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction

@@ -10,7 +10,9 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
+import java.io.File;
 import com.mx.model.MemberResponseBody;
+import com.mx.model.StatementResponseBody;
 import com.mx.model.StatementsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -28,6 +30,24 @@ public class StatementsApiTest {
 
     private final StatementsApi api = new StatementsApi();
 
+    
+    /**
+     * Download statement PDF
+     *
+     * Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadStatementPdfTest() throws ApiException {
+        String memberGuid = null;
+        String userGuid = null;
+        String statementGuid = null;
+        File response = api.downloadStatementPdf(memberGuid, userGuid, statementGuid);
+
+        // TODO: test validations
+    }
     
     /**
      * Fetch statements
@@ -61,6 +81,24 @@ public class StatementsApiTest {
         Integer page = null;
         Integer recordsPerPage = null;
         StatementsResponseBody response = api.listMemberStatements(memberGuid, userGuid, page, recordsPerPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Read statement JSON
+     *
+     * Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void readMemberStatementTest() throws ApiException {
+        String memberGuid = null;
+        String userGuid = null;
+        String statementGuid = null;
+        StatementResponseBody response = api.readMemberStatement(memberGuid, userGuid, statementGuid);
 
         // TODO: test validations
     }

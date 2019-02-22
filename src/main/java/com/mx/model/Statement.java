@@ -29,6 +29,9 @@ public class Statement {
   @SerializedName("account_guid")
   private String accountGuid = null;
 
+  @SerializedName("content_hash")
+  private String contentHash = null;
+
   @SerializedName("created_at")
   private String createdAt = null;
 
@@ -54,6 +57,15 @@ public class Statement {
   @ApiModelProperty(example = "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1", value = "The unique identifier for the `account` associated with the `statement`. Defined by MX.")
   public String getAccountGuid() {
     return accountGuid;
+  }
+
+   /**
+   * SHA256 digest of the pdf payload
+   * @return contentHash
+  **/
+  @ApiModelProperty(example = "ca53785b812d00ef821c3d94bfd6e5bbc0020504410589b7ea8552169f021981", value = "SHA256 digest of the pdf payload")
+  public String getContentHash() {
+    return contentHash;
   }
 
    /**
@@ -121,6 +133,7 @@ public class Statement {
     }
     Statement statement = (Statement) o;
     return Objects.equals(this.accountGuid, statement.accountGuid) &&
+        Objects.equals(this.contentHash, statement.contentHash) &&
         Objects.equals(this.createdAt, statement.createdAt) &&
         Objects.equals(this.guid, statement.guid) &&
         Objects.equals(this.memberGuid, statement.memberGuid) &&
@@ -131,7 +144,7 @@ public class Statement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountGuid, createdAt, guid, memberGuid, uri, userGuid, updatedAt);
+    return Objects.hash(accountGuid, contentHash, createdAt, guid, memberGuid, uri, userGuid, updatedAt);
   }
 
 
@@ -141,6 +154,7 @@ public class Statement {
     sb.append("class Statement {\n");
     
     sb.append("    accountGuid: ").append(toIndentedString(accountGuid)).append("\n");
+    sb.append("    contentHash: ").append(toIndentedString(contentHash)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");

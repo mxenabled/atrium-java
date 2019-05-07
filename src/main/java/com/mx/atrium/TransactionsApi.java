@@ -65,7 +65,7 @@ public class TransactionsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/cleanse_and_categorize";
+        String localVarPath = "/transactions/cleanse_and_categorize";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

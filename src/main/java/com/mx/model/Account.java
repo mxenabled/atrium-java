@@ -42,6 +42,12 @@ public class Account {
   @SerializedName("balance")
   private BigDecimal balance = null;
 
+  @SerializedName("cash_balance")
+  private BigDecimal cashBalance = null;
+
+  @SerializedName("cash_surrender_value")
+  private BigDecimal cashSurrenderValue = null;
+
   @SerializedName("created_at")
   private String createdAt = null;
 
@@ -54,8 +60,14 @@ public class Account {
   @SerializedName("day_payment_is_due")
   private Integer dayPaymentIsDue = null;
 
+  @SerializedName("death_benefit")
+  private BigDecimal deathBenefit = null;
+
   @SerializedName("guid")
   private String guid = null;
+
+  @SerializedName("holdings_value")
+  private BigDecimal holdingsValue = null;
 
   @SerializedName("institution_code")
   private String institutionCode = null;
@@ -68,6 +80,9 @@ public class Account {
 
   @SerializedName("last_payment")
   private BigDecimal lastPayment = null;
+
+  @SerializedName("loan_amount")
+  private BigDecimal loanAmount = null;
 
   @SerializedName("matures_on")
   private String maturesOn = null;
@@ -156,6 +171,42 @@ public class Account {
     return balance;
   }
 
+  public Account cashBalance(BigDecimal cashBalance) {
+    this.cashBalance = cashBalance;
+    return this;
+  }
+
+   /**
+   * Get cashBalance
+   * @return cashBalance
+  **/
+  @ApiModelProperty(example = "1000.0", value = "")
+  public BigDecimal getCashBalance() {
+    return cashBalance;
+  }
+
+  public void setCashBalance(BigDecimal cashBalance) {
+    this.cashBalance = cashBalance;
+  }
+
+  public Account cashSurrenderValue(BigDecimal cashSurrenderValue) {
+    this.cashSurrenderValue = cashSurrenderValue;
+    return this;
+  }
+
+   /**
+   * Get cashSurrenderValue
+   * @return cashSurrenderValue
+  **/
+  @ApiModelProperty(example = "1000.0", value = "")
+  public BigDecimal getCashSurrenderValue() {
+    return cashSurrenderValue;
+  }
+
+  public void setCashSurrenderValue(BigDecimal cashSurrenderValue) {
+    this.cashSurrenderValue = cashSurrenderValue;
+  }
+
    /**
    * Get createdAt
    * @return createdAt
@@ -192,6 +243,24 @@ public class Account {
     return dayPaymentIsDue;
   }
 
+  public Account deathBenefit(BigDecimal deathBenefit) {
+    this.deathBenefit = deathBenefit;
+    return this;
+  }
+
+   /**
+   * Get deathBenefit
+   * @return deathBenefit
+  **/
+  @ApiModelProperty(example = "1000.0", value = "")
+  public BigDecimal getDeathBenefit() {
+    return deathBenefit;
+  }
+
+  public void setDeathBenefit(BigDecimal deathBenefit) {
+    this.deathBenefit = deathBenefit;
+  }
+
    /**
    * Get guid
    * @return guid
@@ -199,6 +268,24 @@ public class Account {
   @ApiModelProperty(example = "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1", value = "")
   public String getGuid() {
     return guid;
+  }
+
+  public Account holdingsValue(BigDecimal holdingsValue) {
+    this.holdingsValue = holdingsValue;
+    return this;
+  }
+
+   /**
+   * Get holdingsValue
+   * @return holdingsValue
+  **/
+  @ApiModelProperty(example = "1000.0", value = "")
+  public BigDecimal getHoldingsValue() {
+    return holdingsValue;
+  }
+
+  public void setHoldingsValue(BigDecimal holdingsValue) {
+    this.holdingsValue = holdingsValue;
   }
 
    /**
@@ -235,6 +322,24 @@ public class Account {
   @ApiModelProperty(value = "")
   public BigDecimal getLastPayment() {
     return lastPayment;
+  }
+
+  public Account loanAmount(BigDecimal loanAmount) {
+    this.loanAmount = loanAmount;
+    return this;
+  }
+
+   /**
+   * Get loanAmount
+   * @return loanAmount
+  **/
+  @ApiModelProperty(example = "1000.0", value = "")
+  public BigDecimal getLoanAmount() {
+    return loanAmount;
+  }
+
+  public void setLoanAmount(BigDecimal loanAmount) {
+    this.loanAmount = loanAmount;
   }
 
    /**
@@ -378,15 +483,20 @@ public class Account {
         Objects.equals(this.availableBalance, account.availableBalance) &&
         Objects.equals(this.availableCredit, account.availableCredit) &&
         Objects.equals(this.balance, account.balance) &&
+        Objects.equals(this.cashBalance, account.cashBalance) &&
+        Objects.equals(this.cashSurrenderValue, account.cashSurrenderValue) &&
         Objects.equals(this.createdAt, account.createdAt) &&
         Objects.equals(this.creditLimit, account.creditLimit) &&
         Objects.equals(this.currencyCode, account.currencyCode) &&
         Objects.equals(this.dayPaymentIsDue, account.dayPaymentIsDue) &&
+        Objects.equals(this.deathBenefit, account.deathBenefit) &&
         Objects.equals(this.guid, account.guid) &&
+        Objects.equals(this.holdingsValue, account.holdingsValue) &&
         Objects.equals(this.institutionCode, account.institutionCode) &&
         Objects.equals(this.interestRate, account.interestRate) &&
         Objects.equals(this.isClosed, account.isClosed) &&
         Objects.equals(this.lastPayment, account.lastPayment) &&
+        Objects.equals(this.loanAmount, account.loanAmount) &&
         Objects.equals(this.maturesOn, account.maturesOn) &&
         Objects.equals(this.memberGuid, account.memberGuid) &&
         Objects.equals(this.minimumBalance, account.minimumBalance) &&
@@ -405,7 +515,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(apr, apy, availableBalance, availableCredit, balance, createdAt, creditLimit, currencyCode, dayPaymentIsDue, guid, institutionCode, interestRate, isClosed, lastPayment, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -419,15 +529,20 @@ public class Account {
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
     sb.append("    availableCredit: ").append(toIndentedString(availableCredit)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+    sb.append("    cashBalance: ").append(toIndentedString(cashBalance)).append("\n");
+    sb.append("    cashSurrenderValue: ").append(toIndentedString(cashSurrenderValue)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    creditLimit: ").append(toIndentedString(creditLimit)).append("\n");
     sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");
     sb.append("    dayPaymentIsDue: ").append(toIndentedString(dayPaymentIsDue)).append("\n");
+    sb.append("    deathBenefit: ").append(toIndentedString(deathBenefit)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
+    sb.append("    holdingsValue: ").append(toIndentedString(holdingsValue)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
     sb.append("    isClosed: ").append(toIndentedString(isClosed)).append("\n");
     sb.append("    lastPayment: ").append(toIndentedString(lastPayment)).append("\n");
+    sb.append("    loanAmount: ").append(toIndentedString(loanAmount)).append("\n");
     sb.append("    maturesOn: ").append(toIndentedString(maturesOn)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");
     sb.append("    minimumBalance: ").append(toIndentedString(minimumBalance)).append("\n");

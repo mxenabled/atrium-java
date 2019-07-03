@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **memberGuid** | **String** |  |  [optional]
 **memo** | **String** |  |  [optional]
 **merchantCategoryCode** | **Integer** |  |  [optional]
+**merchantGuid** | **String** |  |  [optional]
 **originalDescription** | **String** |  |  [optional]
 **postedAt** | **String** |  |  [optional]
 **status** | **String** |  |  [optional]

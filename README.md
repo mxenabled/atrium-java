@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.5.0.jar`
+* `target/atrium-java-2.6.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -95,7 +95,7 @@ Class | Method | HTTP request | Description
 *StatementsApi* | [**fetchStatements**](docs/StatementsApi.md#fetchStatements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *StatementsApi* | [**listMemberStatements**](docs/StatementsApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *StatementsApi* | [**readMemberStatement**](docs/StatementsApi.md#readMemberStatement) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement JSON
-*TransactionsApi* | [**cleanseAndCategorizeTransactions**](docs/TransactionsApi.md#cleanseAndCategorizeTransactions) | **POST** /cleanse_and_categorize | Categorize transactions
+*TransactionsApi* | [**cleanseAndCategorizeTransactions**](docs/TransactionsApi.md#cleanseAndCategorizeTransactions) | **POST** /transactions/cleanse_and_categorize | Categorize transactions
 *TransactionsApi* | [**listUserTransactions**](docs/TransactionsApi.md#listUserTransactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *TransactionsApi* | [**readTransaction**](docs/TransactionsApi.md#readTransaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
 *UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /users | Create user

@@ -96,6 +96,9 @@ public class Transaction {
   @SerializedName("merchant_category_code")
   private Integer merchantCategoryCode = null;
 
+  @SerializedName("merchant_guid")
+  private String merchantGuid = null;
+
   @SerializedName("original_description")
   private String originalDescription = null;
 
@@ -328,6 +331,15 @@ public class Transaction {
   }
 
    /**
+   * Get merchantGuid
+   * @return merchantGuid
+  **/
+  @ApiModelProperty(example = "MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b", value = "")
+  public String getMerchantGuid() {
+    return merchantGuid;
+  }
+
+   /**
    * Get originalDescription
    * @return originalDescription
   **/
@@ -432,6 +444,7 @@ public class Transaction {
         Objects.equals(this.memberGuid, transaction.memberGuid) &&
         Objects.equals(this.memo, transaction.memo) &&
         Objects.equals(this.merchantCategoryCode, transaction.merchantCategoryCode) &&
+        Objects.equals(this.merchantGuid, transaction.merchantGuid) &&
         Objects.equals(this.originalDescription, transaction.originalDescription) &&
         Objects.equals(this.postedAt, transaction.postedAt) &&
         Objects.equals(this.status, transaction.status) &&
@@ -444,7 +457,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountGuid, amount, category, checkNumber, checkNumberString, createdAt, currencyCode, date, description, guid, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance, latitude, longitude, memberGuid, memo, merchantCategoryCode, originalDescription, postedAt, status, topLevelCategory, transactedAt, type, updatedAt, userGuid);
+    return Objects.hash(accountGuid, amount, category, checkNumber, checkNumberString, createdAt, currencyCode, date, description, guid, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance, latitude, longitude, memberGuid, memo, merchantCategoryCode, merchantGuid, originalDescription, postedAt, status, topLevelCategory, transactedAt, type, updatedAt, userGuid);
   }
 
 
@@ -476,6 +489,7 @@ public class Transaction {
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    merchantCategoryCode: ").append(toIndentedString(merchantCategoryCode)).append("\n");
+    sb.append("    merchantGuid: ").append(toIndentedString(merchantGuid)).append("\n");
     sb.append("    originalDescription: ").append(toIndentedString(originalDescription)).append("\n");
     sb.append("    postedAt: ").append(toIndentedString(postedAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

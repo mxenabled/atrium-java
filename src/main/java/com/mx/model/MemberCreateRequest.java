@@ -41,6 +41,9 @@ public class MemberCreateRequest {
   @SerializedName("metadata")
   private String metadata = null;
 
+  @SerializedName("skip_aggregation")
+  private Boolean skipAggregation = null;
+
   public MemberCreateRequest credentials(List<CredentialRequest> credentials) {
     this.credentials = credentials;
     return this;
@@ -118,6 +121,24 @@ public class MemberCreateRequest {
     this.metadata = metadata;
   }
 
+  public MemberCreateRequest skipAggregation(Boolean skipAggregation) {
+    this.skipAggregation = skipAggregation;
+    return this;
+  }
+
+   /**
+   * Get skipAggregation
+   * @return skipAggregation
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isSkipAggregation() {
+    return skipAggregation;
+  }
+
+  public void setSkipAggregation(Boolean skipAggregation) {
+    this.skipAggregation = skipAggregation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -131,12 +152,13 @@ public class MemberCreateRequest {
     return Objects.equals(this.credentials, memberCreateRequest.credentials) &&
         Objects.equals(this.identifier, memberCreateRequest.identifier) &&
         Objects.equals(this.institutionCode, memberCreateRequest.institutionCode) &&
-        Objects.equals(this.metadata, memberCreateRequest.metadata);
+        Objects.equals(this.metadata, memberCreateRequest.metadata) &&
+        Objects.equals(this.skipAggregation, memberCreateRequest.skipAggregation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentials, identifier, institutionCode, metadata);
+    return Objects.hash(credentials, identifier, institutionCode, metadata, skipAggregation);
   }
 
 
@@ -149,6 +171,7 @@ public class MemberCreateRequest {
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    skipAggregation: ").append(toIndentedString(skipAggregation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

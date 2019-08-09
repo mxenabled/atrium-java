@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **identifier** | **String** |  |  [optional]
 **institutionCode** | **String** |  | 
 **metadata** | **String** |  |  [optional]
+**skipAggregation** | **Boolean** |  |  [optional]
 
 
 

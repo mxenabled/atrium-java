@@ -55,6 +55,23 @@ public class MembersApiTest {
     }
     
     /**
+     * Aggregate member account balances
+     *
+     * This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void aggregateMemberBalancesTest() throws ApiException {
+        String memberGuid = null;
+        String userGuid = null;
+        MemberResponseBody response = api.aggregateMemberBalances(memberGuid, userGuid);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create member
      *
      * This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.&lt;br&gt; When creating a member, you&#39;ll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.&lt;br&gt; If successful, Atrium will respond with the newly-created member object.&lt;br&gt; Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 

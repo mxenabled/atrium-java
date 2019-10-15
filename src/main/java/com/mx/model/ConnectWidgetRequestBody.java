@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * ConnectWidgetRequestBody
@@ -34,6 +35,9 @@ public class ConnectWidgetRequestBody {
 
   @SerializedName("current_member_guid")
   private String currentMemberGuid = null;
+
+  @SerializedName("ui_message_version")
+  private BigDecimal uiMessageVersion = null;
 
   @SerializedName("update_credentials")
   private Boolean updateCredentials = null;
@@ -92,6 +96,24 @@ public class ConnectWidgetRequestBody {
     this.currentMemberGuid = currentMemberGuid;
   }
 
+  public ConnectWidgetRequestBody uiMessageVersion(BigDecimal uiMessageVersion) {
+    this.uiMessageVersion = uiMessageVersion;
+    return this;
+  }
+
+   /**
+   * Get uiMessageVersion
+   * @return uiMessageVersion
+  **/
+  @ApiModelProperty(example = "3.0", value = "")
+  public BigDecimal getUiMessageVersion() {
+    return uiMessageVersion;
+  }
+
+  public void setUiMessageVersion(BigDecimal uiMessageVersion) {
+    this.uiMessageVersion = uiMessageVersion;
+  }
+
   public ConnectWidgetRequestBody updateCredentials(Boolean updateCredentials) {
     this.updateCredentials = updateCredentials;
     return this;
@@ -123,12 +145,13 @@ public class ConnectWidgetRequestBody {
     return Objects.equals(this.isMobileWebview, connectWidgetRequestBody.isMobileWebview) &&
         Objects.equals(this.currentInstitutionCode, connectWidgetRequestBody.currentInstitutionCode) &&
         Objects.equals(this.currentMemberGuid, connectWidgetRequestBody.currentMemberGuid) &&
+        Objects.equals(this.uiMessageVersion, connectWidgetRequestBody.uiMessageVersion) &&
         Objects.equals(this.updateCredentials, connectWidgetRequestBody.updateCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, updateCredentials);
+    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, uiMessageVersion, updateCredentials);
   }
 
 
@@ -140,6 +163,7 @@ public class ConnectWidgetRequestBody {
     sb.append("    isMobileWebview: ").append(toIndentedString(isMobileWebview)).append("\n");
     sb.append("    currentInstitutionCode: ").append(toIndentedString(currentInstitutionCode)).append("\n");
     sb.append("    currentMemberGuid: ").append(toIndentedString(currentMemberGuid)).append("\n");
+    sb.append("    uiMessageVersion: ").append(toIndentedString(uiMessageVersion)).append("\n");
     sb.append("    updateCredentials: ").append(toIndentedString(updateCredentials)).append("\n");
     sb.append("}");
     return sb.toString();

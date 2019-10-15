@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.7.0.jar`
+* `target/atrium-java-2.8.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 *InstitutionsApi* | [**readInstitution**](docs/InstitutionsApi.md#readInstitution) | **GET** /institutions/{institution_code} | Read institution
 *InstitutionsApi* | [**readInstitutionCredentials**](docs/InstitutionsApi.md#readInstitutionCredentials) | **GET** /institutions/{institution_code}/credentials | Read institution credentials
 *MembersApi* | [**aggregateMember**](docs/MembersApi.md#aggregateMember) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+*MembersApi* | [**aggregateMemberBalances**](docs/MembersApi.md#aggregateMemberBalances) | **POST** /users/{user_guid}/members/{member_guid}/balance | Aggregate member account balances
 *MembersApi* | [**createMember**](docs/MembersApi.md#createMember) | **POST** /users/{user_guid}/members | Create member
 *MembersApi* | [**deleteMember**](docs/MembersApi.md#deleteMember) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
 *MembersApi* | [**extendHistory**](docs/MembersApi.md#extendHistory) | **POST** /users/{user_guid}/members/{member_guid}/extend_history | Extend history

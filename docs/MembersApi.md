@@ -3,6 +3,7 @@
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregateMember**](MembersApi.md#aggregateMember) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+[**aggregateMemberBalances**](MembersApi.md#aggregateMemberBalances) | **POST** /users/{user_guid}/members/{member_guid}/balance | Aggregate member account balances
 [**createMember**](MembersApi.md#createMember) | **POST** /users/{user_guid}/members | Create member
 [**deleteMember**](MembersApi.md#deleteMember) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
 [**extendHistory**](MembersApi.md#extendHistory) | **POST** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
@@ -42,6 +43,48 @@ public class MembersApiExample {
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling MembersApi#aggregateMember");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **memberGuid** | **String**| The unique identifier for a &#x60;member&#x60;. |
+ **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
+
+<a name="aggregateMemberBalances"></a>
+# **aggregateMemberBalances**
+> MemberResponseBody aggregateMemberBalances(memberGuid, userGuid)
+
+Aggregate member account balances
+
+This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+
+### Example
+```java
+import com.mx.atrium.*;
+import com.mx.model.*;
+
+public class MembersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+
+        try {
+            MemberResponseBody response = client.members.aggregateMemberBalances(memberGuid, userGuid);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MembersApi#aggregateMemberBalances");
             e.printStackTrace();
         }
     }

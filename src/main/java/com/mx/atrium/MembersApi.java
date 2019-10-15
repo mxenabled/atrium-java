@@ -193,6 +193,139 @@ public class MembersApi {
         return call;
     }
     /**
+     * Build call for aggregateMemberBalances
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call aggregateMemberBalancesCall(String memberGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/{user_guid}/members/{member_guid}/balance"
+            .replaceAll("\\{" + "member_guid" + "\\}", apiClient.escapeString(memberGuid.toString()))
+            .replaceAll("\\{" + "user_guid" + "\\}", apiClient.escapeString(userGuid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/vnd.mx.atrium.v1+json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey", "clientID" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call aggregateMemberBalancesValidateBeforeCall(String memberGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'memberGuid' is set
+        if (memberGuid == null) {
+            throw new ApiException("Missing the required parameter 'memberGuid' when calling aggregateMemberBalances(Async)");
+        }
+        
+        // verify the required parameter 'userGuid' is set
+        if (userGuid == null) {
+            throw new ApiException("Missing the required parameter 'userGuid' when calling aggregateMemberBalances(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = aggregateMemberBalancesCall(memberGuid, userGuid, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Aggregate member account balances
+     * This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @return MemberResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public MemberResponseBody aggregateMemberBalances(String memberGuid, String userGuid) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = aggregateMemberBalancesWithHttpInfo(memberGuid, userGuid);
+        return resp.getData();
+    }
+
+    /**
+     * Aggregate member account balances
+     * This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @return ApiResponse&lt;MemberResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<MemberResponseBody> aggregateMemberBalancesWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
+        com.squareup.okhttp.Call call = aggregateMemberBalancesValidateBeforeCall(memberGuid, userGuid, null, null);
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Aggregate member account balances (asynchronously)
+     * This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call aggregateMemberBalancesAsync(String memberGuid, String userGuid, final ApiCallback<MemberResponseBody> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = aggregateMemberBalancesValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for createMember
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
      * @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code) (required)

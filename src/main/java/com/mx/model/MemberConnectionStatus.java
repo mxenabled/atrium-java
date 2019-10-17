@@ -47,6 +47,9 @@ public class MemberConnectionStatus {
   @SerializedName("has_processed_transactions")
   private Boolean hasProcessedTransactions = null;
 
+  @SerializedName("is_authenticated")
+  private Boolean isAuthenticated = null;
+
   @SerializedName("is_being_aggregated")
   private Boolean isBeingAggregated = null;
 
@@ -128,6 +131,15 @@ public class MemberConnectionStatus {
   }
 
    /**
+   * Get isAuthenticated
+   * @return isAuthenticated
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isIsAuthenticated() {
+    return isAuthenticated;
+  }
+
+   /**
    * Get isBeingAggregated
    * @return isBeingAggregated
   **/
@@ -170,6 +182,7 @@ public class MemberConnectionStatus {
         Objects.equals(this.guid, memberConnectionStatus.guid) &&
         Objects.equals(this.hasProcessedAccounts, memberConnectionStatus.hasProcessedAccounts) &&
         Objects.equals(this.hasProcessedTransactions, memberConnectionStatus.hasProcessedTransactions) &&
+        Objects.equals(this.isAuthenticated, memberConnectionStatus.isAuthenticated) &&
         Objects.equals(this.isBeingAggregated, memberConnectionStatus.isBeingAggregated) &&
         Objects.equals(this.status, memberConnectionStatus.status) &&
         Objects.equals(this.successfullyAggregatedAt, memberConnectionStatus.successfullyAggregatedAt);
@@ -177,7 +190,7 @@ public class MemberConnectionStatus {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregatedAt, challenges, connectionStatus, guid, hasProcessedAccounts, hasProcessedTransactions, isBeingAggregated, status, successfullyAggregatedAt);
+    return Objects.hash(aggregatedAt, challenges, connectionStatus, guid, hasProcessedAccounts, hasProcessedTransactions, isAuthenticated, isBeingAggregated, status, successfullyAggregatedAt);
   }
 
 
@@ -192,6 +205,7 @@ public class MemberConnectionStatus {
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    hasProcessedAccounts: ").append(toIndentedString(hasProcessedAccounts)).append("\n");
     sb.append("    hasProcessedTransactions: ").append(toIndentedString(hasProcessedTransactions)).append("\n");
+    sb.append("    isAuthenticated: ").append(toIndentedString(isAuthenticated)).append("\n");
     sb.append("    isBeingAggregated: ").append(toIndentedString(isBeingAggregated)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    successfullyAggregatedAt: ").append(toIndentedString(successfullyAggregatedAt)).append("\n");

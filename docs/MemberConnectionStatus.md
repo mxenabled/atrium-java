@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **guid** | **String** |  |  [optional]
 **hasProcessedAccounts** | **Boolean** |  |  [optional]
 **hasProcessedTransactions** | **Boolean** |  |  [optional]
+**isAuthenticated** | **Boolean** |  |  [optional]
 **isBeingAggregated** | **Boolean** |  |  [optional]
 **status** | **String** |  |  [optional]
 **successfullyAggregatedAt** | **String** |  |  [optional]

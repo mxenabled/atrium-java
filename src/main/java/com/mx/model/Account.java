@@ -27,6 +27,9 @@ import java.math.BigDecimal;
 
 
 public class Account {
+  @SerializedName("account_number")
+  private String accountNumber = null;
+
   @SerializedName("apr")
   private BigDecimal apr = null;
 
@@ -125,6 +128,15 @@ public class Account {
 
   @SerializedName("user_guid")
   private String userGuid = null;
+
+   /**
+   * Get accountNumber
+   * @return accountNumber
+  **/
+  @ApiModelProperty(example = "123456789", value = "")
+  public String getAccountNumber() {
+    return accountNumber;
+  }
 
    /**
    * Get apr
@@ -478,7 +490,8 @@ public class Account {
       return false;
     }
     Account account = (Account) o;
-    return Objects.equals(this.apr, account.apr) &&
+    return Objects.equals(this.accountNumber, account.accountNumber) &&
+        Objects.equals(this.apr, account.apr) &&
         Objects.equals(this.apy, account.apy) &&
         Objects.equals(this.availableBalance, account.availableBalance) &&
         Objects.equals(this.availableCredit, account.availableCredit) &&
@@ -515,7 +528,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -524,6 +537,7 @@ public class Account {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
     
+    sb.append("    accountNumber: ").append(toIndentedString(accountNumber)).append("\n");
     sb.append("    apr: ").append(toIndentedString(apr)).append("\n");
     sb.append("    apy: ").append(toIndentedString(apy)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");

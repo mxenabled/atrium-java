@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**accountNumber** | **String** |  |  [optional]
 **apr** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **apy** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **availableBalance** | [**BigDecimal**](BigDecimal.md) |  |  [optional]

@@ -16,6 +16,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.mx.model.ChallengeImageOption;
 import com.mx.model.ChallengeOption;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -37,6 +38,9 @@ public class Challenge {
 
   @SerializedName("image_data")
   private String imageData = null;
+
+  @SerializedName("image_options")
+  private List<ChallengeImageOption> imageOptions = null;
 
   @SerializedName("label")
   private String label = null;
@@ -72,6 +76,32 @@ public class Challenge {
   @ApiModelProperty(example = "Who is this guy?", value = "")
   public String getImageData() {
     return imageData;
+  }
+
+  public Challenge imageOptions(List<ChallengeImageOption> imageOptions) {
+    this.imageOptions = imageOptions;
+    return this;
+  }
+
+  public Challenge addImageOptionsItem(ChallengeImageOption imageOptionsItem) {
+    if (this.imageOptions == null) {
+      this.imageOptions = new ArrayList<ChallengeImageOption>();
+    }
+    this.imageOptions.add(imageOptionsItem);
+    return this;
+  }
+
+   /**
+   * Get imageOptions
+   * @return imageOptions
+  **/
+  @ApiModelProperty(value = "")
+  public List<ChallengeImageOption> getImageOptions() {
+    return imageOptions;
+  }
+
+  public void setImageOptions(List<ChallengeImageOption> imageOptions) {
+    this.imageOptions = imageOptions;
   }
 
    /**
@@ -131,6 +161,7 @@ public class Challenge {
     return Objects.equals(this.fieldName, challenge.fieldName) &&
         Objects.equals(this.guid, challenge.guid) &&
         Objects.equals(this.imageData, challenge.imageData) &&
+        Objects.equals(this.imageOptions, challenge.imageOptions) &&
         Objects.equals(this.label, challenge.label) &&
         Objects.equals(this.options, challenge.options) &&
         Objects.equals(this.type, challenge.type);
@@ -138,7 +169,7 @@ public class Challenge {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fieldName, guid, imageData, label, options, type);
+    return Objects.hash(fieldName, guid, imageData, imageOptions, label, options, type);
   }
 
 
@@ -150,6 +181,7 @@ public class Challenge {
     sb.append("    fieldName: ").append(toIndentedString(fieldName)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    imageData: ").append(toIndentedString(imageData)).append("\n");
+    sb.append("    imageOptions: ").append(toIndentedString(imageOptions)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

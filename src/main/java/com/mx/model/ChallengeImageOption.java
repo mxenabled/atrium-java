@@ -21,16 +21,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ChallengeOption
+ * ChallengeImageOption
  */
 
 
-public class ChallengeOption {
+public class ChallengeImageOption {
+  @SerializedName("data_uri")
+  private String dataUri = null;
+
   @SerializedName("label")
   private String label = null;
 
   @SerializedName("value")
   private String value = null;
+
+   /**
+   * Get dataUri
+   * @return dataUri
+  **/
+  @ApiModelProperty(example = "data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...", value = "")
+  public String getDataUri() {
+    return dataUri;
+  }
 
    /**
    * Get label
@@ -59,22 +71,24 @@ public class ChallengeOption {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChallengeOption challengeOption = (ChallengeOption) o;
-    return Objects.equals(this.label, challengeOption.label) &&
-        Objects.equals(this.value, challengeOption.value);
+    ChallengeImageOption challengeImageOption = (ChallengeImageOption) o;
+    return Objects.equals(this.dataUri, challengeImageOption.dataUri) &&
+        Objects.equals(this.label, challengeImageOption.label) &&
+        Objects.equals(this.value, challengeImageOption.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, value);
+    return Objects.hash(dataUri, label, value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChallengeOption {\n");
+    sb.append("class ChallengeImageOption {\n");
     
+    sb.append("    dataUri: ").append(toIndentedString(dataUri)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");

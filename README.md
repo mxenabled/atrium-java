@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.8.2.jar`
+* `target/atrium-java-2.8.3.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
  - [AccountResponseBody](docs/AccountResponseBody.md)
  - [AccountsResponseBody](docs/AccountsResponseBody.md)
  - [Challenge](docs/Challenge.md)
+ - [ChallengeImageOption](docs/ChallengeImageOption.md)
  - [ChallengeOption](docs/ChallengeOption.md)
  - [ChallengesResponseBody](docs/ChallengesResponseBody.md)
  - [ConnectWidget](docs/ConnectWidget.md)

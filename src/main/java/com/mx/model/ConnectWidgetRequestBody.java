@@ -36,6 +36,12 @@ public class ConnectWidgetRequestBody {
   @SerializedName("current_member_guid")
   private String currentMemberGuid = null;
 
+  @SerializedName("disable_institution_search")
+  private Boolean disableInstitutionSearch = null;
+
+  @SerializedName("mode")
+  private String mode = null;
+
   @SerializedName("ui_message_version")
   private BigDecimal uiMessageVersion = null;
 
@@ -96,6 +102,42 @@ public class ConnectWidgetRequestBody {
     this.currentMemberGuid = currentMemberGuid;
   }
 
+  public ConnectWidgetRequestBody disableInstitutionSearch(Boolean disableInstitutionSearch) {
+    this.disableInstitutionSearch = disableInstitutionSearch;
+    return this;
+  }
+
+   /**
+   * Get disableInstitutionSearch
+   * @return disableInstitutionSearch
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isDisableInstitutionSearch() {
+    return disableInstitutionSearch;
+  }
+
+  public void setDisableInstitutionSearch(Boolean disableInstitutionSearch) {
+    this.disableInstitutionSearch = disableInstitutionSearch;
+  }
+
+  public ConnectWidgetRequestBody mode(String mode) {
+    this.mode = mode;
+    return this;
+  }
+
+   /**
+   * Get mode
+   * @return mode
+  **/
+  @ApiModelProperty(example = "aggregation", value = "")
+  public String getMode() {
+    return mode;
+  }
+
+  public void setMode(String mode) {
+    this.mode = mode;
+  }
+
   public ConnectWidgetRequestBody uiMessageVersion(BigDecimal uiMessageVersion) {
     this.uiMessageVersion = uiMessageVersion;
     return this;
@@ -145,13 +187,15 @@ public class ConnectWidgetRequestBody {
     return Objects.equals(this.isMobileWebview, connectWidgetRequestBody.isMobileWebview) &&
         Objects.equals(this.currentInstitutionCode, connectWidgetRequestBody.currentInstitutionCode) &&
         Objects.equals(this.currentMemberGuid, connectWidgetRequestBody.currentMemberGuid) &&
+        Objects.equals(this.disableInstitutionSearch, connectWidgetRequestBody.disableInstitutionSearch) &&
+        Objects.equals(this.mode, connectWidgetRequestBody.mode) &&
         Objects.equals(this.uiMessageVersion, connectWidgetRequestBody.uiMessageVersion) &&
         Objects.equals(this.updateCredentials, connectWidgetRequestBody.updateCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, uiMessageVersion, updateCredentials);
+    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, disableInstitutionSearch, mode, uiMessageVersion, updateCredentials);
   }
 
 
@@ -163,6 +207,8 @@ public class ConnectWidgetRequestBody {
     sb.append("    isMobileWebview: ").append(toIndentedString(isMobileWebview)).append("\n");
     sb.append("    currentInstitutionCode: ").append(toIndentedString(currentInstitutionCode)).append("\n");
     sb.append("    currentMemberGuid: ").append(toIndentedString(currentMemberGuid)).append("\n");
+    sb.append("    disableInstitutionSearch: ").append(toIndentedString(disableInstitutionSearch)).append("\n");
+    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    uiMessageVersion: ").append(toIndentedString(uiMessageVersion)).append("\n");
     sb.append("    updateCredentials: ").append(toIndentedString(updateCredentials)).append("\n");
     sb.append("}");

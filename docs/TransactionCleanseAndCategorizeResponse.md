@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **isInternational** | **Boolean** |  |  [optional]
 **isOverdraftFee** | **Boolean** |  |  [optional]
 **isPayrollAdvance** | **Boolean** |  |  [optional]
+**merchantCategoryCode** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**merchantGuid** | **String** |  |  [optional]
+**originalDescription** | **String** |  |  [optional]
 
 
 

@@ -36,6 +36,9 @@ public class TransactionCleanseAndCategorizeRequest {
   @SerializedName("identifier")
   private String identifier = null;
 
+  @SerializedName("merchant_category_code")
+  private BigDecimal merchantCategoryCode = null;
+
   @SerializedName("type")
   private String type = null;
 
@@ -93,6 +96,24 @@ public class TransactionCleanseAndCategorizeRequest {
     this.identifier = identifier;
   }
 
+  public TransactionCleanseAndCategorizeRequest merchantCategoryCode(BigDecimal merchantCategoryCode) {
+    this.merchantCategoryCode = merchantCategoryCode;
+    return this;
+  }
+
+   /**
+   * Get merchantCategoryCode
+   * @return merchantCategoryCode
+  **/
+  @ApiModelProperty(example = "6011.0", value = "")
+  public BigDecimal getMerchantCategoryCode() {
+    return merchantCategoryCode;
+  }
+
+  public void setMerchantCategoryCode(BigDecimal merchantCategoryCode) {
+    this.merchantCategoryCode = merchantCategoryCode;
+  }
+
   public TransactionCleanseAndCategorizeRequest type(String type) {
     this.type = type;
     return this;
@@ -124,12 +145,13 @@ public class TransactionCleanseAndCategorizeRequest {
     return Objects.equals(this.amount, transactionCleanseAndCategorizeRequest.amount) &&
         Objects.equals(this.description, transactionCleanseAndCategorizeRequest.description) &&
         Objects.equals(this.identifier, transactionCleanseAndCategorizeRequest.identifier) &&
+        Objects.equals(this.merchantCategoryCode, transactionCleanseAndCategorizeRequest.merchantCategoryCode) &&
         Objects.equals(this.type, transactionCleanseAndCategorizeRequest.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, description, identifier, type);
+    return Objects.hash(amount, description, identifier, merchantCategoryCode, type);
   }
 
 
@@ -141,6 +163,7 @@ public class TransactionCleanseAndCategorizeRequest {
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
+    sb.append("    merchantCategoryCode: ").append(toIndentedString(merchantCategoryCode)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();

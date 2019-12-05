@@ -66,6 +66,15 @@ public class TransactionCleanseAndCategorizeResponse {
   @SerializedName("is_payroll_advance")
   private Boolean isPayrollAdvance = null;
 
+  @SerializedName("merchant_category_code")
+  private BigDecimal merchantCategoryCode = null;
+
+  @SerializedName("merchant_guid")
+  private String merchantGuid = null;
+
+  @SerializedName("original_description")
+  private String originalDescription = null;
+
    /**
    * Get amount
    * @return amount
@@ -183,6 +192,33 @@ public class TransactionCleanseAndCategorizeResponse {
     return isPayrollAdvance;
   }
 
+   /**
+   * Get merchantCategoryCode
+   * @return merchantCategoryCode
+  **/
+  @ApiModelProperty(example = "6011.0", value = "")
+  public BigDecimal getMerchantCategoryCode() {
+    return merchantCategoryCode;
+  }
+
+   /**
+   * Get merchantGuid
+   * @return merchantGuid
+  **/
+  @ApiModelProperty(example = "MCH-123", value = "")
+  public String getMerchantGuid() {
+    return merchantGuid;
+  }
+
+   /**
+   * Get originalDescription
+   * @return originalDescription
+  **/
+  @ApiModelProperty(example = "IN-N-OUT BURGER #239AMERICAN FO", value = "")
+  public String getOriginalDescription() {
+    return originalDescription;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -205,12 +241,15 @@ public class TransactionCleanseAndCategorizeResponse {
         Objects.equals(this.isIncome, transactionCleanseAndCategorizeResponse.isIncome) &&
         Objects.equals(this.isInternational, transactionCleanseAndCategorizeResponse.isInternational) &&
         Objects.equals(this.isOverdraftFee, transactionCleanseAndCategorizeResponse.isOverdraftFee) &&
-        Objects.equals(this.isPayrollAdvance, transactionCleanseAndCategorizeResponse.isPayrollAdvance);
+        Objects.equals(this.isPayrollAdvance, transactionCleanseAndCategorizeResponse.isPayrollAdvance) &&
+        Objects.equals(this.merchantCategoryCode, transactionCleanseAndCategorizeResponse.merchantCategoryCode) &&
+        Objects.equals(this.merchantGuid, transactionCleanseAndCategorizeResponse.merchantGuid) &&
+        Objects.equals(this.originalDescription, transactionCleanseAndCategorizeResponse.originalDescription);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, category, description, identifier, type, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance);
+    return Objects.hash(amount, category, description, identifier, type, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance, merchantCategoryCode, merchantGuid, originalDescription);
   }
 
 
@@ -232,6 +271,9 @@ public class TransactionCleanseAndCategorizeResponse {
     sb.append("    isInternational: ").append(toIndentedString(isInternational)).append("\n");
     sb.append("    isOverdraftFee: ").append(toIndentedString(isOverdraftFee)).append("\n");
     sb.append("    isPayrollAdvance: ").append(toIndentedString(isPayrollAdvance)).append("\n");
+    sb.append("    merchantCategoryCode: ").append(toIndentedString(merchantCategoryCode)).append("\n");
+    sb.append("    merchantGuid: ").append(toIndentedString(merchantGuid)).append("\n");
+    sb.append("    originalDescription: ").append(toIndentedString(originalDescription)).append("\n");
     sb.append("}");
     return sb.toString();
   }

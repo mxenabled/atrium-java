@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.8.5.jar`
+* `target/atrium-java-2.9.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -91,7 +91,10 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**readMemberStatus**](docs/MembersApi.md#readMemberStatus) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
 *MembersApi* | [**resumeMember**](docs/MembersApi.md#resumeMember) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *MembersApi* | [**updateMember**](docs/MembersApi.md#updateMember) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*MerchantsApi* | [**listMerchantLocations**](docs/MerchantsApi.md#listMerchantLocations) | **GET** /merchants/{merchant_guid}/merchant_locations | List merchant locations
+*MerchantsApi* | [**listMerchants**](docs/MerchantsApi.md#listMerchants) | **GET** /merchants | List merchants
 *MerchantsApi* | [**readMerchant**](docs/MerchantsApi.md#readMerchant) | **GET** /merchants/{merchant_guid} | Read merchant
+*MerchantsApi* | [**readMerchantLocation**](docs/MerchantsApi.md#readMerchantLocation) | **GET** /merchants/{merchant_guid}/merchant_locations/{merchant_location_guid} | Read merchant location
 *StatementsApi* | [**downloadStatementPdf**](docs/StatementsApi.md#downloadStatementPdf) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement PDF
 *StatementsApi* | [**fetchStatements**](docs/StatementsApi.md#fetchStatements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *StatementsApi* | [**listMemberStatements**](docs/StatementsApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
@@ -147,7 +150,11 @@ Class | Method | HTTP request | Description
  - [MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
  - [MembersResponseBody](docs/MembersResponseBody.md)
  - [Merchant](docs/Merchant.md)
+ - [MerchantLocation](docs/MerchantLocation.md)
+ - [MerchantLocationResponseBody](docs/MerchantLocationResponseBody.md)
+ - [MerchantLocationsResponseBody](docs/MerchantLocationsResponseBody.md)
  - [MerchantResponseBody](docs/MerchantResponseBody.md)
+ - [MerchantsResponseBody](docs/MerchantsResponseBody.md)
  - [Pagination](docs/Pagination.md)
  - [Statement](docs/Statement.md)
  - [StatementResponseBody](docs/StatementResponseBody.md)

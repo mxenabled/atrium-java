@@ -32,11 +32,17 @@ public class AccountNumber {
   @SerializedName("account_number")
   private String accountNumber = null;
 
+  @SerializedName("institution_number")
+  private String institutionNumber = null;
+
   @SerializedName("member_guid")
   private String memberGuid = null;
 
   @SerializedName("routing_number")
   private String routingNumber = null;
+
+  @SerializedName("transit_number")
+  private String transitNumber = null;
 
   @SerializedName("user_guid")
   private String userGuid = null;
@@ -60,6 +66,15 @@ public class AccountNumber {
   }
 
    /**
+   * Get institutionNumber
+   * @return institutionNumber
+  **/
+  @ApiModelProperty(example = "123", value = "")
+  public String getInstitutionNumber() {
+    return institutionNumber;
+  }
+
+   /**
    * Get memberGuid
    * @return memberGuid
   **/
@@ -75,6 +90,15 @@ public class AccountNumber {
   @ApiModelProperty(example = "68899990000000", value = "")
   public String getRoutingNumber() {
     return routingNumber;
+  }
+
+   /**
+   * Get transitNumber
+   * @return transitNumber
+  **/
+  @ApiModelProperty(example = "12345", value = "")
+  public String getTransitNumber() {
+    return transitNumber;
   }
 
    /**
@@ -98,14 +122,16 @@ public class AccountNumber {
     AccountNumber accountNumber = (AccountNumber) o;
     return Objects.equals(this.accountGuid, accountNumber.accountGuid) &&
         Objects.equals(this.accountNumber, accountNumber.accountNumber) &&
+        Objects.equals(this.institutionNumber, accountNumber.institutionNumber) &&
         Objects.equals(this.memberGuid, accountNumber.memberGuid) &&
         Objects.equals(this.routingNumber, accountNumber.routingNumber) &&
+        Objects.equals(this.transitNumber, accountNumber.transitNumber) &&
         Objects.equals(this.userGuid, accountNumber.userGuid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountGuid, accountNumber, memberGuid, routingNumber, userGuid);
+    return Objects.hash(accountGuid, accountNumber, institutionNumber, memberGuid, routingNumber, transitNumber, userGuid);
   }
 
 
@@ -116,8 +142,10 @@ public class AccountNumber {
     
     sb.append("    accountGuid: ").append(toIndentedString(accountGuid)).append("\n");
     sb.append("    accountNumber: ").append(toIndentedString(accountNumber)).append("\n");
+    sb.append("    institutionNumber: ").append(toIndentedString(institutionNumber)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");
     sb.append("    routingNumber: ").append(toIndentedString(routingNumber)).append("\n");
+    sb.append("    transitNumber: ").append(toIndentedString(transitNumber)).append("\n");
     sb.append("    userGuid: ").append(toIndentedString(userGuid)).append("\n");
     sb.append("}");
     return sb.toString();

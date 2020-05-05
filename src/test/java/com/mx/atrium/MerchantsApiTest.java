@@ -10,7 +10,10 @@
 package com.mx.atrium;
 
 import com.mx.atrium.ApiException;
+import com.mx.model.MerchantLocationResponseBody;
+import com.mx.model.MerchantLocationsResponseBody;
 import com.mx.model.MerchantResponseBody;
+import com.mx.model.MerchantsResponseBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -29,6 +32,37 @@ public class MerchantsApiTest {
 
     
     /**
+     * List merchant locations
+     *
+     * Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listMerchantLocationsTest() throws ApiException {
+        String merchantGuid = null;
+        MerchantLocationsResponseBody response = api.listMerchantLocations(merchantGuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List merchants
+     *
+     * Returns a list of merchnants.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listMerchantsTest() throws ApiException {
+        MerchantsResponseBody response = api.listMerchants();
+
+        // TODO: test validations
+    }
+    
+    /**
      * Read merchant
      *
      * Returns information about a particular merchant, such as a logo, name, and website.
@@ -40,6 +74,23 @@ public class MerchantsApiTest {
     public void readMerchantTest() throws ApiException {
         String merchantGuid = null;
         MerchantResponseBody response = api.readMerchant(merchantGuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Read merchant location
+     *
+     * Retuns a specific location associated with a merchant, including physical location, latitude, longitude, etc.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void readMerchantLocationTest() throws ApiException {
+        String merchantGuid = null;
+        String merchantLocationGuid = null;
+        MerchantLocationResponseBody response = api.readMerchantLocation(merchantGuid, merchantLocationGuid);
 
         // TODO: test validations
     }

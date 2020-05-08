@@ -249,6 +249,25 @@ public class MembersApiTest {
     }
     
     /**
+     * Read OAuth Window URI
+     *
+     * This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void readOAuthWindowURITest() throws ApiException {
+        String memberGuid = null;
+        String userGuid = null;
+        String referralSource = null;
+        String uiMessageWebviewUrlScheme = null;
+        MemberResponseBody response = api.readOAuthWindowURI(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Resume aggregation from MFA
      *
      * This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.

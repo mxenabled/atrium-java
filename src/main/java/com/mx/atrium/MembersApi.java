@@ -1689,6 +1689,151 @@ public class MembersApi {
         return call;
     }
     /**
+     * Build call for readOAuthWindowURI
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param referralSource Should be either BROWSER or APP depending on the implementation. (optional)
+     * @param uiMessageWebviewUrlScheme A scheme for routing the user back to the application state they were previously in. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call readOAuthWindowURICall(String memberGuid, String userGuid, String referralSource, String uiMessageWebviewUrlScheme, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/{user_guid}/members/{member_guid}/oauth_window_uri"
+            .replaceAll("\\{" + "member_guid" + "\\}", apiClient.escapeString(memberGuid.toString()))
+            .replaceAll("\\{" + "user_guid" + "\\}", apiClient.escapeString(userGuid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (referralSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("referral_source", referralSource));
+        if (uiMessageWebviewUrlScheme != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ui_message_webview_url_scheme", uiMessageWebviewUrlScheme));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/vnd.mx.atrium.v1+json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey", "clientID" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call readOAuthWindowURIValidateBeforeCall(String memberGuid, String userGuid, String referralSource, String uiMessageWebviewUrlScheme, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'memberGuid' is set
+        if (memberGuid == null) {
+            throw new ApiException("Missing the required parameter 'memberGuid' when calling readOAuthWindowURI(Async)");
+        }
+        
+        // verify the required parameter 'userGuid' is set
+        if (userGuid == null) {
+            throw new ApiException("Missing the required parameter 'userGuid' when calling readOAuthWindowURI(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = readOAuthWindowURICall(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Read OAuth Window URI
+     * This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param referralSource Should be either BROWSER or APP depending on the implementation. (optional)
+     * @param uiMessageWebviewUrlScheme A scheme for routing the user back to the application state they were previously in. (optional)
+     * @return MemberResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public MemberResponseBody readOAuthWindowURI(String memberGuid, String userGuid, String referralSource, String uiMessageWebviewUrlScheme) throws ApiException {
+        ApiResponse<MemberResponseBody> resp = readOAuthWindowURIWithHttpInfo(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme);
+        return resp.getData();
+    }
+
+    /**
+     * Read OAuth Window URI
+     * This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param referralSource Should be either BROWSER or APP depending on the implementation. (optional)
+     * @param uiMessageWebviewUrlScheme A scheme for routing the user back to the application state they were previously in. (optional)
+     * @return ApiResponse&lt;MemberResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<MemberResponseBody> readOAuthWindowURIWithHttpInfo(String memberGuid, String userGuid, String referralSource, String uiMessageWebviewUrlScheme) throws ApiException {
+        com.squareup.okhttp.Call call = readOAuthWindowURIValidateBeforeCall(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme, null, null);
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Read OAuth Window URI (asynchronously)
+     * This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+     * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
+     * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param referralSource Should be either BROWSER or APP depending on the implementation. (optional)
+     * @param uiMessageWebviewUrlScheme A scheme for routing the user back to the application state they were previously in. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call readOAuthWindowURIAsync(String memberGuid, String userGuid, String referralSource, String uiMessageWebviewUrlScheme, final ApiCallback<MemberResponseBody> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = readOAuthWindowURIValidateBeforeCall(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<MemberResponseBody>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for resumeMember
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)

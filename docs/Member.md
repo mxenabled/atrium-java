@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **isBeingAggregated** | **Boolean** |  |  [optional]
 **metadata** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
+**oauthWindowUri** | **String** |  |  [optional]
 **status** | **String** |  |  [optional]
 **successfullyAggregatedAt** | **String** |  |  [optional]
 **userGuid** | **String** |  |  [optional]

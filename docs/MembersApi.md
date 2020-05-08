@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**listMembers**](MembersApi.md#listMembers) | **GET** /users/{user_guid}/members | List members
 [**readMember**](MembersApi.md#readMember) | **GET** /users/{user_guid}/members/{member_guid} | Read member
 [**readMemberStatus**](MembersApi.md#readMemberStatus) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
+[**readOAuthWindowURI**](MembersApi.md#readOAuthWindowURI) | **GET** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Read OAuth Window URI
 [**resumeMember**](MembersApi.md#resumeMember) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 [**updateMember**](MembersApi.md#updateMember) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
 
@@ -534,6 +535,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MemberConnectionStatusResponseBody**](MemberConnectionStatusResponseBody.md)
+
+<a name="readOAuthWindowURI"></a>
+# **readOAuthWindowURI**
+> MemberResponseBody readOAuthWindowURI(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme)
+
+Read OAuth Window URI
+
+This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+
+### Example
+```java
+import com.mx.atrium.*;
+import com.mx.model.*;
+
+public class MembersApiExample {
+    public static void main(String[] args) {
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+
+        String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
+        String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        String referralSource = "BROWSER"; // String | Should be either BROWSER or APP depending on the implementation.
+        String uiMessageWebviewUrlScheme = "ui_message_webview_url_scheme_example"; // String | A scheme for routing the user back to the application state they were previously in.
+
+        try {
+            MemberResponseBody response = client.members.readOAuthWindowURI(memberGuid, userGuid, referralSource, uiMessageWebviewUrlScheme);
+            System.out.println(response);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MembersApi#readOAuthWindowURI");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **memberGuid** | **String**| The unique identifier for a &#x60;member&#x60;. |
+ **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **referralSource** | **String**| Should be either BROWSER or APP depending on the implementation. | [optional]
+ **uiMessageWebviewUrlScheme** | **String**| A scheme for routing the user back to the application state they were previously in. | [optional]
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
 
 <a name="resumeMember"></a>
 # **resumeMember**

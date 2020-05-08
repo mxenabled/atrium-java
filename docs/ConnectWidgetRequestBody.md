@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **disableInstitutionSearch** | **Boolean** |  |  [optional]
 **mode** | **String** |  |  [optional]
 **uiMessageVersion** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**uiMessageWebviewUrlScheme** | **String** |  |  [optional]
 **updateCredentials** | **Boolean** |  |  [optional]
 
 

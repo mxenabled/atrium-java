@@ -50,6 +50,9 @@ public class Member {
   @SerializedName("name")
   private String name = null;
 
+  @SerializedName("oauth_window_uri")
+  private String oauthWindowUri = null;
+
   @SerializedName("status")
   private String status = null;
 
@@ -159,6 +162,15 @@ public class Member {
   }
 
    /**
+   * Get oauthWindowUri
+   * @return oauthWindowUri
+  **/
+  @ApiModelProperty(example = "oauth_window_uri_example", value = "")
+  public String getOauthWindowUri() {
+    return oauthWindowUri;
+  }
+
+   /**
    * Get status
    * @return status
   **/
@@ -203,6 +215,7 @@ public class Member {
         Objects.equals(this.isBeingAggregated, member.isBeingAggregated) &&
         Objects.equals(this.metadata, member.metadata) &&
         Objects.equals(this.name, member.name) &&
+        Objects.equals(this.oauthWindowUri, member.oauthWindowUri) &&
         Objects.equals(this.status, member.status) &&
         Objects.equals(this.successfullyAggregatedAt, member.successfullyAggregatedAt) &&
         Objects.equals(this.userGuid, member.userGuid);
@@ -210,7 +223,7 @@ public class Member {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregatedAt, connectionStatus, guid, identifier, institutionCode, isBeingAggregated, metadata, name, status, successfullyAggregatedAt, userGuid);
+    return Objects.hash(aggregatedAt, connectionStatus, guid, identifier, institutionCode, isBeingAggregated, metadata, name, oauthWindowUri, status, successfullyAggregatedAt, userGuid);
   }
 
 
@@ -227,6 +240,7 @@ public class Member {
     sb.append("    isBeingAggregated: ").append(toIndentedString(isBeingAggregated)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    oauthWindowUri: ").append(toIndentedString(oauthWindowUri)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    successfullyAggregatedAt: ").append(toIndentedString(successfullyAggregatedAt)).append("\n");
     sb.append("    userGuid: ").append(toIndentedString(userGuid)).append("\n");

@@ -45,6 +45,9 @@ public class ConnectWidgetRequestBody {
   @SerializedName("ui_message_version")
   private BigDecimal uiMessageVersion = null;
 
+  @SerializedName("ui_message_webview_url_scheme")
+  private String uiMessageWebviewUrlScheme = null;
+
   @SerializedName("update_credentials")
   private Boolean updateCredentials = null;
 
@@ -156,6 +159,24 @@ public class ConnectWidgetRequestBody {
     this.uiMessageVersion = uiMessageVersion;
   }
 
+  public ConnectWidgetRequestBody uiMessageWebviewUrlScheme(String uiMessageWebviewUrlScheme) {
+    this.uiMessageWebviewUrlScheme = uiMessageWebviewUrlScheme;
+    return this;
+  }
+
+   /**
+   * Get uiMessageWebviewUrlScheme
+   * @return uiMessageWebviewUrlScheme
+  **/
+  @ApiModelProperty(example = "ui_message_webview_url_scheme_example", value = "")
+  public String getUiMessageWebviewUrlScheme() {
+    return uiMessageWebviewUrlScheme;
+  }
+
+  public void setUiMessageWebviewUrlScheme(String uiMessageWebviewUrlScheme) {
+    this.uiMessageWebviewUrlScheme = uiMessageWebviewUrlScheme;
+  }
+
   public ConnectWidgetRequestBody updateCredentials(Boolean updateCredentials) {
     this.updateCredentials = updateCredentials;
     return this;
@@ -190,12 +211,13 @@ public class ConnectWidgetRequestBody {
         Objects.equals(this.disableInstitutionSearch, connectWidgetRequestBody.disableInstitutionSearch) &&
         Objects.equals(this.mode, connectWidgetRequestBody.mode) &&
         Objects.equals(this.uiMessageVersion, connectWidgetRequestBody.uiMessageVersion) &&
+        Objects.equals(this.uiMessageWebviewUrlScheme, connectWidgetRequestBody.uiMessageWebviewUrlScheme) &&
         Objects.equals(this.updateCredentials, connectWidgetRequestBody.updateCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, disableInstitutionSearch, mode, uiMessageVersion, updateCredentials);
+    return Objects.hash(isMobileWebview, currentInstitutionCode, currentMemberGuid, disableInstitutionSearch, mode, uiMessageVersion, uiMessageWebviewUrlScheme, updateCredentials);
   }
 
 
@@ -210,6 +232,7 @@ public class ConnectWidgetRequestBody {
     sb.append("    disableInstitutionSearch: ").append(toIndentedString(disableInstitutionSearch)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    uiMessageVersion: ").append(toIndentedString(uiMessageVersion)).append("\n");
+    sb.append("    uiMessageWebviewUrlScheme: ").append(toIndentedString(uiMessageWebviewUrlScheme)).append("\n");
     sb.append("    updateCredentials: ").append(toIndentedString(updateCredentials)).append("\n");
     sb.append("}");
     return sb.toString();

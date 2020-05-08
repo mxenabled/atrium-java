@@ -30,10 +30,13 @@ import java.util.List;
 
 public class MemberCreateRequest {
   @SerializedName("credentials")
-  private List<CredentialRequest> credentials = new ArrayList<CredentialRequest>();
+  private List<CredentialRequest> credentials = null;
 
   @SerializedName("identifier")
   private String identifier = null;
+
+  @SerializedName("is_oauth")
+  private Boolean isOauth = null;
 
   @SerializedName("institution_code")
   private String institutionCode = null;
@@ -41,8 +44,14 @@ public class MemberCreateRequest {
   @SerializedName("metadata")
   private String metadata = null;
 
+  @SerializedName("referral_source")
+  private String referralSource = null;
+
   @SerializedName("skip_aggregation")
   private Boolean skipAggregation = null;
+
+  @SerializedName("ui_message_webview_url_scheme")
+  private String uiMessageWebviewUrlScheme = null;
 
   public MemberCreateRequest credentials(List<CredentialRequest> credentials) {
     this.credentials = credentials;
@@ -50,6 +59,9 @@ public class MemberCreateRequest {
   }
 
   public MemberCreateRequest addCredentialsItem(CredentialRequest credentialsItem) {
+    if (this.credentials == null) {
+      this.credentials = new ArrayList<CredentialRequest>();
+    }
     this.credentials.add(credentialsItem);
     return this;
   }
@@ -58,7 +70,7 @@ public class MemberCreateRequest {
    * Get credentials
    * @return credentials
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<CredentialRequest> getCredentials() {
     return credentials;
   }
@@ -83,6 +95,24 @@ public class MemberCreateRequest {
 
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
+  }
+
+  public MemberCreateRequest isOauth(Boolean isOauth) {
+    this.isOauth = isOauth;
+    return this;
+  }
+
+   /**
+   * Get isOauth
+   * @return isOauth
+  **/
+  @ApiModelProperty(example = "true", value = "")
+  public Boolean isIsOauth() {
+    return isOauth;
+  }
+
+  public void setIsOauth(Boolean isOauth) {
+    this.isOauth = isOauth;
   }
 
   public MemberCreateRequest institutionCode(String institutionCode) {
@@ -121,6 +151,24 @@ public class MemberCreateRequest {
     this.metadata = metadata;
   }
 
+  public MemberCreateRequest referralSource(String referralSource) {
+    this.referralSource = referralSource;
+    return this;
+  }
+
+   /**
+   * Get referralSource
+   * @return referralSource
+  **/
+  @ApiModelProperty(example = "BROWSER", value = "")
+  public String getReferralSource() {
+    return referralSource;
+  }
+
+  public void setReferralSource(String referralSource) {
+    this.referralSource = referralSource;
+  }
+
   public MemberCreateRequest skipAggregation(Boolean skipAggregation) {
     this.skipAggregation = skipAggregation;
     return this;
@@ -139,6 +187,24 @@ public class MemberCreateRequest {
     this.skipAggregation = skipAggregation;
   }
 
+  public MemberCreateRequest uiMessageWebviewUrlScheme(String uiMessageWebviewUrlScheme) {
+    this.uiMessageWebviewUrlScheme = uiMessageWebviewUrlScheme;
+    return this;
+  }
+
+   /**
+   * Get uiMessageWebviewUrlScheme
+   * @return uiMessageWebviewUrlScheme
+  **/
+  @ApiModelProperty(example = "example_ui_message_webview_url_scheme", value = "")
+  public String getUiMessageWebviewUrlScheme() {
+    return uiMessageWebviewUrlScheme;
+  }
+
+  public void setUiMessageWebviewUrlScheme(String uiMessageWebviewUrlScheme) {
+    this.uiMessageWebviewUrlScheme = uiMessageWebviewUrlScheme;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -151,14 +217,17 @@ public class MemberCreateRequest {
     MemberCreateRequest memberCreateRequest = (MemberCreateRequest) o;
     return Objects.equals(this.credentials, memberCreateRequest.credentials) &&
         Objects.equals(this.identifier, memberCreateRequest.identifier) &&
+        Objects.equals(this.isOauth, memberCreateRequest.isOauth) &&
         Objects.equals(this.institutionCode, memberCreateRequest.institutionCode) &&
         Objects.equals(this.metadata, memberCreateRequest.metadata) &&
-        Objects.equals(this.skipAggregation, memberCreateRequest.skipAggregation);
+        Objects.equals(this.referralSource, memberCreateRequest.referralSource) &&
+        Objects.equals(this.skipAggregation, memberCreateRequest.skipAggregation) &&
+        Objects.equals(this.uiMessageWebviewUrlScheme, memberCreateRequest.uiMessageWebviewUrlScheme);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentials, identifier, institutionCode, metadata, skipAggregation);
+    return Objects.hash(credentials, identifier, isOauth, institutionCode, metadata, referralSource, skipAggregation, uiMessageWebviewUrlScheme);
   }
 
 
@@ -169,9 +238,12 @@ public class MemberCreateRequest {
     
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
+    sb.append("    isOauth: ").append(toIndentedString(isOauth)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    referralSource: ").append(toIndentedString(referralSource)).append("\n");
     sb.append("    skipAggregation: ").append(toIndentedString(skipAggregation)).append("\n");
+    sb.append("    uiMessageWebviewUrlScheme: ").append(toIndentedString(uiMessageWebviewUrlScheme)).append("\n");
     sb.append("}");
     return sb.toString();
   }

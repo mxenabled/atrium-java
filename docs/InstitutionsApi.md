@@ -22,7 +22,7 @@ import com.mx.model.*;
 
 public class InstitutionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String name = name_example; // String | This will list only institutions in which the appended string appears.
         Integer page = 1; // Integer | Specify current page.
@@ -74,7 +74,7 @@ import com.mx.model.*;
 
 public class InstitutionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String institutionCode = "example_institution_code"; // String | The institution_code of the institution.
 
@@ -114,7 +114,7 @@ import com.mx.model.*;
 
 public class InstitutionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String institutionCode = "example_institution_code"; // String | The institution_code of the institution.
 

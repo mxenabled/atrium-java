@@ -23,7 +23,7 @@ import com.mx.model.*;
 
 public class AccountsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
@@ -73,7 +73,7 @@ import com.mx.model.*;
 
 public class AccountsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
         Integer page = 1; // Integer | Specify current page.
@@ -117,7 +117,7 @@ import com.mx.model.*;
 
 public class AccountsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
@@ -159,7 +159,7 @@ import com.mx.model.*;
 
 public class AccountsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.

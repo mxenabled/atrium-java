@@ -23,7 +23,7 @@ import com.mx.model.*;
 
 public class MerchantsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String merchantGuid = "MCH-123"; // String | The unique identifier for a `merchant`.
 
@@ -63,7 +63,7 @@ import com.mx.model.*;
 
 public class MerchantsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
 
         try {
@@ -99,7 +99,7 @@ import com.mx.model.*;
 
 public class MerchantsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String merchantGuid = "MCH-123"; // String | The unique identifier for a `merchant`.
 
@@ -139,7 +139,7 @@ import com.mx.model.*;
 
 public class MerchantsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String merchantGuid = "MCH-123"; // String | The unique identifier for a `merchant`.
         String merchantLocationGuid = "MCL-123"; // String | The unique identifier for a `merchant_location`.

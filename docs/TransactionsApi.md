@@ -22,7 +22,7 @@ import com.mx.model.*;
 
 public class TransactionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         TransactionsCleanseAndCategorizeRequestBody body = new TransactionsCleanseAndCategorizeRequestBody(); // TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
 
@@ -62,7 +62,7 @@ import com.mx.model.*;
 
 public class TransactionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
         Integer page = 1; // Integer | Specify current page.
@@ -110,7 +110,7 @@ import com.mx.model.*;
 
 public class TransactionsApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String transactionGuid = "TRN-123"; // String | The unique identifier for a `transaction`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.

@@ -24,7 +24,7 @@ import com.mx.model.*;
 
 public class UsersApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         UserCreateRequestBody body = new UserCreateRequestBody(); // UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
 
@@ -64,7 +64,7 @@ import com.mx.model.*;
 
 public class UsersApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
@@ -103,7 +103,7 @@ import com.mx.model.*;
 
 public class UsersApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         Integer page = 1; // Integer | Specify current page.
         Integer recordsPerPage = 12; // Integer | Specify records per page.
@@ -145,7 +145,7 @@ import com.mx.model.*;
 
 public class UsersApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
 
@@ -185,7 +185,7 @@ import com.mx.model.*;
 
 public class UsersApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
         UserUpdateRequestBody body = new UserUpdateRequestBody(); // UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)

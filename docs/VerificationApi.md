@@ -22,7 +22,7 @@ import com.mx.model.*;
 
 public class VerificationApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
@@ -64,7 +64,7 @@ import com.mx.model.*;
 
 public class VerificationApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
@@ -106,7 +106,7 @@ import com.mx.model.*;
 
 public class VerificationApiExample {
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.

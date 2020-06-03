@@ -35,7 +35,12 @@ public class AtriumClient {
   public VerificationApi verification;
 
   public AtriumClient(String apiKey, String clientID) {
+    this(apiKey, clientID, "https://vestibule.mx.com");
+  }
+
+  public AtriumClient(String apiKey, String clientID, String basePath) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath(basePath);
     ApiKeyAuth api = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
     api.setApiKey(apiKey);
     ApiKeyAuth client = (ApiKeyAuth) defaultClient.getAuthentication("clientID");

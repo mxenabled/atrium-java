@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.10.0.jar`
+* `target/atrium-java-2.10.1.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -38,7 +38,7 @@ import com.mx.model.*;
 public class AccountsApiExample {
 
     public static void main(String[] args) {
-        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID");
+        AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.

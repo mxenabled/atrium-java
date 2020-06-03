@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.10.1.jar`
+* `target/atrium-java-2.10.1-beta.0.jar`
 * `target/lib/*.jar`
 
 ## Example Usage
@@ -68,6 +68,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**readAccount**](docs/AccountsApi.md#readAccount) | **GET** /users/{user_guid}/accounts/{account_guid} | Read an account
 *AccountsApi* | [**readAccountByMemberGUID**](docs/AccountsApi.md#readAccountByMemberGUID) | **GET** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read an account
 *ConnectWidgetApi* | [**getConnectWidget**](docs/ConnectWidgetApi.md#getConnectWidget) | **POST** /users/{user_guid}/connect_widget_url | Embedding in a website
+*CreditCardProductsApi* | [**readCreditCardProduct**](docs/CreditCardProductsApi.md#readCreditCardProduct) | **GET** /credit_card_products/{credit_card_product_guid} | Read credit card product
 *HoldingsApi* | [**listHoldings**](docs/HoldingsApi.md#listHoldings) | **GET** /users/{user_guid}/holdings | List holdings
 *HoldingsApi* | [**listHoldingsByAccount**](docs/HoldingsApi.md#listHoldingsByAccount) | **GET** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
 *HoldingsApi* | [**listHoldingsByMember**](docs/HoldingsApi.md#listHoldingsByMember) | **GET** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
@@ -96,6 +97,9 @@ Class | Method | HTTP request | Description
 *MerchantsApi* | [**listMerchants**](docs/MerchantsApi.md#listMerchants) | **GET** /merchants | List merchants
 *MerchantsApi* | [**readMerchant**](docs/MerchantsApi.md#readMerchant) | **GET** /merchants/{merchant_guid} | Read merchant
 *MerchantsApi* | [**readMerchantLocation**](docs/MerchantsApi.md#readMerchantLocation) | **GET** /merchants/{merchant_guid}/merchant_locations/{merchant_location_guid} | Read merchant location
+*RewardsApi* | [**fetchRewards**](docs/RewardsApi.md#fetchRewards) | **POST** /users/{user_guid}/members/{member_guid}/fetch_rewards | Fetch rewards
+*RewardsApi* | [**listRewards**](docs/RewardsApi.md#listRewards) | **GET** /users/{user_guid}/members/{member_guid}/rewards | List rewards
+*RewardsApi* | [**readReward**](docs/RewardsApi.md#readReward) | **GET** /users/{user_guid}/members/{member_guid}/rewards/{reward_guid} | Read reward
 *StatementsApi* | [**downloadStatementPdf**](docs/StatementsApi.md#downloadStatementPdf) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement PDF
 *StatementsApi* | [**fetchStatements**](docs/StatementsApi.md#fetchStatements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *StatementsApi* | [**listMemberStatements**](docs/StatementsApi.md#listMemberStatements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
@@ -133,6 +137,8 @@ Class | Method | HTTP request | Description
  - [CredentialRequest](docs/CredentialRequest.md)
  - [CredentialResponse](docs/CredentialResponse.md)
  - [CredentialsResponseBody](docs/CredentialsResponseBody.md)
+ - [CreditCardProduct](docs/CreditCardProduct.md)
+ - [CreditCardProductResponseBody](docs/CreditCardProductResponseBody.md)
  - [Holding](docs/Holding.md)
  - [HoldingResponseBody](docs/HoldingResponseBody.md)
  - [HoldingsResponseBody](docs/HoldingsResponseBody.md)
@@ -157,6 +163,9 @@ Class | Method | HTTP request | Description
  - [MerchantResponseBody](docs/MerchantResponseBody.md)
  - [MerchantsResponseBody](docs/MerchantsResponseBody.md)
  - [Pagination](docs/Pagination.md)
+ - [Reward](docs/Reward.md)
+ - [RewardResponseBody](docs/RewardResponseBody.md)
+ - [RewardsResponseBody](docs/RewardsResponseBody.md)
  - [Statement](docs/Statement.md)
  - [StatementResponseBody](docs/StatementResponseBody.md)
  - [StatementsResponseBody](docs/StatementsResponseBody.md)

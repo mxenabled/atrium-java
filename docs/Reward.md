@@ -1,0 +1,20 @@
+
+# Reward
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**accountGuid** | **String** |  |  [optional]
+**balance** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**balanceType** | **String** |  |  [optional]
+**createdAt** | **String** |  |  [optional]
+**description** | **String** |  |  [optional]
+**expiresOn** | **String** |  |  [optional]
+**guid** | **String** |  |  [optional]
+**memberGuid** | **String** |  |  [optional]
+**unitType** | **String** |  |  [optional]
+**updatedAt** | **String** |  |  [optional]
+**userGuid** | **String** |  |  [optional]
+
+
+

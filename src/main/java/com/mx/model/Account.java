@@ -54,17 +54,26 @@ public class Account {
   @SerializedName("created_at")
   private String createdAt = null;
 
+  @SerializedName("credit_card_product_guid")
+  private String creditCardProductGuid = null;
+
   @SerializedName("credit_limit")
   private BigDecimal creditLimit = null;
 
   @SerializedName("currency_code")
   private String currencyCode = null;
 
+  @SerializedName("current_reward_level")
+  private String currentRewardLevel = null;
+
   @SerializedName("day_payment_is_due")
   private Integer dayPaymentIsDue = null;
 
   @SerializedName("death_benefit")
   private BigDecimal deathBenefit = null;
+
+  @SerializedName("enrolled_in_rewards_on")
+  private String enrolledInRewardsOn = null;
 
   @SerializedName("guid")
   private String guid = null;
@@ -102,6 +111,9 @@ public class Account {
   @SerializedName("name")
   private String name = null;
 
+  @SerializedName("next_reward_level")
+  private String nextRewardLevel = null;
+
   @SerializedName("original_balance")
   private BigDecimal originalBalance = null;
 
@@ -110,6 +122,9 @@ public class Account {
 
   @SerializedName("payoff_balance")
   private BigDecimal payoffBalance = null;
+
+  @SerializedName("primary_reward_unit")
+  private String primaryRewardUnit = null;
 
   @SerializedName("started_on")
   private String startedOn = null;
@@ -229,6 +244,15 @@ public class Account {
   }
 
    /**
+   * Get creditCardProductGuid
+   * @return creditCardProductGuid
+  **/
+  @ApiModelProperty(example = "CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a", value = "")
+  public String getCreditCardProductGuid() {
+    return creditCardProductGuid;
+  }
+
+   /**
    * Get creditLimit
    * @return creditLimit
   **/
@@ -244,6 +268,15 @@ public class Account {
   @ApiModelProperty(example = "USD", value = "")
   public String getCurrencyCode() {
     return currencyCode;
+  }
+
+   /**
+   * Get currentRewardLevel
+   * @return currentRewardLevel
+  **/
+  @ApiModelProperty(example = "", value = "")
+  public String getCurrentRewardLevel() {
+    return currentRewardLevel;
   }
 
    /**
@@ -271,6 +304,15 @@ public class Account {
 
   public void setDeathBenefit(BigDecimal deathBenefit) {
     this.deathBenefit = deathBenefit;
+  }
+
+   /**
+   * Get enrolledInRewardsOn
+   * @return enrolledInRewardsOn
+  **/
+  @ApiModelProperty(example = "", value = "")
+  public String getEnrolledInRewardsOn() {
+    return enrolledInRewardsOn;
   }
 
    /**
@@ -400,6 +442,15 @@ public class Account {
   }
 
    /**
+   * Get nextRewardLevel
+   * @return nextRewardLevel
+  **/
+  @ApiModelProperty(example = "", value = "")
+  public String getNextRewardLevel() {
+    return nextRewardLevel;
+  }
+
+   /**
    * Get originalBalance
    * @return originalBalance
   **/
@@ -424,6 +475,15 @@ public class Account {
   @ApiModelProperty(value = "")
   public BigDecimal getPayoffBalance() {
     return payoffBalance;
+  }
+
+   /**
+   * Get primaryRewardUnit
+   * @return primaryRewardUnit
+  **/
+  @ApiModelProperty(example = "", value = "")
+  public String getPrimaryRewardUnit() {
+    return primaryRewardUnit;
   }
 
    /**
@@ -499,10 +559,13 @@ public class Account {
         Objects.equals(this.cashBalance, account.cashBalance) &&
         Objects.equals(this.cashSurrenderValue, account.cashSurrenderValue) &&
         Objects.equals(this.createdAt, account.createdAt) &&
+        Objects.equals(this.creditCardProductGuid, account.creditCardProductGuid) &&
         Objects.equals(this.creditLimit, account.creditLimit) &&
         Objects.equals(this.currencyCode, account.currencyCode) &&
+        Objects.equals(this.currentRewardLevel, account.currentRewardLevel) &&
         Objects.equals(this.dayPaymentIsDue, account.dayPaymentIsDue) &&
         Objects.equals(this.deathBenefit, account.deathBenefit) &&
+        Objects.equals(this.enrolledInRewardsOn, account.enrolledInRewardsOn) &&
         Objects.equals(this.guid, account.guid) &&
         Objects.equals(this.holdingsValue, account.holdingsValue) &&
         Objects.equals(this.institutionCode, account.institutionCode) &&
@@ -515,9 +578,11 @@ public class Account {
         Objects.equals(this.minimumBalance, account.minimumBalance) &&
         Objects.equals(this.minimumPayment, account.minimumPayment) &&
         Objects.equals(this.name, account.name) &&
+        Objects.equals(this.nextRewardLevel, account.nextRewardLevel) &&
         Objects.equals(this.originalBalance, account.originalBalance) &&
         Objects.equals(this.paymentDueAt, account.paymentDueAt) &&
         Objects.equals(this.payoffBalance, account.payoffBalance) &&
+        Objects.equals(this.primaryRewardUnit, account.primaryRewardUnit) &&
         Objects.equals(this.startedOn, account.startedOn) &&
         Objects.equals(this.subtype, account.subtype) &&
         Objects.equals(this.totalAccountValue, account.totalAccountValue) &&
@@ -528,7 +593,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditCardProductGuid, creditLimit, currencyCode, currentRewardLevel, dayPaymentIsDue, deathBenefit, enrolledInRewardsOn, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, nextRewardLevel, originalBalance, paymentDueAt, payoffBalance, primaryRewardUnit, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -546,10 +611,13 @@ public class Account {
     sb.append("    cashBalance: ").append(toIndentedString(cashBalance)).append("\n");
     sb.append("    cashSurrenderValue: ").append(toIndentedString(cashSurrenderValue)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    creditCardProductGuid: ").append(toIndentedString(creditCardProductGuid)).append("\n");
     sb.append("    creditLimit: ").append(toIndentedString(creditLimit)).append("\n");
     sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");
+    sb.append("    currentRewardLevel: ").append(toIndentedString(currentRewardLevel)).append("\n");
     sb.append("    dayPaymentIsDue: ").append(toIndentedString(dayPaymentIsDue)).append("\n");
     sb.append("    deathBenefit: ").append(toIndentedString(deathBenefit)).append("\n");
+    sb.append("    enrolledInRewardsOn: ").append(toIndentedString(enrolledInRewardsOn)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    holdingsValue: ").append(toIndentedString(holdingsValue)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
@@ -562,9 +630,11 @@ public class Account {
     sb.append("    minimumBalance: ").append(toIndentedString(minimumBalance)).append("\n");
     sb.append("    minimumPayment: ").append(toIndentedString(minimumPayment)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    nextRewardLevel: ").append(toIndentedString(nextRewardLevel)).append("\n");
     sb.append("    originalBalance: ").append(toIndentedString(originalBalance)).append("\n");
     sb.append("    paymentDueAt: ").append(toIndentedString(paymentDueAt)).append("\n");
     sb.append("    payoffBalance: ").append(toIndentedString(payoffBalance)).append("\n");
+    sb.append("    primaryRewardUnit: ").append(toIndentedString(primaryRewardUnit)).append("\n");
     sb.append("    startedOn: ").append(toIndentedString(startedOn)).append("\n");
     sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    totalAccountValue: ").append(toIndentedString(totalAccountValue)).append("\n");

@@ -10,11 +10,13 @@ import java.util.*;
 
 import com.mx.atrium.AccountsApi;
 import com.mx.atrium.ConnectWidgetApi;
+import com.mx.atrium.CreditCardProductsApi;
 import com.mx.atrium.HoldingsApi;
 import com.mx.atrium.IdentityApi;
 import com.mx.atrium.InstitutionsApi;
 import com.mx.atrium.MembersApi;
 import com.mx.atrium.MerchantsApi;
+import com.mx.atrium.RewardsApi;
 import com.mx.atrium.StatementsApi;
 import com.mx.atrium.TransactionsApi;
 import com.mx.atrium.UsersApi;
@@ -24,11 +26,13 @@ public class AtriumClient {
   
   public AccountsApi accounts;
   public ConnectWidgetApi connectWidget;
+  public CreditCardProductsApi creditCardProducts;
   public HoldingsApi holdings;
   public IdentityApi identity;
   public InstitutionsApi institutions;
   public MembersApi members;
   public MerchantsApi merchants;
+  public RewardsApi rewards;
   public StatementsApi statements;
   public TransactionsApi transactions;
   public UsersApi users;
@@ -49,11 +53,13 @@ public class AtriumClient {
     
     this.accounts = new AccountsApi();
     this.connectWidget = new ConnectWidgetApi();
+    this.creditCardProducts = new CreditCardProductsApi();
     this.holdings = new HoldingsApi();
     this.identity = new IdentityApi();
     this.institutions = new InstitutionsApi();
     this.members = new MembersApi();
     this.merchants = new MerchantsApi();
+    this.rewards = new RewardsApi();
     this.statements = new StatementsApi();
     this.transactions = new TransactionsApi();
     this.users = new UsersApi();

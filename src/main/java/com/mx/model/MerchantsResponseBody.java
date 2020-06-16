@@ -30,36 +30,36 @@ import java.util.List;
 
 
 public class MerchantsResponseBody {
-  @SerializedName("merchant")
-  private List<Merchant> merchant = null;
+  @SerializedName("merchants")
+  private List<Merchant> merchants = null;
 
   @SerializedName("pagination")
   private Pagination pagination = null;
 
-  public MerchantsResponseBody merchant(List<Merchant> merchant) {
-    this.merchant = merchant;
+  public MerchantsResponseBody merchants(List<Merchant> merchants) {
+    this.merchants = merchants;
     return this;
   }
 
-  public MerchantsResponseBody addMerchantItem(Merchant merchantItem) {
-    if (this.merchant == null) {
-      this.merchant = new ArrayList<Merchant>();
+  public MerchantsResponseBody addMerchantsItem(Merchant merchantsItem) {
+    if (this.merchants == null) {
+      this.merchants = new ArrayList<Merchant>();
     }
-    this.merchant.add(merchantItem);
+    this.merchants.add(merchantsItem);
     return this;
   }
 
    /**
-   * Get merchant
-   * @return merchant
+   * Get merchants
+   * @return merchants
   **/
   @ApiModelProperty(value = "")
-  public List<Merchant> getMerchant() {
-    return merchant;
+  public List<Merchant> getMerchants() {
+    return merchants;
   }
 
-  public void setMerchant(List<Merchant> merchant) {
-    this.merchant = merchant;
+  public void setMerchants(List<Merchant> merchants) {
+    this.merchants = merchants;
   }
 
   public MerchantsResponseBody pagination(Pagination pagination) {
@@ -90,13 +90,13 @@ public class MerchantsResponseBody {
       return false;
     }
     MerchantsResponseBody merchantsResponseBody = (MerchantsResponseBody) o;
-    return Objects.equals(this.merchant, merchantsResponseBody.merchant) &&
+    return Objects.equals(this.merchants, merchantsResponseBody.merchants) &&
         Objects.equals(this.pagination, merchantsResponseBody.pagination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(merchant, pagination);
+    return Objects.hash(merchants, pagination);
   }
 
 
@@ -105,7 +105,7 @@ public class MerchantsResponseBody {
     StringBuilder sb = new StringBuilder();
     sb.append("class MerchantsResponseBody {\n");
     
-    sb.append("    merchant: ").append(toIndentedString(merchant)).append("\n");
+    sb.append("    merchants: ").append(toIndentedString(merchants)).append("\n");
     sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
     sb.append("}");
     return sb.toString();

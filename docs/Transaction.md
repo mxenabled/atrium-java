@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **isInternational** | **Boolean** |  |  [optional]
 **isOverdraftFee** | **Boolean** |  |  [optional]
 **isPayrollAdvance** | **Boolean** |  |  [optional]
+**isSubscription** | **Boolean** |  |  [optional]
 **latitude** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **longitude** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **memberGuid** | **String** |  |  [optional]

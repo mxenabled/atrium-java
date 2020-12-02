@@ -81,6 +81,9 @@ public class Transaction {
   @SerializedName("is_payroll_advance")
   private Boolean isPayrollAdvance = null;
 
+  @SerializedName("is_subscription")
+  private Boolean isSubscription = null;
+
   @SerializedName("latitude")
   private BigDecimal latitude = null;
 
@@ -286,6 +289,15 @@ public class Transaction {
   }
 
    /**
+   * Get isSubscription
+   * @return isSubscription
+  **/
+  @ApiModelProperty(example = "false", value = "")
+  public Boolean isIsSubscription() {
+    return isSubscription;
+  }
+
+   /**
    * Get latitude
    * @return latitude
   **/
@@ -439,6 +451,7 @@ public class Transaction {
         Objects.equals(this.isInternational, transaction.isInternational) &&
         Objects.equals(this.isOverdraftFee, transaction.isOverdraftFee) &&
         Objects.equals(this.isPayrollAdvance, transaction.isPayrollAdvance) &&
+        Objects.equals(this.isSubscription, transaction.isSubscription) &&
         Objects.equals(this.latitude, transaction.latitude) &&
         Objects.equals(this.longitude, transaction.longitude) &&
         Objects.equals(this.memberGuid, transaction.memberGuid) &&
@@ -457,7 +470,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountGuid, amount, category, checkNumber, checkNumberString, createdAt, currencyCode, date, description, guid, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance, latitude, longitude, memberGuid, memo, merchantCategoryCode, merchantGuid, originalDescription, postedAt, status, topLevelCategory, transactedAt, type, updatedAt, userGuid);
+    return Objects.hash(accountGuid, amount, category, checkNumber, checkNumberString, createdAt, currencyCode, date, description, guid, isBillPay, isDirectDeposit, isExpense, isFee, isIncome, isInternational, isOverdraftFee, isPayrollAdvance, isSubscription, latitude, longitude, memberGuid, memo, merchantCategoryCode, merchantGuid, originalDescription, postedAt, status, topLevelCategory, transactedAt, type, updatedAt, userGuid);
   }
 
 
@@ -484,6 +497,7 @@ public class Transaction {
     sb.append("    isInternational: ").append(toIndentedString(isInternational)).append("\n");
     sb.append("    isOverdraftFee: ").append(toIndentedString(isOverdraftFee)).append("\n");
     sb.append("    isPayrollAdvance: ").append(toIndentedString(isPayrollAdvance)).append("\n");
+    sb.append("    isSubscription: ").append(toIndentedString(isSubscription)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");

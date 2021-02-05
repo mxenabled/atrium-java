@@ -72,6 +72,9 @@ public class Account {
   @SerializedName("holdings_value")
   private BigDecimal holdingsValue = null;
 
+  @SerializedName("insured_name")
+  private String insuredName = null;
+
   @SerializedName("institution_code")
   private String institutionCode = null;
 
@@ -110,6 +113,12 @@ public class Account {
 
   @SerializedName("payoff_balance")
   private BigDecimal payoffBalance = null;
+
+  @SerializedName("pay_out_amount")
+  private BigDecimal payOutAmount = null;
+
+  @SerializedName("premium_amount")
+  private BigDecimal premiumAmount = null;
 
   @SerializedName("started_on")
   private String startedOn = null;
@@ -301,6 +310,15 @@ public class Account {
   }
 
    /**
+   * Get insuredName
+   * @return insuredName
+  **/
+  @ApiModelProperty(example = "John Doe", value = "")
+  public String getInsuredName() {
+    return insuredName;
+  }
+
+   /**
    * Get institutionCode
    * @return institutionCode
   **/
@@ -427,6 +445,24 @@ public class Account {
   }
 
    /**
+   * Get payOutAmount
+   * @return payOutAmount
+  **/
+  @ApiModelProperty(example = "2756.85", value = "")
+  public BigDecimal getPayOutAmount() {
+    return payOutAmount;
+  }
+
+   /**
+   * Get premiumAmount
+   * @return premiumAmount
+  **/
+  @ApiModelProperty(example = "300.65", value = "")
+  public BigDecimal getPremiumAmount() {
+    return premiumAmount;
+  }
+
+   /**
    * Get startedOn
    * @return startedOn
   **/
@@ -505,6 +541,7 @@ public class Account {
         Objects.equals(this.deathBenefit, account.deathBenefit) &&
         Objects.equals(this.guid, account.guid) &&
         Objects.equals(this.holdingsValue, account.holdingsValue) &&
+        Objects.equals(this.insuredName, account.insuredName) &&
         Objects.equals(this.institutionCode, account.institutionCode) &&
         Objects.equals(this.interestRate, account.interestRate) &&
         Objects.equals(this.isClosed, account.isClosed) &&
@@ -518,6 +555,8 @@ public class Account {
         Objects.equals(this.originalBalance, account.originalBalance) &&
         Objects.equals(this.paymentDueAt, account.paymentDueAt) &&
         Objects.equals(this.payoffBalance, account.payoffBalance) &&
+        Objects.equals(this.payOutAmount, account.payOutAmount) &&
+        Objects.equals(this.premiumAmount, account.premiumAmount) &&
         Objects.equals(this.startedOn, account.startedOn) &&
         Objects.equals(this.subtype, account.subtype) &&
         Objects.equals(this.totalAccountValue, account.totalAccountValue) &&
@@ -528,7 +567,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, insuredName, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, payOutAmount, premiumAmount, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -552,6 +591,7 @@ public class Account {
     sb.append("    deathBenefit: ").append(toIndentedString(deathBenefit)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    holdingsValue: ").append(toIndentedString(holdingsValue)).append("\n");
+    sb.append("    insuredName: ").append(toIndentedString(insuredName)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
     sb.append("    isClosed: ").append(toIndentedString(isClosed)).append("\n");
@@ -565,6 +605,8 @@ public class Account {
     sb.append("    originalBalance: ").append(toIndentedString(originalBalance)).append("\n");
     sb.append("    paymentDueAt: ").append(toIndentedString(paymentDueAt)).append("\n");
     sb.append("    payoffBalance: ").append(toIndentedString(payoffBalance)).append("\n");
+    sb.append("    payOutAmount: ").append(toIndentedString(payOutAmount)).append("\n");
+    sb.append("    premiumAmount: ").append(toIndentedString(premiumAmount)).append("\n");
     sb.append("    startedOn: ").append(toIndentedString(startedOn)).append("\n");
     sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    totalAccountValue: ").append(toIndentedString(totalAccountValue)).append("\n");

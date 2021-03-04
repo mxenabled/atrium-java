@@ -87,6 +87,9 @@ public class Account {
   @SerializedName("last_payment")
   private BigDecimal lastPayment = null;
 
+  @SerializedName("last_payment_at")
+  private String lastPaymentAt = null;
+
   @SerializedName("loan_amount")
   private BigDecimal loanAmount = null;
 
@@ -352,6 +355,24 @@ public class Account {
   @ApiModelProperty(value = "")
   public BigDecimal getLastPayment() {
     return lastPayment;
+  }
+
+  public Account lastPaymentAt(String lastPaymentAt) {
+    this.lastPaymentAt = lastPaymentAt;
+    return this;
+  }
+
+  /**
+   * Get lastPaymentAt
+   * @return lastPaymentAt
+   **/
+  @ApiModelProperty(value = "")
+  public String getLastPaymentAt() {
+    return lastPaymentAt;
+  }
+
+  public void setLastPaymentAt(String lastPaymentAt) {
+    this.lastPaymentAt = lastPaymentAt;
   }
 
   public Account loanAmount(BigDecimal loanAmount) {

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **interestRate** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **isClosed** | **Boolean** |  |  [optional]
 **lastPayment** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**lastPaymentAt** | **String** |  |  [optional]
 **loanAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **maturesOn** | **String** |  |  [optional]
 **memberGuid** | **String** |  |  [optional]

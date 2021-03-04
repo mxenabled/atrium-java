@@ -357,22 +357,13 @@ public class Account {
     return lastPayment;
   }
 
-  public Account lastPaymentAt(String lastPaymentAt) {
-    this.lastPaymentAt = lastPaymentAt;
-    return this;
-  }
-
-  /**
+   /**
    * Get lastPaymentAt
    * @return lastPaymentAt
-   **/
-  @ApiModelProperty(value = "")
+  **/
+  @ApiModelProperty(example = "2016-10-13T18:08:00+00:00", value = "")
   public String getLastPaymentAt() {
     return lastPaymentAt;
-  }
-
-  public void setLastPaymentAt(String lastPaymentAt) {
-    this.lastPaymentAt = lastPaymentAt;
   }
 
   public Account loanAmount(BigDecimal loanAmount) {
@@ -567,6 +558,7 @@ public class Account {
         Objects.equals(this.interestRate, account.interestRate) &&
         Objects.equals(this.isClosed, account.isClosed) &&
         Objects.equals(this.lastPayment, account.lastPayment) &&
+        Objects.equals(this.lastPaymentAt, account.lastPaymentAt) &&
         Objects.equals(this.loanAmount, account.loanAmount) &&
         Objects.equals(this.maturesOn, account.maturesOn) &&
         Objects.equals(this.memberGuid, account.memberGuid) &&
@@ -588,7 +580,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, insuredName, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, payOutAmount, premiumAmount, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditLimit, currencyCode, dayPaymentIsDue, deathBenefit, guid, holdingsValue, insuredName, institutionCode, interestRate, isClosed, lastPayment, lastPaymentAt, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, originalBalance, paymentDueAt, payoffBalance, payOutAmount, premiumAmount, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -617,6 +609,7 @@ public class Account {
     sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
     sb.append("    isClosed: ").append(toIndentedString(isClosed)).append("\n");
     sb.append("    lastPayment: ").append(toIndentedString(lastPayment)).append("\n");
+    sb.append("    lastPaymentAt: ").append(toIndentedString(lastPaymentAt)).append("\n");
     sb.append("    loanAmount: ").append(toIndentedString(loanAmount)).append("\n");
     sb.append("    maturesOn: ").append(toIndentedString(maturesOn)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");

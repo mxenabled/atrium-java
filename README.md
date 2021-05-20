@@ -23,7 +23,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/atrium-java-2.10.5.jar`
+* `target/atrium-java-2.10.6.jar`
 * `target/lib/*.jar`
 
 ## Example Usage

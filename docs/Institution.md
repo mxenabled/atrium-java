@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **supportsAccountIdentification** | **Boolean** |  |  [optional]
 **supportsAccountStatement** | **Boolean** |  |  [optional]
 **supportsAccountVerification** | **Boolean** |  |  [optional]
+**supportsOauth** | **Boolean** |  |  [optional]
 **supportsTransactionHistory** | **Boolean** |  |  [optional]
 **url** | **String** |  |  [optional]
 

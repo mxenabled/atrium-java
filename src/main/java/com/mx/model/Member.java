@@ -44,6 +44,9 @@ public class Member {
   @SerializedName("is_being_aggregated")
   private Boolean isBeingAggregated = null;
 
+  @SerializedName("is_oauth")
+  private Boolean isOauth = null;
+
   @SerializedName("metadata")
   private String metadata = null;
 
@@ -134,6 +137,15 @@ public class Member {
     return isBeingAggregated;
   }
 
+   /**
+   * Get isOauth
+   * @return isOauth
+  **/
+  @ApiModelProperty(example = "false", value = "")
+  public Boolean isIsOauth() {
+    return isOauth;
+  }
+
   public Member metadata(String metadata) {
     this.metadata = metadata;
     return this;
@@ -213,6 +225,7 @@ public class Member {
         Objects.equals(this.identifier, member.identifier) &&
         Objects.equals(this.institutionCode, member.institutionCode) &&
         Objects.equals(this.isBeingAggregated, member.isBeingAggregated) &&
+        Objects.equals(this.isOauth, member.isOauth) &&
         Objects.equals(this.metadata, member.metadata) &&
         Objects.equals(this.name, member.name) &&
         Objects.equals(this.oauthWindowUri, member.oauthWindowUri) &&
@@ -223,7 +236,7 @@ public class Member {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregatedAt, connectionStatus, guid, identifier, institutionCode, isBeingAggregated, metadata, name, oauthWindowUri, status, successfullyAggregatedAt, userGuid);
+    return Objects.hash(aggregatedAt, connectionStatus, guid, identifier, institutionCode, isBeingAggregated, isOauth, metadata, name, oauthWindowUri, status, successfullyAggregatedAt, userGuid);
   }
 
 
@@ -238,6 +251,7 @@ public class Member {
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    isBeingAggregated: ").append(toIndentedString(isBeingAggregated)).append("\n");
+    sb.append("    isOauth: ").append(toIndentedString(isOauth)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    oauthWindowUri: ").append(toIndentedString(oauthWindowUri)).append("\n");

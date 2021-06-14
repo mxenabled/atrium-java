@@ -81,6 +81,9 @@ public class Account {
   @SerializedName("holdings_value")
   private BigDecimal holdingsValue = null;
 
+  @SerializedName("insured_name")
+  private String insuredName = null;
+
   @SerializedName("institution_code")
   private String institutionCode = null;
 
@@ -92,6 +95,9 @@ public class Account {
 
   @SerializedName("last_payment")
   private BigDecimal lastPayment = null;
+
+  @SerializedName("last_payment_at")
+  private String lastPaymentAt = null;
 
   @SerializedName("loan_amount")
   private BigDecimal loanAmount = null;
@@ -122,6 +128,12 @@ public class Account {
 
   @SerializedName("payoff_balance")
   private BigDecimal payoffBalance = null;
+
+  @SerializedName("pay_out_amount")
+  private BigDecimal payOutAmount = null;
+
+  @SerializedName("premium_amount")
+  private BigDecimal premiumAmount = null;
 
   @SerializedName("primary_reward_unit")
   private String primaryRewardUnit = null;
@@ -343,6 +355,15 @@ public class Account {
   }
 
    /**
+   * Get insuredName
+   * @return insuredName
+  **/
+  @ApiModelProperty(example = "John Doe", value = "")
+  public String getInsuredName() {
+    return insuredName;
+  }
+
+   /**
    * Get institutionCode
    * @return institutionCode
   **/
@@ -376,6 +397,15 @@ public class Account {
   @ApiModelProperty(value = "")
   public BigDecimal getLastPayment() {
     return lastPayment;
+  }
+
+   /**
+   * Get lastPaymentAt
+   * @return lastPaymentAt
+  **/
+  @ApiModelProperty(example = "2016-10-13T18:08:00+00:00", value = "")
+  public String getLastPaymentAt() {
+    return lastPaymentAt;
   }
 
   public Account loanAmount(BigDecimal loanAmount) {
@@ -478,6 +508,24 @@ public class Account {
   }
 
    /**
+   * Get payOutAmount
+   * @return payOutAmount
+  **/
+  @ApiModelProperty(example = "2756.85", value = "")
+  public BigDecimal getPayOutAmount() {
+    return payOutAmount;
+  }
+
+   /**
+   * Get premiumAmount
+   * @return premiumAmount
+  **/
+  @ApiModelProperty(example = "300.65", value = "")
+  public BigDecimal getPremiumAmount() {
+    return premiumAmount;
+  }
+
+   /**
    * Get primaryRewardUnit
    * @return primaryRewardUnit
   **/
@@ -568,10 +616,12 @@ public class Account {
         Objects.equals(this.enrolledInRewardsOn, account.enrolledInRewardsOn) &&
         Objects.equals(this.guid, account.guid) &&
         Objects.equals(this.holdingsValue, account.holdingsValue) &&
+        Objects.equals(this.insuredName, account.insuredName) &&
         Objects.equals(this.institutionCode, account.institutionCode) &&
         Objects.equals(this.interestRate, account.interestRate) &&
         Objects.equals(this.isClosed, account.isClosed) &&
         Objects.equals(this.lastPayment, account.lastPayment) &&
+        Objects.equals(this.lastPaymentAt, account.lastPaymentAt) &&
         Objects.equals(this.loanAmount, account.loanAmount) &&
         Objects.equals(this.maturesOn, account.maturesOn) &&
         Objects.equals(this.memberGuid, account.memberGuid) &&
@@ -582,6 +632,8 @@ public class Account {
         Objects.equals(this.originalBalance, account.originalBalance) &&
         Objects.equals(this.paymentDueAt, account.paymentDueAt) &&
         Objects.equals(this.payoffBalance, account.payoffBalance) &&
+        Objects.equals(this.payOutAmount, account.payOutAmount) &&
+        Objects.equals(this.premiumAmount, account.premiumAmount) &&
         Objects.equals(this.primaryRewardUnit, account.primaryRewardUnit) &&
         Objects.equals(this.startedOn, account.startedOn) &&
         Objects.equals(this.subtype, account.subtype) &&
@@ -593,7 +645,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditCardProductGuid, creditLimit, currencyCode, currentRewardLevel, dayPaymentIsDue, deathBenefit, enrolledInRewardsOn, guid, holdingsValue, institutionCode, interestRate, isClosed, lastPayment, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, nextRewardLevel, originalBalance, paymentDueAt, payoffBalance, primaryRewardUnit, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
+    return Objects.hash(accountNumber, apr, apy, availableBalance, availableCredit, balance, cashBalance, cashSurrenderValue, createdAt, creditCardProductGuid, creditLimit, currencyCode, currentRewardLevel, dayPaymentIsDue, deathBenefit, enrolledInRewardsOn, guid, holdingsValue, insuredName, institutionCode, interestRate, isClosed, lastPayment, lastPaymentAt, loanAmount, maturesOn, memberGuid, minimumBalance, minimumPayment, name, nextRewardLevel, originalBalance, paymentDueAt, payoffBalance, payOutAmount, premiumAmount, primaryRewardUnit, startedOn, subtype, totalAccountValue, type, updatedAt, userGuid);
   }
 
 
@@ -620,10 +672,12 @@ public class Account {
     sb.append("    enrolledInRewardsOn: ").append(toIndentedString(enrolledInRewardsOn)).append("\n");
     sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    holdingsValue: ").append(toIndentedString(holdingsValue)).append("\n");
+    sb.append("    insuredName: ").append(toIndentedString(insuredName)).append("\n");
     sb.append("    institutionCode: ").append(toIndentedString(institutionCode)).append("\n");
     sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
     sb.append("    isClosed: ").append(toIndentedString(isClosed)).append("\n");
     sb.append("    lastPayment: ").append(toIndentedString(lastPayment)).append("\n");
+    sb.append("    lastPaymentAt: ").append(toIndentedString(lastPaymentAt)).append("\n");
     sb.append("    loanAmount: ").append(toIndentedString(loanAmount)).append("\n");
     sb.append("    maturesOn: ").append(toIndentedString(maturesOn)).append("\n");
     sb.append("    memberGuid: ").append(toIndentedString(memberGuid)).append("\n");
@@ -634,6 +688,8 @@ public class Account {
     sb.append("    originalBalance: ").append(toIndentedString(originalBalance)).append("\n");
     sb.append("    paymentDueAt: ").append(toIndentedString(paymentDueAt)).append("\n");
     sb.append("    payoffBalance: ").append(toIndentedString(payoffBalance)).append("\n");
+    sb.append("    payOutAmount: ").append(toIndentedString(payOutAmount)).append("\n");
+    sb.append("    premiumAmount: ").append(toIndentedString(premiumAmount)).append("\n");
     sb.append("    primaryRewardUnit: ").append(toIndentedString(primaryRewardUnit)).append("\n");
     sb.append("    startedOn: ").append(toIndentedString(startedOn)).append("\n");
     sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");

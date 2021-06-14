@@ -47,6 +47,9 @@ public class Institution {
   @SerializedName("supports_account_verification")
   private Boolean supportsAccountVerification = null;
 
+  @SerializedName("supports_oauth")
+  private Boolean supportsOauth = null;
+
   @SerializedName("supports_transaction_history")
   private Boolean supportsTransactionHistory = null;
 
@@ -117,6 +120,15 @@ public class Institution {
   }
 
    /**
+   * Get supportsOauth
+   * @return supportsOauth
+  **/
+  @ApiModelProperty(example = "false", value = "")
+  public Boolean isSupportsOauth() {
+    return supportsOauth;
+  }
+
+   /**
    * Get supportsTransactionHistory
    * @return supportsTransactionHistory
   **/
@@ -151,13 +163,14 @@ public class Institution {
         Objects.equals(this.supportsAccountIdentification, institution.supportsAccountIdentification) &&
         Objects.equals(this.supportsAccountStatement, institution.supportsAccountStatement) &&
         Objects.equals(this.supportsAccountVerification, institution.supportsAccountVerification) &&
+        Objects.equals(this.supportsOauth, institution.supportsOauth) &&
         Objects.equals(this.supportsTransactionHistory, institution.supportsTransactionHistory) &&
         Objects.equals(this.url, institution.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, mediumLogoUrl, name, smallLogoUrl, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsTransactionHistory, url);
+    return Objects.hash(code, mediumLogoUrl, name, smallLogoUrl, supportsAccountIdentification, supportsAccountStatement, supportsAccountVerification, supportsOauth, supportsTransactionHistory, url);
   }
 
 
@@ -173,6 +186,7 @@ public class Institution {
     sb.append("    supportsAccountIdentification: ").append(toIndentedString(supportsAccountIdentification)).append("\n");
     sb.append("    supportsAccountStatement: ").append(toIndentedString(supportsAccountStatement)).append("\n");
     sb.append("    supportsAccountVerification: ").append(toIndentedString(supportsAccountVerification)).append("\n");
+    sb.append("    supportsOauth: ").append(toIndentedString(supportsOauth)).append("\n");
     sb.append("    supportsTransactionHistory: ").append(toIndentedString(supportsTransactionHistory)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");

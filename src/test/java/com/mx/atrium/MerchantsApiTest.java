@@ -42,7 +42,9 @@ public class MerchantsApiTest {
     @Test
     public void listMerchantLocationsTest() throws ApiException {
         String merchantGuid = null;
-        MerchantLocationsResponseBody response = api.listMerchantLocations(merchantGuid);
+        Integer page = null;
+        Integer recordsPerPage = null;
+        MerchantLocationsResponseBody response = api.listMerchantLocations(merchantGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -57,7 +59,9 @@ public class MerchantsApiTest {
      */
     @Test
     public void listMerchantsTest() throws ApiException {
-        MerchantsResponseBody response = api.listMerchants();
+        Integer page = null;
+        Integer recordsPerPage = null;
+        MerchantsResponseBody response = api.listMerchants(page, recordsPerPage);
 
         // TODO: test validations
     }

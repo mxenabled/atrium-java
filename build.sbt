@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.mx.atrium",
     name := "atrium-java",
-    version := "2.10.6",
+    version := "2.10.7",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),

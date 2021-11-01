@@ -56,12 +56,14 @@ public class MerchantsApi {
     /**
      * Build call for listMerchantLocations
      * @param merchantGuid The unique identifier for a &#x60;merchant&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listMerchantLocationsCall(String merchantGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listMerchantLocationsCall(String merchantGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -70,6 +72,10 @@ public class MerchantsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (recordsPerPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -104,7 +110,7 @@ public class MerchantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listMerchantLocationsValidateBeforeCall(String merchantGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listMerchantLocationsValidateBeforeCall(String merchantGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'merchantGuid' is set
         if (merchantGuid == null) {
@@ -112,7 +118,7 @@ public class MerchantsApi {
         }
         
 
-        com.squareup.okhttp.Call call = listMerchantLocationsCall(merchantGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listMerchantLocationsCall(merchantGuid, page, recordsPerPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -121,11 +127,13 @@ public class MerchantsApi {
      * List merchant locations
      * Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
      * @param merchantGuid The unique identifier for a &#x60;merchant&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return MerchantLocationsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MerchantLocationsResponseBody listMerchantLocations(String merchantGuid) throws ApiException {
-        ApiResponse<MerchantLocationsResponseBody> resp = listMerchantLocationsWithHttpInfo(merchantGuid);
+    public MerchantLocationsResponseBody listMerchantLocations(String merchantGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<MerchantLocationsResponseBody> resp = listMerchantLocationsWithHttpInfo(merchantGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -133,11 +141,13 @@ public class MerchantsApi {
      * List merchant locations
      * Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
      * @param merchantGuid The unique identifier for a &#x60;merchant&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return ApiResponse&lt;MerchantLocationsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MerchantLocationsResponseBody> listMerchantLocationsWithHttpInfo(String merchantGuid) throws ApiException {
-        com.squareup.okhttp.Call call = listMerchantLocationsValidateBeforeCall(merchantGuid, null, null);
+    public ApiResponse<MerchantLocationsResponseBody> listMerchantLocationsWithHttpInfo(String merchantGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        com.squareup.okhttp.Call call = listMerchantLocationsValidateBeforeCall(merchantGuid, page, recordsPerPage, null, null);
         Type localVarReturnType = new TypeToken<MerchantLocationsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -146,11 +156,13 @@ public class MerchantsApi {
      * List merchant locations (asynchronously)
      * Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
      * @param merchantGuid The unique identifier for a &#x60;merchant&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMerchantLocationsAsync(String merchantGuid, final ApiCallback<MerchantLocationsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMerchantLocationsAsync(String merchantGuid, Integer page, Integer recordsPerPage, final ApiCallback<MerchantLocationsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,19 +183,21 @@ public class MerchantsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listMerchantLocationsValidateBeforeCall(merchantGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listMerchantLocationsValidateBeforeCall(merchantGuid, page, recordsPerPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MerchantLocationsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for listMerchants
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listMerchantsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listMerchantsCall(Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -191,6 +205,10 @@ public class MerchantsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (recordsPerPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -225,10 +243,10 @@ public class MerchantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listMerchantsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listMerchantsValidateBeforeCall(Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = listMerchantsCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listMerchantsCall(page, recordsPerPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -236,22 +254,26 @@ public class MerchantsApi {
     /**
      * List merchants
      * Returns a list of merchnants.
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return MerchantsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MerchantsResponseBody listMerchants() throws ApiException {
-        ApiResponse<MerchantsResponseBody> resp = listMerchantsWithHttpInfo();
+    public MerchantsResponseBody listMerchants(Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<MerchantsResponseBody> resp = listMerchantsWithHttpInfo(page, recordsPerPage);
         return resp.getData();
     }
 
     /**
      * List merchants
      * Returns a list of merchnants.
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return ApiResponse&lt;MerchantsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MerchantsResponseBody> listMerchantsWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = listMerchantsValidateBeforeCall(null, null);
+    public ApiResponse<MerchantsResponseBody> listMerchantsWithHttpInfo(Integer page, Integer recordsPerPage) throws ApiException {
+        com.squareup.okhttp.Call call = listMerchantsValidateBeforeCall(page, recordsPerPage, null, null);
         Type localVarReturnType = new TypeToken<MerchantsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -259,11 +281,13 @@ public class MerchantsApi {
     /**
      * List merchants (asynchronously)
      * Returns a list of merchnants.
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listMerchantsAsync(final ApiCallback<MerchantsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listMerchantsAsync(Integer page, Integer recordsPerPage, final ApiCallback<MerchantsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -284,7 +308,7 @@ public class MerchantsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listMerchantsValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listMerchantsValidateBeforeCall(page, recordsPerPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MerchantsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

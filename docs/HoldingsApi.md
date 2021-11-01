@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="listHoldings"></a>
 # **listHoldings**
-> HoldingsResponseBody listHoldings(userGuid)
+> HoldingsResponseBody listHoldings(userGuid, page, recordsPerPage)
 
 List holdings
 
@@ -26,9 +26,11 @@ public class HoldingsApiExample {
         AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
         try {
-            HoldingsResponseBody response = client.holdings.listHoldings(userGuid);
+            HoldingsResponseBody response = client.holdings.listHoldings(userGuid, page, recordsPerPage);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling HoldingsApi#listHoldings");
@@ -43,6 +45,8 @@ public class HoldingsApiExample {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
 
 ### Return type
 
@@ -50,7 +54,7 @@ Name | Type | Description  | Notes
 
 <a name="listHoldingsByAccount"></a>
 # **listHoldingsByAccount**
-> HoldingsResponseBody listHoldingsByAccount(accountGuid, userGuid)
+> HoldingsResponseBody listHoldingsByAccount(accountGuid, userGuid, page, recordsPerPage)
 
 List holdings by account
 
@@ -67,9 +71,11 @@ public class HoldingsApiExample {
 
         String accountGuid = "ACT-123"; // String | The unique identifier for an `account`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
         try {
-            HoldingsResponseBody response = client.holdings.listHoldingsByAccount(accountGuid, userGuid);
+            HoldingsResponseBody response = client.holdings.listHoldingsByAccount(accountGuid, userGuid, page, recordsPerPage);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling HoldingsApi#listHoldingsByAccount");
@@ -85,6 +91,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountGuid** | **String**| The unique identifier for an &#x60;account&#x60;. |
  **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
 
 ### Return type
 
@@ -92,7 +100,7 @@ Name | Type | Description  | Notes
 
 <a name="listHoldingsByMember"></a>
 # **listHoldingsByMember**
-> HoldingsResponseBody listHoldingsByMember(memberGuid, userGuid)
+> HoldingsResponseBody listHoldingsByMember(memberGuid, userGuid, page, recordsPerPage)
 
 List holdings by member
 
@@ -109,9 +117,11 @@ public class HoldingsApiExample {
 
         String memberGuid = "MBR-123"; // String | The unique identifier for a `member`.
         String userGuid = "USR-123"; // String | The unique identifier for a `user`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
         try {
-            HoldingsResponseBody response = client.holdings.listHoldingsByMember(memberGuid, userGuid);
+            HoldingsResponseBody response = client.holdings.listHoldingsByMember(memberGuid, userGuid, page, recordsPerPage);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling HoldingsApi#listHoldingsByMember");
@@ -127,6 +137,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memberGuid** | **String**| The unique identifier for a &#x60;member&#x60;. |
  **userGuid** | **String**| The unique identifier for a &#x60;user&#x60;. |
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
 
 ### Return type
 

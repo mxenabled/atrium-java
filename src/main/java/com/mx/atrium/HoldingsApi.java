@@ -54,12 +54,14 @@ public class HoldingsApi {
     /**
      * Build call for listHoldings
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsCall(String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsCall(String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -68,6 +70,10 @@ public class HoldingsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (recordsPerPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -102,7 +108,7 @@ public class HoldingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listHoldingsValidateBeforeCall(String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listHoldingsValidateBeforeCall(String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'userGuid' is set
         if (userGuid == null) {
@@ -110,7 +116,7 @@ public class HoldingsApi {
         }
         
 
-        com.squareup.okhttp.Call call = listHoldingsCall(userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsCall(userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -119,11 +125,13 @@ public class HoldingsApi {
      * List holdings
      * Use this endpoint to read all holdings associated with a specific user.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return HoldingsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public HoldingsResponseBody listHoldings(String userGuid) throws ApiException {
-        ApiResponse<HoldingsResponseBody> resp = listHoldingsWithHttpInfo(userGuid);
+    public HoldingsResponseBody listHoldings(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<HoldingsResponseBody> resp = listHoldingsWithHttpInfo(userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -131,11 +139,13 @@ public class HoldingsApi {
      * List holdings
      * Use this endpoint to read all holdings associated with a specific user.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return ApiResponse&lt;HoldingsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HoldingsResponseBody> listHoldingsWithHttpInfo(String userGuid) throws ApiException {
-        com.squareup.okhttp.Call call = listHoldingsValidateBeforeCall(userGuid, null, null);
+    public ApiResponse<HoldingsResponseBody> listHoldingsWithHttpInfo(String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        com.squareup.okhttp.Call call = listHoldingsValidateBeforeCall(userGuid, page, recordsPerPage, null, null);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -144,11 +154,13 @@ public class HoldingsApi {
      * List holdings (asynchronously)
      * Use this endpoint to read all holdings associated with a specific user.
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsAsync(String userGuid, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsAsync(String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -169,7 +181,7 @@ public class HoldingsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listHoldingsValidateBeforeCall(userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsValidateBeforeCall(userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -178,12 +190,14 @@ public class HoldingsApi {
      * Build call for listHoldingsByAccount
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsByAccountCall(String accountGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsByAccountCall(String accountGuid, String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -193,6 +207,10 @@ public class HoldingsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (recordsPerPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -227,7 +245,7 @@ public class HoldingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listHoldingsByAccountValidateBeforeCall(String accountGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listHoldingsByAccountValidateBeforeCall(String accountGuid, String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountGuid' is set
         if (accountGuid == null) {
@@ -240,7 +258,7 @@ public class HoldingsApi {
         }
         
 
-        com.squareup.okhttp.Call call = listHoldingsByAccountCall(accountGuid, userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsByAccountCall(accountGuid, userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -250,11 +268,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific account.
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return HoldingsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public HoldingsResponseBody listHoldingsByAccount(String accountGuid, String userGuid) throws ApiException {
-        ApiResponse<HoldingsResponseBody> resp = listHoldingsByAccountWithHttpInfo(accountGuid, userGuid);
+    public HoldingsResponseBody listHoldingsByAccount(String accountGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<HoldingsResponseBody> resp = listHoldingsByAccountWithHttpInfo(accountGuid, userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -263,11 +283,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific account.
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return ApiResponse&lt;HoldingsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HoldingsResponseBody> listHoldingsByAccountWithHttpInfo(String accountGuid, String userGuid) throws ApiException {
-        com.squareup.okhttp.Call call = listHoldingsByAccountValidateBeforeCall(accountGuid, userGuid, null, null);
+    public ApiResponse<HoldingsResponseBody> listHoldingsByAccountWithHttpInfo(String accountGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        com.squareup.okhttp.Call call = listHoldingsByAccountValidateBeforeCall(accountGuid, userGuid, page, recordsPerPage, null, null);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -277,11 +299,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific account.
      * @param accountGuid The unique identifier for an &#x60;account&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsByAccountAsync(String accountGuid, String userGuid, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsByAccountAsync(String accountGuid, String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -302,7 +326,7 @@ public class HoldingsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listHoldingsByAccountValidateBeforeCall(accountGuid, userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsByAccountValidateBeforeCall(accountGuid, userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -311,12 +335,14 @@ public class HoldingsApi {
      * Build call for listHoldingsByMember
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsByMemberCall(String memberGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsByMemberCall(String memberGuid, String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -326,6 +352,10 @@ public class HoldingsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (recordsPerPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("records_per_page", recordsPerPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -360,7 +390,7 @@ public class HoldingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listHoldingsByMemberValidateBeforeCall(String memberGuid, String userGuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listHoldingsByMemberValidateBeforeCall(String memberGuid, String userGuid, Integer page, Integer recordsPerPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'memberGuid' is set
         if (memberGuid == null) {
@@ -373,7 +403,7 @@ public class HoldingsApi {
         }
         
 
-        com.squareup.okhttp.Call call = listHoldingsByMemberCall(memberGuid, userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsByMemberCall(memberGuid, userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -383,11 +413,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return HoldingsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public HoldingsResponseBody listHoldingsByMember(String memberGuid, String userGuid) throws ApiException {
-        ApiResponse<HoldingsResponseBody> resp = listHoldingsByMemberWithHttpInfo(memberGuid, userGuid);
+    public HoldingsResponseBody listHoldingsByMember(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        ApiResponse<HoldingsResponseBody> resp = listHoldingsByMemberWithHttpInfo(memberGuid, userGuid, page, recordsPerPage);
         return resp.getData();
     }
 
@@ -396,11 +428,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @return ApiResponse&lt;HoldingsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<HoldingsResponseBody> listHoldingsByMemberWithHttpInfo(String memberGuid, String userGuid) throws ApiException {
-        com.squareup.okhttp.Call call = listHoldingsByMemberValidateBeforeCall(memberGuid, userGuid, null, null);
+    public ApiResponse<HoldingsResponseBody> listHoldingsByMemberWithHttpInfo(String memberGuid, String userGuid, Integer page, Integer recordsPerPage) throws ApiException {
+        com.squareup.okhttp.Call call = listHoldingsByMemberValidateBeforeCall(memberGuid, userGuid, page, recordsPerPage, null, null);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -410,11 +444,13 @@ public class HoldingsApi {
      * Use this endpoint to read all holdings associated with a specific member.
      * @param memberGuid The unique identifier for a &#x60;member&#x60;. (required)
      * @param userGuid The unique identifier for a &#x60;user&#x60;. (required)
+     * @param page Specify current page. (optional)
+     * @param recordsPerPage Specify records per page. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listHoldingsByMemberAsync(String memberGuid, String userGuid, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call listHoldingsByMemberAsync(String memberGuid, String userGuid, Integer page, Integer recordsPerPage, final ApiCallback<HoldingsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -435,7 +471,7 @@ public class HoldingsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listHoldingsByMemberValidateBeforeCall(memberGuid, userGuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listHoldingsByMemberValidateBeforeCall(memberGuid, userGuid, page, recordsPerPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<HoldingsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

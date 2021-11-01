@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="listMerchantLocations"></a>
 # **listMerchantLocations**
-> MerchantLocationsResponseBody listMerchantLocations(merchantGuid)
+> MerchantLocationsResponseBody listMerchantLocations(merchantGuid, page, recordsPerPage)
 
 List merchant locations
 
@@ -26,9 +26,11 @@ public class MerchantsApiExample {
         AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
         String merchantGuid = "MCH-123"; // String | The unique identifier for a `merchant`.
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
         try {
-            MerchantLocationsResponseBody response = client.merchants.listMerchantLocations(merchantGuid);
+            MerchantLocationsResponseBody response = client.merchants.listMerchantLocations(merchantGuid, page, recordsPerPage);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling MerchantsApi#listMerchantLocations");
@@ -43,6 +45,8 @@ public class MerchantsApiExample {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantGuid** | **String**| The unique identifier for a &#x60;merchant&#x60;. |
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
 
 ### Return type
 
@@ -50,7 +54,7 @@ Name | Type | Description  | Notes
 
 <a name="listMerchants"></a>
 # **listMerchants**
-> MerchantsResponseBody listMerchants()
+> MerchantsResponseBody listMerchants(page, recordsPerPage)
 
 List merchants
 
@@ -65,9 +69,11 @@ public class MerchantsApiExample {
     public static void main(String[] args) {
         AtriumClient client = new AtriumClient("YOUR_API_KEY", "YOUR_CLIENT_ID", "https://vestibule.mx.com");
 
+        Integer page = 1; // Integer | Specify current page.
+        Integer recordsPerPage = 12; // Integer | Specify records per page.
 
         try {
-            MerchantsResponseBody response = client.merchants.listMerchants();
+            MerchantsResponseBody response = client.merchants.listMerchants(page, recordsPerPage);
             System.out.println(response);
         } catch (ApiException e) {
             System.err.println("Exception when calling MerchantsApi#listMerchants");
@@ -78,7 +84,11 @@ public class MerchantsApiExample {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **Integer**| Specify current page. | [optional]
+ **recordsPerPage** | **Integer**| Specify records per page. | [optional]
 
 ### Return type
 

@@ -40,7 +40,9 @@ public class HoldingsApiTest {
     @Test
     public void listHoldingsTest() throws ApiException {
         String userGuid = null;
-        HoldingsResponseBody response = api.listHoldings(userGuid);
+        Integer page = null;
+        Integer recordsPerPage = null;
+        HoldingsResponseBody response = api.listHoldings(userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -57,7 +59,9 @@ public class HoldingsApiTest {
     public void listHoldingsByAccountTest() throws ApiException {
         String accountGuid = null;
         String userGuid = null;
-        HoldingsResponseBody response = api.listHoldingsByAccount(accountGuid, userGuid);
+        Integer page = null;
+        Integer recordsPerPage = null;
+        HoldingsResponseBody response = api.listHoldingsByAccount(accountGuid, userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
@@ -74,7 +78,9 @@ public class HoldingsApiTest {
     public void listHoldingsByMemberTest() throws ApiException {
         String memberGuid = null;
         String userGuid = null;
-        HoldingsResponseBody response = api.listHoldingsByMember(memberGuid, userGuid);
+        Integer page = null;
+        Integer recordsPerPage = null;
+        HoldingsResponseBody response = api.listHoldingsByMember(memberGuid, userGuid, page, recordsPerPage);
 
         // TODO: test validations
     }
